@@ -9,8 +9,6 @@ Optional: Terminal zur manuellen Steuerung
 ## Organisation
 **Projektleiter:**
 - Imsirovic Benjamin
-+43 664 4178523
-benjamin.imsirovic@hotmail.com
 
 **Team:** 
 - Edalathkah Arsham
