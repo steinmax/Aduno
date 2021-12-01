@@ -14,10 +14,22 @@ import java.io.IOException;
 public class App extends Application {
 
     private static Scene scene;
+    private static boolean isDarkModeEnabled = false;
+
+    public static void toggleDarkMode() throws IOException {
+        if(isDarkModeEnabled) {
+            setRoot("display-light");
+            isDarkModeEnabled = false;
+        }
+        else {
+            setRoot("display-dark");
+            isDarkModeEnabled = true;
+        }
+    }
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("display"), 1024, 600);
+        scene = new Scene(loadFXML("display-light"), 1024, 600);
         stage.setScene(scene);
         stage.show();
     }
