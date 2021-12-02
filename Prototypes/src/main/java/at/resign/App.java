@@ -12,9 +12,10 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
-
-    private static Scene scene;
+    protected static Scene scene;
     private static boolean isDarkModeEnabled = false;
+
+    private static String initFxmlFile = "display-light";
 
     public static void toggleDarkMode() throws IOException {
         if(isDarkModeEnabled) {
@@ -29,21 +30,24 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("display-light"), 1024, 600);
+        scene = new Scene(loadFXML(initFxmlFile), 1024, 600);
         stage.setScene(scene);
         stage.show();
     }
 
-    static void setRoot(String fxml) throws IOException {
+    protected static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
 
-    private static Parent loadFXML(String fxml) throws IOException {
+    protected static Parent loadFXML(String fxml) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource(fxml + ".fxml"));
         return fxmlLoader.load();
     }
 
     public static void main(String[] args) {
+        if(args[0].toLowerCase().equals("-setup"))
+            initFxmlFile = "setup-1";
+
         launch();
     }
 
