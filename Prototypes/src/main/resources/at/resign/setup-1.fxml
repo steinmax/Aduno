@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="1024.0" style="-fx-font-size: 12;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.resign.SetupOneController">
    <children>
-      <Label layoutX="14.0" layoutY="14.0" text="ReSign Setup">
+      <Label layoutX="14.0" layoutY="14.0" text="reSign Setup">
          <font>
             <Font name="System Bold" size="61.0" />
          </font>
