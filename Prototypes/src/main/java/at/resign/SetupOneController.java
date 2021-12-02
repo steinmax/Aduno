@@ -7,6 +7,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Callback;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -33,6 +34,11 @@ public class SetupOneController implements Initializable {
     }
 
     public void btnConfirmClick(MouseEvent mouseEvent) {
-        //
+        //LoadDisplayUI
+        try {
+            App.setRoot("display-light");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
