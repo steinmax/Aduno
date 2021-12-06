@@ -14,8 +14,6 @@ import java.util.ResourceBundle;
 public class SetupOneController implements Initializable {
     public ComboBox cbRooms;
 
-    String selectedRoom = "-";
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //Test Data
@@ -34,9 +32,12 @@ public class SetupOneController implements Initializable {
     }
 
     public void btnConfirmClick(MouseEvent mouseEvent) {
-        //LoadDisplayUI
+        //Set room number
+        App.setRoomNumber(cbRooms.getSelectionModel().getSelectedItem().toString());
+
+        //Load Display UI
         try {
-            App.setRoot("display-light");
+            App.showDisplay();
         } catch (IOException e) {
             e.printStackTrace();
         }

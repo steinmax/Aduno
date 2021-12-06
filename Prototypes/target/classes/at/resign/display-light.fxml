@@ -41,7 +41,7 @@
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                <children>
-                  <Label layoutX="237.0" layoutY="14.0" text="135" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                  <Label fx:id="lblRoomNumber" layoutX="237.0" layoutY="14.0" text="135" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
                      <font>
                         <Font name="System Bold" size="100.0" />
                      </font>
@@ -88,7 +88,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <Label layoutX="241.0" layoutY="130.0" text="01.12.2021" textAlignment="RIGHT" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+                  <Label layoutX="241.0" layoutY="130.0" text="06.12.2021" textAlignment="RIGHT" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
                      <font>
                         <Font name="System Bold" size="50.0" />
                      </font>

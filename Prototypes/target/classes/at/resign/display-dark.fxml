@@ -88,7 +88,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <Label fx:id="lblDate" layoutX="241.0" layoutY="130.0" text="01.12.2021" textAlignment="RIGHT" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+                  <Label fx:id="lblDate" layoutX="241.0" layoutY="130.0" text="06.12.2021" textAlignment="RIGHT" textFill="WHITE" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
                      <font>
                         <Font name="System Bold" size="50.0" />
                      </font>
