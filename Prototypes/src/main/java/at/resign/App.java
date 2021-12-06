@@ -45,8 +45,9 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        if(args[0].toLowerCase().equals("-setup"))
-            initFxmlFile = "setup-1";
+        if(args.length>0)
+            if(args[0].toLowerCase().equals("-setup"))
+                initFxmlFile = "setup-1";
 
         launch();
     }
