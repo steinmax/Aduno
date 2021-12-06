@@ -11,7 +11,7 @@
     <ColumnConstraints hgrow="SOMETIMES" minWidth="1024.0" prefWidth="1024.0" />
   </columnConstraints>
   <rowConstraints>
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
@@ -61,7 +61,19 @@
         </rowConstraints>
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" />
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightblue;" GridPane.columnIndex="1" />
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightblue;" GridPane.columnIndex="1">
+               <children>
+                  <Label layoutX="172.0" layoutY="36.0" text="AM" AnchorPane.leftAnchor="172.0" AnchorPane.rightAnchor="171.0" AnchorPane.topAnchor="36.0">
+                     <font>
+                        <Font name="System Bold" size="43.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="125.0" layoutY="100.0" text="10:55 - 11:45" AnchorPane.topAnchor="90.0">
+                     <font>
+                        <Font size="29.0" />
+                     </font>
+                  </Label>
+               </children></AnchorPane>
          </children>
       </GridPane>
       <GridPane GridPane.rowIndex="2">
