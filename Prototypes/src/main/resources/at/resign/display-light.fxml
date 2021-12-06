@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.resign.PrototypeController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="at.resign.PrototypeController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="1024.0" prefWidth="1024.0" />
   </columnConstraints>
@@ -88,7 +88,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                <children>
-                  <Label layoutX="241.0" layoutY="130.0" text="06.12.2021" textAlignment="RIGHT" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
+                  <Label fx:id="lblDate" layoutX="241.0" layoutY="130.0" text="06.12.2021" textAlignment="RIGHT" AnchorPane.bottomAnchor="15.0" AnchorPane.rightAnchor="15.0">
                      <font>
                         <Font name="System Bold" size="50.0" />
                      </font>
