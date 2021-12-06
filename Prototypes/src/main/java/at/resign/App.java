@@ -16,6 +16,14 @@ public class App extends Application {
     private static boolean isDarkModeEnabled = false;
 
     private static String initFxmlFile = "display-light";
+    private static String roomNumber = "---";
+
+    public static String getRoomNumber() {
+        return roomNumber;
+    }
+    public static void setRoomNumber(String roomNumber) {
+        App.roomNumber = roomNumber;
+    }
 
     public static void toggleDarkMode() throws IOException {
         if(isDarkModeEnabled) {
@@ -24,6 +32,17 @@ public class App extends Application {
         }
         else {
             setRoot("display-dark");
+            isDarkModeEnabled = true;
+        }
+    }
+
+    public static void showDisplay() throws IOException {
+        if(isDarkModeEnabled) {
+            setRoot("display-dark");
+            isDarkModeEnabled = false;
+        }
+        else {
+            setRoot("display-light");
             isDarkModeEnabled = true;
         }
     }
@@ -46,7 +65,7 @@ public class App extends Application {
 
     public static void main(String[] args) {
         if(args.length>0)
-            if(args[0].toLowerCase().equals("-setup"))
+            if(args[0].equalsIgnoreCase("-setup"))
                 initFxmlFile = "setup-1";
 
         launch();
