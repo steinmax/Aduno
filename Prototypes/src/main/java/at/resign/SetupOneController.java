@@ -16,19 +16,11 @@ public class SetupOneController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        //Test Data
-        cbRooms.getItems().add("132");
-        cbRooms.getItems().add("132-1");
-        cbRooms.getItems().add("133");
-        cbRooms.getItems().add("134");
-        cbRooms.getItems().add("135");
-        cbRooms.getItems().add("210");
-        cbRooms.getItems().add("E32");
-        cbRooms.getItems().add("E32-A");
-        cbRooms.getItems().add("E32-B");
-        cbRooms.getItems().add("E34");
-        cbRooms.getItems().add("E35");
-        cbRooms.getItems().add("E10");
+        // ADDING TEST DATA:
+        String[] roomNumbers = new String[] { "132", "132-1", "133", "134", "135", "210", "E32", "E32-A", "E32-B", "E34", "E35", "E10" };
+        for (String roomNumber : roomNumbers) {
+            cbRooms.getItems().add(roomNumber);
+        }
     }
 
     public void btnConfirmClick(MouseEvent mouseEvent) {
