@@ -15,7 +15,7 @@ public class App extends Application {
     protected static Scene scene;
     private static boolean isDarkModeEnabled = false;
 
-    private static String initFxmlFile = "display-light";
+    private static String initFxmlFile = "xmasbackground";
     private static String roomNumber = "---";
 
     public static String getRoomNumber() {

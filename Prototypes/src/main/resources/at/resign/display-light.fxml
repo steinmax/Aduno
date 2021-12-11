@@ -44,7 +44,7 @@
                                 <Font size="38.0" />
                             </font>
                         </Label>
-                        <AnchorPane layoutX="-330.0" layoutY="12.0" prefHeight="200.0" prefWidth="200.0" />
+                    <AnchorPane layoutX="-330.0" layoutY="12.0" prefHeight="200.0" prefWidth="200.0" />
                     </children>
                 </AnchorPane>
                 <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
