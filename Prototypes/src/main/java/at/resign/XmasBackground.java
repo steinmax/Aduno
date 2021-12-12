@@ -20,8 +20,10 @@ public class XmasBackground implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        PrototypeController pc = new PrototypeController();
+
+        pc.ClockThread(time);
         RotateSnowflake();
-        ClockThread();
     }
 
     private void RotateSnowflake() {
@@ -43,22 +45,5 @@ public class XmasBackground implements Initializable {
 
         tt.play();
         rt.play();
-    }
-
-    private void ClockThread() {
-        final Thread thread = new Thread(() -> {
-            SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
-            while(true){
-                try{
-                    Thread.sleep(1000);
-                } catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-                String currentTime = sdf.format(new Date().getTime());
-                Platform.runLater(()->time.setText(currentTime));
-            }
-        });
-        thread.setDaemon(true);
-        thread.start();
     }
 }

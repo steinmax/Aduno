@@ -21,7 +21,7 @@ public class PrototypeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblRoomNumber.setText(App.getRoomNumber());
         lblDate.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
-        ClockThread();
+        ClockThread(time);
     }
 
     public void btn_dakrmodeToggle_click(MouseEvent mouseEvent) {
@@ -32,7 +32,7 @@ public class PrototypeController implements Initializable {
         }
     }
 
-    private void ClockThread() {
+    public void ClockThread(Label time) {
         final Thread thread = new Thread(() -> {
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
             while(true){
