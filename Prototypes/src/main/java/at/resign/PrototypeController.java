@@ -21,10 +21,11 @@ public class PrototypeController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         lblRoomNumber.setText(App.getRoomNumber());
         lblDate.setText(LocalDate.now().format(DateTimeFormatter.ofPattern("dd.MM.yyyy")));
-        ClockThread(time);
+        startClockThread(time);
+        //time.textProperty().bind(App.currentTime);
     }
 
-    public void btn_dakrmodeToggle_click(MouseEvent mouseEvent) {
+    public void btn_darkmodeToggle_click(MouseEvent mouseEvent) {
         try {
             App.toggleDarkMode();
         } catch (Exception e) {
@@ -32,7 +33,8 @@ public class PrototypeController implements Initializable {
         }
     }
 
-    public void ClockThread(Label time) {
+
+    public void startClockThread(Label time) {
         final Thread thread = new Thread(() -> {
             SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
             while(true){
