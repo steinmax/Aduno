@@ -1,10 +1,10 @@
-<mxfile host="app.diagrams.net" modified="2021-12-20T14:55:40.401Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36" etag="MdtzxztQlzUMsp3SHYxE" version="15.6.8" type="github">
+<mxfile host="app.diagrams.net" modified="2021-12-20T15:01:37.245Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36" etag="ZwrG22JN-NB8koLeW6iP" version="15.6.8" type="github">
   <diagram id="VIqUrMfN881pSGvHWkAi" name="Page-1">
     <mxGraphModel dx="1422" dy="740" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="ZtJjANbV4Lpw1nc10nZc-3" value="Backend" style="swimlane;align=left;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=3;" parent="1" vertex="1">
+        <mxCell id="ZtJjANbV4Lpw1nc10nZc-3" value="Backend" style="swimlane;align=center;fillColor=#dae8fc;strokeColor=#6c8ebf;strokeWidth=3;" parent="1" vertex="1">
           <mxGeometry x="140" y="30" width="170" height="170" as="geometry" />
         </mxCell>
         <mxCell id="ZtJjANbV4Lpw1nc10nZc-5" value="Business Logic&lt;br&gt;(BL)" style="rounded=0;whiteSpace=wrap;html=1;align=center;fillColor=#ffe6cc;strokeColor=#d79b00;" parent="ZtJjANbV4Lpw1nc10nZc-3" vertex="1">
@@ -90,7 +90,7 @@
             <mxPoint x="690" y="425" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="N1tLH85BYtT5_raRtKyt-15" value="Webuntis OAuth&lt;br&gt;oder&lt;br&gt;HTL OAuth Server" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1;align=center;verticalAlign=middle;" vertex="1" parent="1">
+        <mxCell id="N1tLH85BYtT5_raRtKyt-15" value="Webuntis OAuth&lt;br&gt;oder&lt;br&gt;HTL OAuth Server" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=1;align=center;verticalAlign=middle;fillColor=#b0e3e6;strokeColor=#0e8088;" vertex="1" parent="1">
           <mxGeometry x="690" y="390" width="120" height="60" as="geometry" />
         </mxCell>
         <mxCell id="N1tLH85BYtT5_raRtKyt-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.94;entryY=1.05;entryDx=0;entryDy=0;entryPerimeter=0;startArrow=classic;startFill=1;endArrow=classic;endFill=1;" edge="1" parent="1" source="N1tLH85BYtT5_raRtKyt-17" target="ZtJjANbV4Lpw1nc10nZc-9">
