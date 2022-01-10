@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
@@ -13,7 +14,7 @@
             <Image url="@img/xmas/snow.png" />
          </image>
          <effect>
-            <ColorAdjust brightness="0.73" contrast="0.71" hue="-0.62" saturation="0.84" />
+            <ColorAdjust brightness="0.5" hue="0.2" saturation="0.35" />
          </effect>
       </ImageView>
       <ImageView fx:id="snowflake" fitHeight="1068.0" fitWidth="1024.0" layoutX="10.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
@@ -31,7 +32,7 @@
             <Image url="@img/xmas/cloud.png" />
          </image>
          <effect>
-            <ColorAdjust brightness="0.3" hue="-1.0" saturation="-1.0" />
+            <ColorAdjust brightness="0.9" contrast="0.45" hue="-0.75" saturation="0.1" />
          </effect>
       </ImageView>
       <ImageView fx:id="cloudOne2" fitHeight="281.0" fitWidth="388.0" layoutX="661.0" layoutY="-147.0" pickOnBounds="true" preserveRatio="true">
@@ -39,7 +40,7 @@
             <Image url="@img/xmas/cloud.png" />
          </image>
          <effect>
-            <ColorAdjust brightness="0.3" hue="-1.0" saturation="-1.0" />
+            <ColorAdjust brightness="0.9" contrast="0.45" hue="-0.75" saturation="0.1" />
          </effect>
       </ImageView>
       <ImageView fx:id="cloudOne1" fitHeight="281.0" fitWidth="388.0" layoutX="328.0" layoutY="-137.0" pickOnBounds="true" preserveRatio="true">
@@ -47,7 +48,7 @@
             <Image url="@img/xmas/cloud.png" />
          </image>
          <effect>
-            <ColorAdjust brightness="0.3" hue="-1.0" saturation="-1.0" />
+            <ColorAdjust brightness="0.9" contrast="0.45" hue="-0.75" saturation="0.1" />
          </effect>
       </ImageView>
       <GridPane layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1024.0">
@@ -71,21 +72,21 @@
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Label layoutX="14.0" layoutY="83.0" text="4CHIF" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
+                        <Label layoutX="14.0" layoutY="83.0" text="4CHIF" textFill="#7c4b31" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="15.0">
                            <font>
-                              <Font size="135.0" />
+                              <Font size="130.0" />
                            </font>
                         </Label>
-                        <Label layoutX="15.0" layoutY="151.0" style="-fx-font-family: Lalezar;" text="Gerhard Gehrer" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="151.0">
+                        <Label layoutX="15.0" layoutY="151.0" style="-fx-font-family: Lalezar;" text="Gerhard Gehrer" textFill="#7c4b31" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="151.0">
                            <font>
-                              <Font size="50.0" />
+                              <Font size="45.0" />
                            </font>
                         </Label>
                      </children>
                   </AnchorPane>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
                      <children>
-                        <Label fx:id="lblRoomNumber" layoutX="237.0" layoutY="14.0" text="135" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+                        <Label fx:id="lblRoomNumber" layoutX="237.0" layoutY="14.0" text="135" textFill="#7c4b31" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
                            <font>
                               <Font name="System Bold" size="150.0" />
                            </font>
@@ -141,12 +142,12 @@
                <children>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
                      <children>
-                        <Label fx:id="lblDate" layoutX="95.0" layoutY="60.0" prefHeight="58.0" prefWidth="192.0" text="06.12.2021" textAlignment="RIGHT" AnchorPane.bottomAnchor="85.0" AnchorPane.rightAnchor="15.0">
+                        <Label fx:id="lblDate" layoutX="95.0" layoutY="60.0" prefHeight="58.0" prefWidth="192.0" text="06.12.2021" textAlignment="RIGHT" textFill="#7c4b31" AnchorPane.bottomAnchor="85.0" AnchorPane.rightAnchor="15.0">
                            <font>
                               <Font size="40.0" />
                            </font>
                         </Label>
-                        <Label fx:id="time" layoutX="10.0" layoutY="100.0" prefHeight="89.0" prefWidth="283.0" text="00:00:00" textAlignment="JUSTIFY" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0">
+                        <Label fx:id="time" layoutX="10.0" layoutY="100.0" prefHeight="89.0" prefWidth="283.0" text="00:00:00" textAlignment="JUSTIFY" textFill="#7c4b31" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="10.0">
                            <font>
                               <Font name="System Bold" size="70.0" />
                            </font>
@@ -160,12 +161,26 @@
                               <Image url="@img/qr-code.gif" />
                            </image>
                            <effect>
-                              <ColorAdjust />
+                              <ColorAdjust brightness="0.29" hue="0.2" saturation="0.35" />
                            </effect>
                         </ImageView>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" />
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
+                     <children>
+                        <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="12.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="25.0">
+                           <image>
+                              <Image url="@img/darkmode.png" />
+                           </image>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <effect>
+                              <ColorAdjust brightness="0.45" contrast="0.07" hue="0.07" saturation="1.0" />
+                           </effect>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </children>
             </GridPane>
          </children>
