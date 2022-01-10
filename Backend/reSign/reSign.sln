@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReSign.Database.Setup", "ReSign.Database.Setup\ReSign.Database.Setup.csproj", "{14EC5EAE-909C-47E8-BECE-7DA5D9EA061D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReSign.Database.Logic", "ReSign.Database.Setup\ReSign.Database.Logic.csproj", "{14EC5EAE-909C-47E8-BECE-7DA5D9EA061D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReSign.QRCode.Logic", "ReSign.QRCode.Logic\ReSign.QRCode.Logic.csproj", "{E6190FCF-CCCE-445D-B4BE-C736C309792B}"
 EndProject

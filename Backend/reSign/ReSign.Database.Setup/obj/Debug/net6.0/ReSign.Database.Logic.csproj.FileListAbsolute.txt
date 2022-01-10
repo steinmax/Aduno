@@ -1,0 +1,12 @@
+C:\Users\toxit\OneDrive\!Schule\2021-22\SYP\reSign\repo\reSign\Backend\reSign\ReSign.Database.Setup\bin\Debug\net6.0\ReSign.Database.Logic.deps.json
+C:\Users\toxit\OneDrive\!Schule\2021-22\SYP\reSign\repo\reSign\Backend\reSign\ReSign.Database.Setup\bin\Debug\net6.0\ReSign.Database.Logic.dll
+C:\Users\toxit\OneDrive\!Schule\2021-22\SYP\reSign\repo\reSign\Backend\reSign\ReSign.Database.Setup\bin\Debug\net6.0\ref\ReSign.Database.Logic.dll
+C:\Users\toxit\OneDrive\!Schule\2021-22\SYP\reSign\repo\reSign\Backend\reSign\ReSign.Database.Setup\bin\Debug\net6.0\ReSign.Database.Logic.pdb
+C:\Users\toxit\OneDrive\!Schule\2021-22\SYP\reSign\repo\reSign\Backend\reSign\ReSign.Database.Setup\obj\Debug\net6.0\ReSign.Database.Logic.csproj.AssemblyReference.cache
+C:\Users\toxit\OneDrive\!Schule\2021-22\SYP\reSign\repo\reSign\Backend\reSign\ReSign.Database.Setup\obj\Debug\net6.0\ReSign.Database.Logic.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\toxit\OneDrive\!Schule\2021-22\SYP\reSign\repo\reSign\Backend\reSign\ReSign.Database.Setup\obj\Debug\net6.0\ReSign.Database.Logic.AssemblyInfoInputs.cache
+C:\Users\toxit\OneDrive\!Schule\2021-22\SYP\reSign\repo\reSign\Backend\reSign\ReSign.Database.Setup\obj\Debug\net6.0\ReSign.Database.Logic.AssemblyInfo.cs
+C:\Users\toxit\OneDrive\!Schule\2021-22\SYP\reSign\repo\reSign\Backend\reSign\ReSign.Database.Setup\obj\Debug\net6.0\ReSign.Database.Logic.csproj.CoreCompileInputs.cache
+C:\Users\toxit\OneDrive\!Schule\2021-22\SYP\reSign\repo\reSign\Backend\reSign\ReSign.Database.Setup\obj\Debug\net6.0\ReSign.Database.Logic.dll
+C:\Users\toxit\OneDrive\!Schule\2021-22\SYP\reSign\repo\reSign\Backend\reSign\ReSign.Database.Setup\obj\Debug\net6.0\ref\ReSign.Database.Logic.dll
+C:\Users\toxit\OneDrive\!Schule\2021-22\SYP\reSign\repo\reSign\Backend\reSign\ReSign.Database.Setup\obj\Debug\net6.0\ReSign.Database.Logic.pdb

@@ -1,0 +1,21 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "25ac22cd-b2e5-4925-a09f-fb1b8da0276d": {
+      "ProjectGuid": "25ac22cd-b2e5-4925-a09f-fb1b8da0276d",
+      "DisplayName": "resign.qrcode",
+      "ColorIndex": 0
+    },
+    "14ec5eae-909c-47e8-bece-7da5d9ea061d": {
+      "ProjectGuid": "14ec5eae-909c-47e8-bece-7da5d9ea061d",
+      "DisplayName": "ReSign.Database.Logic",
+      "ColorIndex": 1
+    },
+    "e6190fcf-ccce-445d-b4be-c736c309792b": {
+      "ProjectGuid": "e6190fcf-ccce-445d-b4be-c736c309792b",
+      "DisplayName": "ReSign.QRCode.Logic",
+      "ColorIndex": 2
+    }
+  },
+  "NextColorIndex": 3
+}
