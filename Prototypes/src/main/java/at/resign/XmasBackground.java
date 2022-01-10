@@ -3,15 +3,12 @@ package at.resign;
 import javafx.animation.Interpolator;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
-import javafx.application.Platform;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class XmasBackground implements Initializable {
@@ -22,7 +19,7 @@ public class XmasBackground implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         PrototypeController pc = new PrototypeController();
 
-        pc.ClockThread(time);
+        pc.startClockThread(time);
         RotateSnowflake();
     }
 
