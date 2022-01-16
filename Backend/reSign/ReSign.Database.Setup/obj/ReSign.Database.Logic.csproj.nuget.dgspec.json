@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\toxit\\OneDrive\\!Schule\\2021-22\\SYP\\reSign\\repo\\reSign\\Backend\\reSign\\ReSign.Database.Setup\\ReSign.Database.Logic.csproj": {}
+    "C:\\Users\\offic\\OneDrive\\!Schule\\2021-22\\SYP\\reSign\\repo\\reSign\\Backend\\reSign\\ReSign.Database.Setup\\ReSign.Database.Logic.csproj": {}
   },
   "projects": {
-    "C:\\Users\\toxit\\OneDrive\\!Schule\\2021-22\\SYP\\reSign\\repo\\reSign\\Backend\\reSign\\ReSign.Database.Setup\\ReSign.Database.Logic.csproj": {
+    "C:\\Users\\offic\\OneDrive\\!Schule\\2021-22\\SYP\\reSign\\repo\\reSign\\Backend\\reSign\\ReSign.Database.Setup\\ReSign.Database.Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\toxit\\OneDrive\\!Schule\\2021-22\\SYP\\reSign\\repo\\reSign\\Backend\\reSign\\ReSign.Database.Setup\\ReSign.Database.Logic.csproj",
+        "projectUniqueName": "C:\\Users\\offic\\OneDrive\\!Schule\\2021-22\\SYP\\reSign\\repo\\reSign\\Backend\\reSign\\ReSign.Database.Setup\\ReSign.Database.Logic.csproj",
         "projectName": "ReSign.Database.Logic",
-        "projectPath": "C:\\Users\\toxit\\OneDrive\\!Schule\\2021-22\\SYP\\reSign\\repo\\reSign\\Backend\\reSign\\ReSign.Database.Setup\\ReSign.Database.Logic.csproj",
-        "packagesPath": "C:\\Users\\toxit\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\toxit\\OneDrive\\!Schule\\2021-22\\SYP\\reSign\\repo\\reSign\\Backend\\reSign\\ReSign.Database.Setup\\obj\\",
+        "projectPath": "C:\\Users\\offic\\OneDrive\\!Schule\\2021-22\\SYP\\reSign\\repo\\reSign\\Backend\\reSign\\ReSign.Database.Setup\\ReSign.Database.Logic.csproj",
+        "packagesPath": "C:\\Users\\offic\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\offic\\OneDrive\\!Schule\\2021-22\\SYP\\reSign\\repo\\reSign\\Backend\\reSign\\ReSign.Database.Setup\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "c:\\program files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\toxit\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\offic\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -46,6 +46,10 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.1, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[6.0.1, )"
             }
           },
           "imports": [
@@ -63,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
