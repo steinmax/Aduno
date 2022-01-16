@@ -4,7 +4,7 @@ namespace ReSign.Database.Logic.Entities;
 
 public class Room : VersionObject
 {
-    public string Floor { get; set; }
+    public char Floor { get; set; }
     public int RoomNumber { get; set; }
-    public string Notes { get; set; }
+    public string? Notes { get; set; }
 }
