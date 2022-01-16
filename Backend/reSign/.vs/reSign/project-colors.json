@@ -15,7 +15,12 @@
       "ProjectGuid": "e6190fcf-ccce-445d-b4be-c736c309792b",
       "DisplayName": "ReSign.QRCode.Logic",
       "ColorIndex": 2
+    },
+    "f6dcea30-357f-4a60-9ffe-ba1ac0844195": {
+      "ProjectGuid": "f6dcea30-357f-4a60-9ffe-ba1ac0844195",
+      "DisplayName": "ReSign.Database.ConApp",
+      "ColorIndex": 3
     }
   },
-  "NextColorIndex": 3
+  "NextColorIndex": 4
 }
