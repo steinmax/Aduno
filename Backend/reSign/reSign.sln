@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSign.Database.Logic", "ReSign.Database.Setup\ReSign.Database.Logic.csproj", "{14EC5EAE-909C-47E8-BECE-7DA5D9EA061D}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSign.QRCode.Logic", "ReSign.QRCode.Logic\ReSign.QRCode.Logic.csproj", "{E6190FCF-CCCE-445D-B4BE-C736C309792B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReSign.Database.ConApp", "ReSign.Database.ConApp\ReSign.Database.ConApp.csproj", "{F6DCEA30-357F-4A60-9FFE-BA1AC0844195}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSign.Database.ConApp", "ReSign.Database.ConApp\ReSign.Database.ConApp.csproj", "{F6DCEA30-357F-4A60-9FFE-BA1AC0844195}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSign.Database.Logic", "ReSign.Database.Logic\ReSign.Database.Logic.csproj", "{B21E135B-1E0B-4B50-8420-BE11C6B4E0FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{14EC5EAE-909C-47E8-BECE-7DA5D9EA061D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{14EC5EAE-909C-47E8-BECE-7DA5D9EA061D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{14EC5EAE-909C-47E8-BECE-7DA5D9EA061D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{14EC5EAE-909C-47E8-BECE-7DA5D9EA061D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E6190FCF-CCCE-445D-B4BE-C736C309792B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E6190FCF-CCCE-445D-B4BE-C736C309792B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6190FCF-CCCE-445D-B4BE-C736C309792B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,10 @@ Global
 		{F6DCEA30-357F-4A60-9FFE-BA1AC0844195}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6DCEA30-357F-4A60-9FFE-BA1AC0844195}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F6DCEA30-357F-4A60-9FFE-BA1AC0844195}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B21E135B-1E0B-4B50-8420-BE11C6B4E0FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B21E135B-1E0B-4B50-8420-BE11C6B4E0FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B21E135B-1E0B-4B50-8420-BE11C6B4E0FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B21E135B-1E0B-4B50-8420-BE11C6B4E0FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
