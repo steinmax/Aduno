@@ -1,6 +1,6 @@
 ﻿using ReSign.Database.Logic.Entities.Base;
 
-namespace ReSign.Database.Logic.Entities;
+namespace ReSign.Database.Logic.Entities.General;
 
 public class Room : VersionObject
 {
