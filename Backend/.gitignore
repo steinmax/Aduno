@@ -8,14 +8,23 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# Simons entries
+.suo
+.vs
+*.nuget.cache
+*.assets.json
+*.assets.cache
+*.editorconfig
+*.nuget.g.props
+*.nuget.dgspec.json
+
 # User-specific files
 *.rsuser
 *.suo
 *.user
 *.userosscache
 *.sln.docstates
-.suo
-.vs
+
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
