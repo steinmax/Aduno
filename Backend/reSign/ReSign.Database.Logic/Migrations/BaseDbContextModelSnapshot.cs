@@ -22,7 +22,7 @@ namespace ReSign.Database.Logic.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.Display", b =>
+            modelBuilder.Entity("ReSign.Database.Logic.Entities.General.Class", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -31,8 +31,35 @@ namespace ReSign.Database.Logic.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<string>("Designation")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.Property<int>("Grade")
+                        .HasColumnType("int");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Classes", (string)null);
+                });
+
+            modelBuilder.Entity("ReSign.Database.Logic.Entities.General.Display", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Designation")
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
 
                     b.Property<string>("MacAddress")
                         .IsRequired()
@@ -41,8 +68,8 @@ namespace ReSign.Database.Logic.Migrations
 
                     b.Property<string>("Notes")
                         .IsRequired()
-                        .HasMaxLength(1000)
-                        .HasColumnType("nvarchar(1000)");
+                        .HasMaxLength(1024)
+                        .HasColumnType("nvarchar(1024)");
 
                     b.Property<int>("RoomId")
                         .HasColumnType("int");
@@ -60,7 +87,7 @@ namespace ReSign.Database.Logic.Migrations
                     b.ToTable("Displays", (string)null);
                 });
 
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.Room", b =>
+            modelBuilder.Entity("ReSign.Database.Logic.Entities.General.Room", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -91,15 +118,106 @@ namespace ReSign.Database.Logic.Migrations
                     b.HasCheckConstraint("Floor", "Floor = 'U' or Floor = 'E' or Floor = '1' or Floor = '2'");
                 });
 
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.Display", b =>
+            modelBuilder.Entity("ReSign.Database.Logic.Entities.PresenceSystem.Device", b =>
                 {
-                    b.HasOne("ReSign.Database.Logic.Entities.Room", "Room")
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.Property<string>("UniqueId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Devices", (string)null);
+                });
+
+            modelBuilder.Entity("ReSign.Database.Logic.Entities.PresenceSystem.Pupil", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("ClassId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DeviceId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("nvarchar(64)");
+
+                    b.Property<string>("MatNr")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.Property<byte[]>("RowVersion")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("rowversion");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClassId");
+
+                    b.HasIndex("DeviceId");
+
+                    b.ToTable("Pupils", (string)null);
+                });
+
+            modelBuilder.Entity("ReSign.Database.Logic.Entities.General.Display", b =>
+                {
+                    b.HasOne("ReSign.Database.Logic.Entities.General.Room", "Room")
                         .WithMany()
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Room");
+                });
+
+            modelBuilder.Entity("ReSign.Database.Logic.Entities.PresenceSystem.Pupil", b =>
+                {
+                    b.HasOne("ReSign.Database.Logic.Entities.General.Class", "Class")
+                        .WithMany("Pupils")
+                        .HasForeignKey("ClassId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ReSign.Database.Logic.Entities.PresenceSystem.Device", "Device")
+                        .WithMany()
+                        .HasForeignKey("DeviceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Class");
+
+                    b.Navigation("Device");
+                });
+
+            modelBuilder.Entity("ReSign.Database.Logic.Entities.General.Class", b =>
+                {
+                    b.Navigation("Pupils");
                 });
 #pragma warning restore 612, 618
         }
