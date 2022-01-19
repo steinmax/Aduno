@@ -2,7 +2,7 @@
 
 namespace ReSign.Database.Logic.DataContext
 {
-    public class BaseDbContext : DbContext
+    public class ReSignDbContext : DbContext
     {
         # region Testing purposes only:
         private static string ConnectStr => "Data Source=127.0.0.1,14330; Database=resign; User Id=sa; Password=passme!1234";
@@ -20,6 +20,7 @@ namespace ReSign.Database.Logic.DataContext
         public DbSet<Entities.General.Class> ClassSet { get; set; }
         public DbSet<Entities.PresenceSystem.Device> DeviceSet { get; set; }
         public DbSet<Entities.PresenceSystem.Pupil> PupilSet { get; set; }
+        public DbSet<Entities.PresenceSystem.QRSessionCookie> QRSessionCookieSet { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -89,6 +90,18 @@ namespace ReSign.Database.Logic.DataContext
                 .HasMaxLength(15)
                 .IsRequired();
 
+            var qrsessionbuilder = modelBuilder.Entity<Entities.PresenceSystem.QRSessionCookie>();
+            qrsessionbuilder.ToTable("QRSessionCookies");
+            qrsessionbuilder.HasKey(qr => qr.Id);
+            qrsessionbuilder.Property(qr => qr.RowVersion)
+                .IsRowVersion();
+            qrsessionbuilder.Property(qr => qr.DateCreated)
+                .IsRequired();
+            qrsessionbuilder.Property(qr => qr.IsValid)
+                .IsRequired();
+            qrsessionbuilder.Property(qr => qr.Token)
+                .HasMaxLength(20)
+                .IsRequired();
 
             base.OnModelCreating(modelBuilder);
         }

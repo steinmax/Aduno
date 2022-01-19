@@ -2,5 +2,5 @@
 
 Console.WriteLine("Hello");
 
-using var context = new BaseDbContext();
+using var context = new ReSignDbContext();
 context.RoomSet.ToList().ForEach(r => Console.WriteLine(r));
