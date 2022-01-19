@@ -11,7 +11,7 @@ using ReSign.Database.Logic.DataContext;
 
 namespace ReSign.Database.Logic.Migrations
 {
-    [DbContext(typeof(BaseDbContext))]
+    [DbContext(typeof(ReSignDbContext))]
     [Migration("20220117102322_InitDb")]
     partial class InitDb
     {
