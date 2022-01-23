@@ -1,28 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\arsha_ladghiy\\Desktop\\reSign-main\\reSign\\Backend\\reSign\\ReSign.QRCode.Logic\\ReSign.QRCode.Logic.csproj": {}
+    "C:\\Users\\toxit\\OneDrive\\!Schule\\2021-22\\SYP\\reSign\\repo\\reSign\\Backend\\reSign\\ReSign.QRCode.Logic\\ReSign.QRCode.Logic.csproj": {}
   },
   "projects": {
-    "C:\\Users\\arsha_ladghiy\\Desktop\\reSign-main\\reSign\\Backend\\reSign\\ReSign.QRCode.Logic\\ReSign.QRCode.Logic.csproj": {
+    "C:\\Users\\toxit\\OneDrive\\!Schule\\2021-22\\SYP\\reSign\\repo\\reSign\\Backend\\reSign\\ReSign.QRCode.Logic\\ReSign.QRCode.Logic.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\arsha_ladghiy\\Desktop\\reSign-main\\reSign\\Backend\\reSign\\ReSign.QRCode.Logic\\ReSign.QRCode.Logic.csproj",
+        "projectUniqueName": "C:\\Users\\toxit\\OneDrive\\!Schule\\2021-22\\SYP\\reSign\\repo\\reSign\\Backend\\reSign\\ReSign.QRCode.Logic\\ReSign.QRCode.Logic.csproj",
         "projectName": "ReSign.QRCode.Logic",
-        "projectPath": "C:\\Users\\arsha_ladghiy\\Desktop\\reSign-main\\reSign\\Backend\\reSign\\ReSign.QRCode.Logic\\ReSign.QRCode.Logic.csproj",
-        "packagesPath": "C:\\Users\\arsha_ladghiy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\arsha_ladghiy\\Desktop\\reSign-main\\reSign\\Backend\\reSign\\ReSign.QRCode.Logic\\obj\\",
+        "projectPath": "C:\\Users\\toxit\\OneDrive\\!Schule\\2021-22\\SYP\\reSign\\repo\\reSign\\Backend\\reSign\\ReSign.QRCode.Logic\\ReSign.QRCode.Logic.csproj",
+        "packagesPath": "C:\\Users\\toxit\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\toxit\\OneDrive\\!Schule\\2021-22\\SYP\\reSign\\repo\\reSign\\Backend\\reSign\\ReSign.QRCode.Logic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "c:\\program files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\arsha_ladghiy\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Users\\toxit\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -75,7 +71,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "c:\\program files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }
