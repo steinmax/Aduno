@@ -1,6 +1,6 @@
-﻿using ReSign.Database.Logic.Entities.Base;
+﻿using ReSign.Database.Data.Entities.Base;
 
-namespace ReSign.Database.Logic.Entities.PresenceSystem
+namespace ReSign.Database.Data.Entities.PresenceSystem
 {
     public class QRSessionCookie : VersionObject
     {

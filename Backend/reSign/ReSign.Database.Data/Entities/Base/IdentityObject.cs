@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ReSign.Database.Logic.Entities;
+namespace ReSign.Database.Data.Entities.Base;
 public abstract class IdentityObject
 {
     [Key]

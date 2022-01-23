@@ -1,7 +1,7 @@
-﻿using ReSign.Database.Logic.Entities.Base;
-using ReSign.Database.Logic.Entities.PresenceSystem;
+﻿using ReSign.Database.Data.Entities.Base;
+using ReSign.Database.Data.Entities.PresenceSystem;
 
-namespace ReSign.Database.Logic.Entities.General;
+namespace ReSign.Database.Data.Entities.General;
 public class Class : VersionObject
 {
     public string Designation { get; set; }

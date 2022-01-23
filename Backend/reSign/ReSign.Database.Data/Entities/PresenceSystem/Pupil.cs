@@ -1,7 +1,7 @@
-﻿using ReSign.Database.Logic.Entities.Base;
-using ReSign.Database.Logic.Entities.General;
+﻿using ReSign.Database.Data.Entities.Base;
+using ReSign.Database.Data.Entities.General;
 
-namespace ReSign.Database.Logic.Entities.PresenceSystem;
+namespace ReSign.Database.Data.Entities.PresenceSystem;
 public class Pupil : VersionObject
 {
     public string MatNr { get; set; } = string.Empty;
