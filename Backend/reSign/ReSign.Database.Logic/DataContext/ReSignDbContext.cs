@@ -1,30 +1,36 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ReSign.Database.Data.Entities.General;
+using ReSign.Database.Data.Entities.PresenceSystem;
 
 namespace ReSign.Database.Logic.DataContext
 {
     public class ReSignDbContext : DbContext
     {
         # region Testing purposes only:
+        /*
         private static string ConnectStr => "Data Source=127.0.0.1,14330; Database=resign; User Id=sa; Password=passme!1234";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(ConnectStr);
             base.OnConfiguring(optionsBuilder);
-        }
-
+        }*/
         #endregion
 
-        public DbSet<Entities.General.Display> DisplaySet { get; set; }
-        public DbSet<Entities.General.Room> RoomSet { get; set; }
-        public DbSet<Entities.General.Class> ClassSet { get; set; }
-        public DbSet<Entities.PresenceSystem.Device> DeviceSet { get; set; }
-        public DbSet<Entities.PresenceSystem.Pupil> PupilSet { get; set; }
-        public DbSet<Entities.PresenceSystem.QRSessionCookie> QRSessionCookieSet { get; set; }
+        public DbSet<Display> DisplaySet { get; set; }
+        public DbSet<Room> RoomSet { get; set; }
+        public DbSet<Class> ClassSet { get; set; }
+        public DbSet<Device> DeviceSet { get; set; }
+        public DbSet<Pupil> PupilSet { get; set; }
+        public DbSet<QRSessionCookie> QRSessionCookieSet { get; set; }
+
+        public ReSignDbContext(DbContextOptions<ReSignDbContext> options) : base(options)
+        {
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            var displayBuilder = modelBuilder.Entity<Entities.General.Display>();
+            var displayBuilder = modelBuilder.Entity<Display>();
             displayBuilder.ToTable("Displays");
             displayBuilder.HasKey(x => x.Id);
             displayBuilder.Property(x => x.RowVersion)
@@ -42,7 +48,7 @@ namespace ReSign.Database.Logic.DataContext
 
             displayBuilder.HasOne(x => x.Room);
 
-            var roomBuilder = modelBuilder.Entity<Entities.General.Room>();
+            var roomBuilder = modelBuilder.Entity<Room>();
             roomBuilder.ToTable("Rooms");
             roomBuilder.HasKey(x => x.Id);
             roomBuilder.Property(x => x.RowVersion)
@@ -57,7 +63,7 @@ namespace ReSign.Database.Logic.DataContext
             roomBuilder.Property(x => x.RoomNumber)
                 .IsRequired();
 
-            var classBuilder = modelBuilder.Entity<Entities.General.Class>();
+            var classBuilder = modelBuilder.Entity<Class>();
             classBuilder.ToTable("Classes");
             classBuilder.HasKey(c => c.Id);
             classBuilder.Property(c => c.RowVersion)
@@ -67,7 +73,7 @@ namespace ReSign.Database.Logic.DataContext
             classBuilder.Property(c => c.Designation)
                 .HasMaxLength(64);
 
-            var deviceBuilder = modelBuilder.Entity<Entities.PresenceSystem.Device>();
+            var deviceBuilder = modelBuilder.Entity<Device>();
             deviceBuilder.ToTable("Devices");
             deviceBuilder.HasKey(d => d.Id);
             deviceBuilder.Property(d => d.RowVersion)
@@ -75,7 +81,7 @@ namespace ReSign.Database.Logic.DataContext
             deviceBuilder.Property(d => d.UniqueId)
                 .IsRequired();
 
-            var pupilBuilder = modelBuilder.Entity<Entities.PresenceSystem.Pupil>();
+            var pupilBuilder = modelBuilder.Entity<Pupil>();
             pupilBuilder.ToTable("Pupils");
             pupilBuilder.HasKey(p => p.Id);
             pupilBuilder.Property(p => p.RowVersion)
@@ -90,7 +96,7 @@ namespace ReSign.Database.Logic.DataContext
                 .HasMaxLength(15)
                 .IsRequired();
 
-            var qrsessionbuilder = modelBuilder.Entity<Entities.PresenceSystem.QRSessionCookie>();
+            var qrsessionbuilder = modelBuilder.Entity<QRSessionCookie>();
             qrsessionbuilder.ToTable("QRSessionCookies");
             qrsessionbuilder.HasKey(qr => qr.Id);
             qrsessionbuilder.Property(qr => qr.RowVersion)
