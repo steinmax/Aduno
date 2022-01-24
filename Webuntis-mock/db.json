@@ -313,7 +313,7 @@
       }
    ],
    
-   "timetable":[
+   "timetables":[
       {
          "jsonrpc":"2.0",
          "id":"ID",
