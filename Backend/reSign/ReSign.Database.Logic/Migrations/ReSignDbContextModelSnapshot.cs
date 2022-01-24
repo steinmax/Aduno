@@ -2,9 +2,8 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ReSign.Database.Logic.DataContext;
 
 #nullable disable
@@ -12,176 +11,174 @@ using ReSign.Database.Logic.DataContext;
 namespace ReSign.Database.Logic.Migrations
 {
     [DbContext(typeof(ReSignDbContext))]
-    [Migration("20220119115130_ClassRoomAssociation")]
-    partial class ClassRoomAssociation
+    partial class ReSignDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "6.0.1")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.General.Class", b =>
+            modelBuilder.Entity("ReSign.Database.Data.Entities.General.Class", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Designation")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
+                        .HasColumnType("character varying(64)");
 
                     b.Property<int>("Grade")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("RoomId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
+                        .HasColumnType("bytea");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("Classes", (string)null);
+                    b.ToTable("Class", (string)null);
                 });
 
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.General.Display", b =>
+            modelBuilder.Entity("ReSign.Database.Data.Entities.General.Display", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Designation")
                         .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
+                        .HasColumnType("character varying(64)");
 
                     b.Property<string>("MacAddress")
                         .IsRequired()
                         .HasMaxLength(17)
-                        .HasColumnType("nvarchar(17)");
+                        .HasColumnType("character varying(17)");
 
                     b.Property<string>("Notes")
                         .IsRequired()
                         .HasMaxLength(1024)
-                        .HasColumnType("nvarchar(1024)");
+                        .HasColumnType("character varying(1024)");
 
                     b.Property<int>("RoomId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
+                        .HasColumnType("bytea");
 
                     b.HasKey("Id");
 
                     b.HasIndex("RoomId");
 
-                    b.ToTable("Displays", (string)null);
+                    b.ToTable("Display", (string)null);
                 });
 
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.General.Room", b =>
+            modelBuilder.Entity("ReSign.Database.Data.Entities.General.Room", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Floor")
                         .IsRequired()
-                        .HasColumnType("nvarchar(1)");
+                        .HasMaxLength(1)
+                        .HasColumnType("character varying(1)");
 
                     b.Property<string>("Notes")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.Property<int>("RoomNumber")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
+                        .HasColumnType("bytea");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Rooms", (string)null);
-
-                    b.HasCheckConstraint("Floor", "Floor = 'U' or Floor = 'E' or Floor = '1' or Floor = '2'");
+                    b.ToTable("Room", (string)null);
                 });
 
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.PresenceSystem.Device", b =>
+            modelBuilder.Entity("ReSign.Database.Data.Entities.PresenceSystem.Device", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
+                        .HasColumnType("bytea");
 
                     b.Property<string>("UniqueId")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Devices", (string)null);
+                    b.ToTable("Device", (string)null);
                 });
 
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.PresenceSystem.Pupil", b =>
+            modelBuilder.Entity("ReSign.Database.Data.Entities.PresenceSystem.Pupil", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ClassId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<int>("DeviceId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
+                        .HasColumnType("character varying(64)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(64)
-                        .HasColumnType("nvarchar(64)");
+                        .HasColumnType("character varying(64)");
 
                     b.Property<string>("MatNr")
                         .IsRequired()
                         .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
+                        .HasColumnType("character varying(15)");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
+                        .HasColumnType("bytea");
 
                     b.HasKey("Id");
 
@@ -189,42 +186,42 @@ namespace ReSign.Database.Logic.Migrations
 
                     b.HasIndex("DeviceId");
 
-                    b.ToTable("Pupils", (string)null);
+                    b.ToTable("Pupil", (string)null);
                 });
 
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.PresenceSystem.QRSessionCookie", b =>
+            modelBuilder.Entity("ReSign.Database.Data.Entities.PresenceSystem.QRSessionCookie", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("DateCreated")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("IsValid")
-                        .HasColumnType("bit");
+                        .HasColumnType("boolean");
 
                     b.Property<byte[]>("RowVersion")
                         .IsConcurrencyToken()
                         .IsRequired()
                         .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("rowversion");
+                        .HasColumnType("bytea");
 
                     b.Property<string>("Token")
                         .IsRequired()
                         .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("character varying(20)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("QRSessionCookies", (string)null);
+                    b.ToTable("QRSessionCookie", (string)null);
                 });
 
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.General.Class", b =>
+            modelBuilder.Entity("ReSign.Database.Data.Entities.General.Class", b =>
                 {
-                    b.HasOne("ReSign.Database.Logic.Entities.General.Room", "Room")
+                    b.HasOne("ReSign.Database.Data.Entities.General.Room", "Room")
                         .WithMany()
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -233,9 +230,9 @@ namespace ReSign.Database.Logic.Migrations
                     b.Navigation("Room");
                 });
 
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.General.Display", b =>
+            modelBuilder.Entity("ReSign.Database.Data.Entities.General.Display", b =>
                 {
-                    b.HasOne("ReSign.Database.Logic.Entities.General.Room", "Room")
+                    b.HasOne("ReSign.Database.Data.Entities.General.Room", "Room")
                         .WithMany()
                         .HasForeignKey("RoomId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -244,15 +241,15 @@ namespace ReSign.Database.Logic.Migrations
                     b.Navigation("Room");
                 });
 
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.PresenceSystem.Pupil", b =>
+            modelBuilder.Entity("ReSign.Database.Data.Entities.PresenceSystem.Pupil", b =>
                 {
-                    b.HasOne("ReSign.Database.Logic.Entities.General.Class", "Class")
+                    b.HasOne("ReSign.Database.Data.Entities.General.Class", "Class")
                         .WithMany("Pupils")
                         .HasForeignKey("ClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ReSign.Database.Logic.Entities.PresenceSystem.Device", "Device")
+                    b.HasOne("ReSign.Database.Data.Entities.PresenceSystem.Device", "Device")
                         .WithMany()
                         .HasForeignKey("DeviceId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -263,7 +260,7 @@ namespace ReSign.Database.Logic.Migrations
                     b.Navigation("Device");
                 });
 
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.General.Class", b =>
+            modelBuilder.Entity("ReSign.Database.Data.Entities.General.Class", b =>
                 {
                     b.Navigation("Pupils");
                 });
