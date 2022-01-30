@@ -1,9 +1,6 @@
 name: Frontend-POC CD
 
-on:
-  push:
-    paths:
-      - 'Frontend/ProofOfConcept-DeviceId/**'
+on: push
 
 jobs:
   deploy-website:
