@@ -1,0 +1,39 @@
+<h1>ReSign DeviceId Test Website</h1>
+
+
+<script>
+/*
+    navigator.mediaDevices.enumerateDevices()
+    .then(function (devices) {
+        devices.forEach(function(device) {
+            document.write(device.kind + " [" + device.deviceId + "]: " + device.label + "<br>");
+        });
+    }).catch(function(err) {
+        console.log(err.name + ": " + err.message);
+    });
+
+    //document.write("Your deviceId is " + deviceId);
+	
+	*/
+	
+	if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+	  document.write("enumerateDevices() not supported.<br>");
+	}else {
+		// List cameras and microphones.
+
+		navigator.mediaDevices.enumerateDevices()
+		.then(function(devices) {
+		  devices.forEach(function(device) {
+			document.write(device.kind + ": " + device.label +
+						" id = " + device.deviceId);
+						
+			document.write("<br>");
+		  });
+		})
+		.catch(function(err) {
+		  document.write(err.name + ": " + err.message);
+		});
+	}
+
+</script>
+
