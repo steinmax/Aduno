@@ -19,7 +19,7 @@
 	if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
 	  document.write("enumerateDevices() not supported.<br>");
 	}else {
-		// List cameras and microphones.
+		// List cameras and microphones (all devices where we have permissions)
 
 		navigator.mediaDevices.enumerateDevices()
 		.then(function(devices) {
