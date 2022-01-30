@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - Frontend/ProofOfConcept-DeviceId
+      - Frontend/ProofOfConcept-DeviceId/**
 
 jobs:
   deploy-website:
