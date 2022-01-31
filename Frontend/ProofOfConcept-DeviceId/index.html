@@ -2,6 +2,18 @@
 
 
 <script>
+
+	function onDeviceFetch(devices) {
+		devices.forEach(function(device) {
+			if(device.kind === 'videoinput') {
+				document.write(device.kind + ": ");
+				document.write(device.deviceId);
+
+				document.write("<br>");
+				return device;
+			}
+		});
+	}
 	/*
 	var cameraStream = navigator.mediaDevices.getUserMedia({ audio: false, video: true }).then((stream) => {
 		//Ask (force) for camera permission
@@ -17,17 +29,7 @@
 			// List cameras and microphones (all devices where we have permissions)
 
 			navigator.mediaDevices.enumerateDevices()
-			.then(function(devices) {
-				devices.forEach(function(device) {
-					if(device.kind === 'videoinput') {
-						document.write(device.kind + ": ");
-						document.write(device.deviceId);
-						//document.write("Camera: " + device.deviceId);
-
-						document.write("<br>");
-					}
-				});
-			})
+			.then(onDeviceFetch)
 			.catch(function(err) {
 				document.write(err.name + ": " + err.message);
 			});
@@ -35,4 +37,3 @@
 	//});
 
 </script>
-
