@@ -22,7 +22,26 @@
 	}
 
 	function requestCameraPermission() {
+		//Find solution for this
+		document.write("Requesting camera permission does not yet work, sorry...");
+	}
 
+	async function checkCameraPermission() {
+		await navigator.permissions.query({name:'camera'}).then(function(result) {
+			//alert(result.state);
+			if (result.state === 'granted') {
+				//permission has already been granted, no prompt is shown
+				console.log("Camera permission is already granted.");
+			} else if (result.state === 'prompt') {
+				//there's no peristent permission registered, will be showing the prompt
+				console.log("Camera permission not yet granted, showing promt.");
+
+				requestCameraPermission();
+			} else if (result.state === 'denied') {
+				//permission has been denied
+				console.log("Camera denied. Necessary for this!");
+			}
+		});
 	}
 	/*
 	var cameraStream = navigator.mediaDevices.getUserMedia({ audio: false, video: true }).then((stream) => {
@@ -34,7 +53,7 @@
 		*/
 
 		//Ask (force) for camera permission
-		requestCameraPermission();
+		checkCameraPermission();
 
 		//List devices
 		if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
