@@ -15,6 +15,11 @@
     //document.write("Your deviceId is " + deviceId);
 	
 	*/
+	navigator.permissions.query({name: 'camera'})
+	.then((permissionObj) => {
+		console.log(permissionObj.state);
+	})
+
 	
 	if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
 	  document.write("enumerateDevices() not supported.<br>");
@@ -24,10 +29,11 @@
 		navigator.mediaDevices.enumerateDevices()
 		.then(function(devices) {
 		  devices.forEach(function(device) {
-			document.write(device.kind + ": " + device.label +
-						" id = " + device.deviceId);
-						
-			document.write("<br>");
+			  if(device.kind === 'videoinput')
+				if(device.deviceId == undefined)
+					
+
+				document.write("Camera: " + device.deviceId);
 		  });
 		})
 		.catch(function(err) {
