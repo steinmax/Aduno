@@ -4,15 +4,25 @@
 <script>
 
 	function onDeviceFetch(devices) {
+		let result = undefined;
+
 		devices.forEach(function(device) {
 			if(device.kind === 'videoinput') {
-				document.write(device.kind + ": ");
-				document.write(device.deviceId);
+				if(result == undefined) {
+					document.write(device.kind + ": ");
+					document.write(device.deviceId);
 
-				document.write("<br>");
-				return device;
+					document.write("<br>");
+					result = device;
+				}
 			}
 		});
+
+		return result;
+	}
+
+	function requestCameraPermission() {
+
 	}
 	/*
 	var cameraStream = navigator.mediaDevices.getUserMedia({ audio: false, video: true }).then((stream) => {
@@ -22,6 +32,10 @@
 		});
 
 		*/
+
+		//Ask (force) for camera permission
+		requestCameraPermission();
+
 		//List devices
 		if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
 			document.write("enumerateDevices() not supported.<br>");
