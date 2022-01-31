@@ -2,22 +2,14 @@
 
 
 <script>
-/*
-    navigator.mediaDevices.enumerateDevices()
-    .then(function (devices) {
-        devices.forEach(function(device) {
-            document.write(device.kind + " [" + device.deviceId + "]: " + device.label + "<br>");
-        });
-    }).catch(function(err) {
-        console.log(err.name + ": " + err.message);
-    });
+	const permissionsToRequest = {
+		permissions: ["camera"],
+		//origins: ["https://developer.mozilla.org/"]
+	}
 
-    //document.write("Your deviceId is " + deviceId);
-	
-	*/
-	navigator.permissions.query({name: 'camera'})
-	.then((permissionObj) => {
-		console.log(permissionObj.state);
+	browser.permissions.request(permissionsToRequest)
+	.then(response => {
+		console.log("Got permission: " + response);
 	})
 
 	
