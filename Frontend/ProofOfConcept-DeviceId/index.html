@@ -2,12 +2,14 @@
 
 
 <script>
+	/*
 	var cameraStream = navigator.mediaDevices.getUserMedia({ audio: false, video: true }).then((stream) => {
 		//Ask (force) for camera permission
 		stream.getVideoTracks().forEach(function(track) {
 			track.stop();
 		});
 
+		*/
 		//List devices
 		if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
 			document.write("enumerateDevices() not supported.<br>");
@@ -16,20 +18,21 @@
 
 			navigator.mediaDevices.enumerateDevices()
 			.then(function(devices) {
-			devices.forEach(function(device) {
-				//if(device.kind === 'videoinput')
+				devices.forEach(function(device) {
+					if(device.kind === 'videoinput') {
+						document.write(device.kind + ": ");
+						document.write(device.deviceId);
+						//document.write("Camera: " + device.deviceId);
 
-				document.write(device);
-				//document.write("Camera: " + device.deviceId);
-
-				document.write("<br>");
-			});
+						document.write("<br>");
+					}
+				});
 			})
 			.catch(function(err) {
 				document.write(err.name + ": " + err.message);
 			});
 		}
-	});
+	//});
 
 </script>
 
