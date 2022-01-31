@@ -29,7 +29,7 @@ namespace ReSign.QRCode.Logic
 
         public void QrCodeWithImage()
         {
-            var text = "https://github.com/steinmax/reSign";
+            var text = "https://resign.byiconic.at";
             var filename = "qr-code-with-image.png";
             var logoFilename = "reSignLogo.png";
             const float logoWidth = 0.15f; // logo will have 15% the width of the QR code 
