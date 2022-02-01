@@ -22,43 +22,45 @@
 	}
 
 	function requestCameraPermission() {
-		//Find solution for this
+		//Find solution for this	
 		document.write("Requesting camera permission does not yet work, sorry...");
+		return false;
 	}
 
 	async function checkCameraPermission() {
-		await navigator.permissions.query({name:'camera'}).then(function(result) {
-			//alert(result.state);
+		let result = false;
+
+		let task = navigator.permissions.query({name:'camera'}).then(function(result) {
+			alert(result.state);
 			if (result.state === 'granted') {
 				//permission has already been granted, no prompt is shown
 				console.log("Camera permission is already granted.");
+				result = true;
 			} else if (result.state === 'prompt') {
 				//there's no peristent permission registered, will be showing the prompt
 				console.log("Camera permission not yet granted, showing promt.");
 
-				requestCameraPermission();
+				result = requestCameraPermission();
 			} else if (result.state === 'denied') {
 				//permission has been denied
 				console.log("Camera denied. Necessary for this!");
+				result = false;
 			}
 		});
+
+		await task;
+		return result;
 	}
-	/*
-	var cameraStream = navigator.mediaDevices.getUserMedia({ audio: false, video: true }).then((stream) => {
-		//Ask (force) for camera permission
-		stream.getVideoTracks().forEach(function(track) {
-			track.stop();
-		});
 
-		*/
-
-		//Ask (force) for camera permission
-		checkCameraPermission();
+	//Ask (force) for camera permission
+	checkCameraPermission().then(success => {
+		console.log(success);
 
 		//List devices
-		if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+		if (success && !navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
 			document.write("enumerateDevices() not supported.<br>");
-		}else {
+		}
+		else if(success){
 			// List cameras and microphones (all devices where we have permissions)
 
 			navigator.mediaDevices.enumerateDevices()
@@ -67,6 +69,6 @@
 				document.write(err.name + ": " + err.message);
 			});
 		}
-	//});
+	});
 
 </script>
