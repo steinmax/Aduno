@@ -21,45 +21,61 @@
 		return result;
 	}
 
-	function requestCameraPermission() {
+	async function requestCameraPermission() {
 		//Find solution for this	
 		
-		
-		navigator.mediaDevices.getUserMedia({ audio: false, video: true }).then((stream) => {
+		let task = navigator.mediaDevices.getUserMedia({ audio: false, video: true }).then((stream) => {
 			//Ask (force) for camera permission
 			stream.getVideoTracks().forEach(function(track) {
 				track.stop();
 			});
 		});
 
-		return false;
+		await task;
 	}
 
 	async function checkCameraPermission() {
-		let result = false;
+		let r_result = false;
 
 		let task = navigator.permissions.query({name:'camera'}).then(function(result) {
 			//alert(result.state);
 			if (result.state === 'granted') {
 				//permission has already been granted, no prompt is shown
 				console.log("Camera permission is already granted.");
-				result = true;
+				r_result = true;
 			} else if (result.state === 'prompt') {
 				//there's no peristent permission registered, will be showing the prompt
 				console.log("Camera permission not yet granted, showing promt.");
-
-				result = requestCameraPermission();
+				r_result = false;
 			} else if (result.state === 'denied') {
 				//permission has been denied
 				console.log("Camera denied. Necessary for this!");
-				result = false;
+				r_result = false;
 			}
 		});
 
 		await task;
-		return result;
+		console.log("Camerastate is: " + r_result);
+		return r_result;
 	}
 
+	async function initPermission() {
+		let granted = await checkCameraPermission();
+		
+		if(!granted){
+			await requestCameraPermission();
+		}
+		
+		granted = await checkCameraPermission();
+
+		return granted;
+	}
+
+	initPermission().then(granted => {
+		console.log("Result of check: " + granted)
+	});
+
+	/*
 	//Ask (force) for camera permission
 	checkCameraPermission().then(success => {
 		console.log(success);
@@ -78,5 +94,5 @@
 			});
 		}
 	});
-
+	*/
 </script>
