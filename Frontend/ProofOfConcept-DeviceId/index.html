@@ -88,27 +88,10 @@
 			});
 		}
 
+	})
+	.catch(err => {
+		console.log("Cought error: " + err.message);
+		console.log("Camera permission is necessary for this website to work, if you are on an IPhone, please go to your settings and grant camera permissions.")
+		document.write("Unable to show deviceId, because camera permission is necessary. If you denied access or are on an IPhone, please go to your settings and grant camera permissions.");
 	});
-
-	
-	/*
-	//Ask (force) for camera permission
-	checkCameraPermission().then(success => {
-		console.log(success);
-
-		//List devices
-		if (success && !navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
-			document.write("enumerateDevices() not supported.<br>");
-		}
-		else if(success){
-			// List cameras and microphones (all devices where we have permissions)
-
-			navigator.mediaDevices.enumerateDevices()
-			.then(onDeviceFetch)
-			.catch(function(err) {
-				document.write(err.name + ": " + err.message);
-			});
-		}
-	});
-	*/
 </script>
