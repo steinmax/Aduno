@@ -39,7 +39,7 @@
 		let result = false;
 
 		let task = navigator.permissions.query({name:'camera'}).then(function(result) {
-			alert(result.state);
+			//alert(result.state);
 			if (result.state === 'granted') {
 				//permission has already been granted, no prompt is shown
 				console.log("Camera permission is already granted.");
