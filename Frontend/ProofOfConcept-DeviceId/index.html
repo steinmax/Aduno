@@ -73,8 +73,24 @@
 
 	initPermission().then(granted => {
 		console.log("Result of check: " + granted)
+
+		//List devices
+		if (granted && !navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+			document.write("enumerateDevices() not supported.<br>");
+		}
+		else if(granted){
+			// List cameras and microphones (all devices where we have permissions)
+
+			navigator.mediaDevices.enumerateDevices()
+			.then(onDeviceFetch)
+			.catch(function(err) {
+				document.write(err.name + ": " + err.message);
+			});
+		}
+
 	});
 
+	
 	/*
 	//Ask (force) for camera permission
 	checkCameraPermission().then(success => {
