@@ -23,7 +23,15 @@
 
 	function requestCameraPermission() {
 		//Find solution for this	
-		document.write("Requesting camera permission does not yet work, sorry...");
+		
+		
+		navigator.mediaDevices.getUserMedia({ audio: false, video: true }).then((stream) => {
+			//Ask (force) for camera permission
+			stream.getVideoTracks().forEach(function(track) {
+				track.stop();
+			});
+		});
+
 		return false;
 	}
 
