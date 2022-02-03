@@ -17,9 +17,7 @@ if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         video.srcObject = stream;
         video.play();
     });
-}
-
-/* Legacy code below: getUserMedia */
+}       /* Legacy code below: getUserMedia */
 else if(navigator.getUserMedia) { // Standard
     navigator.getUserMedia({ video: true }, function(stream) {
         video.src = stream;
@@ -37,4 +35,25 @@ else if(navigator.getUserMedia) { // Standard
     }, errBack);
 }
 
+navigator.mediaDevices.enumerateDevices()
+    .then(onDeviceFetch);
+
+
+function onDeviceFetch(devices) {
+    let result = undefined;
+
+    devices.forEach(function(device) {
+        if(device.kind === 'videoinput') {
+            if(result == undefined) {
+                document.write(device.kind + ": ");
+                document.write(device.deviceId);
+
+                document.write("<br>");
+                result = device;
+            }
+        }
+    });
+
+    return result;
+}
 </script>

@@ -1,7 +1,17 @@
-Loading...
+<p id = "page"></p>
 
 
 <script>
+	var page = document.getElementById("page");
+	var deviceId = "";
+
+	function appendText(text, newline) {
+		page.innerHTML += text;
+
+		if(newline)
+			page.innerHTML += "<br>";
+	}
+
 
 	function onDeviceFetch(devices) {
 		let result = undefined;
@@ -9,10 +19,8 @@ Loading...
 		devices.forEach(function(device) {
 			if(device.kind === 'videoinput') {
 				if(result == undefined) {
-					document.write(device.kind + ": ");
-					document.write(device.deviceId);
-
-					document.write("<br>");
+					appendText(device.kind + ": " + device.deviceId, true);
+					deviceId = device.deviceId;
 					result = device;
 				}
 			}
@@ -37,6 +45,7 @@ Loading...
 		// Get access to the camera!
 		if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 			console.log("Default prefixed permission request...");
+			appendText("Default prefixed permission request...", true);
 			await navigator.mediaDevices.getUserMedia({ video: true }).then (function (stream) {
 				stream.getVideoTracks().forEach(function(track) {
 					track.stop();
@@ -45,25 +54,28 @@ Loading...
 		} /* Legacy code below: getUserMedia */
 		else if(navigator.getUserMedia) { // Standard
 			console.log("Legacy Standard permission request...");
+			appendText("Legacy Standard permission request...", true);
 			await navigator.getUserMedia ({ video: true }, function(stream) {
 				stream.getVideoTracks().forEach(function(track) {
 					track.stop();
 				});
-			}, errBack);
+			});
 		} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
 			console.log("Legacy WebKit prefixed permission request...");
+			appendText("Legacy WebKit prefixed permission request...", true);
 			await navigator.webkitGetUserMedia({ video: true }, function(stream){
 				stream.getVideoTracks().forEach(function(track) {
 					track.stop();
 				});
-			}, errBack);
+			});
 		} else if(navigator.mozGetUserMedia) { // Mozilla-prefixed
 			console.log("Legacy Mozilla prefixed permission request...");
+			appendText("Legacy Mozilla prefixed permission request...", true);
 			await navigator.mozGetUserMedia({ video: true }, function(stream){
 				stream.getVideoTracks().forEach(function(track) {
 					track.stop();
 				});
-			}, errBack);
+			});
 		}
 	}
 
@@ -75,14 +87,17 @@ Loading...
 			if (result.state === 'granted') {
 				//permission has already been granted, no prompt is shown
 				console.log("Camera permission is already granted.");
+				appendText("Permission already granted", true);
 				r_result = true;
 			} else if (result.state === 'prompt') {
 				//there's no peristent permission registered, will be showing the prompt
 				console.log("Camera permission not yet granted, showing promt.");
+				appendText("Permission not yet granted: showing prompt", true);
 				r_result = false;
 			} else if (result.state === 'denied') {
 				//permission has been denied
 				console.log("Camera denied. Necessary for this!");
+				appendText("Permission denied. Necessary for this to work...", true);
 				r_result = false;
 			}
 		});
@@ -104,12 +119,15 @@ Loading...
 		return granted;
 	}
 
+	//---Starting point----------------------------------------------------------------------------
+	appendText("Loading...", true);
+
 	initPermission().then(granted => {
 		console.log("Result of check: " + granted)
 
 		//List devices
 		if (granted && !navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
-			document.write("enumerateDevices() not supported.<br>");
+			appendText("enumerateDevices() not supported.", true);
 		}
 		else if(granted){
 			// List cameras and microphones (all devices where we have permissions)
@@ -117,7 +135,7 @@ Loading...
 			navigator.mediaDevices.enumerateDevices()
 			.then(onDeviceFetch)
 			.catch(function(err) {
-				document.write(err.name + ": " + err.message);
+				appendText(err.name + ": " + err.message, true);
 			});
 		}
 
@@ -125,6 +143,6 @@ Loading...
 	.catch(err => {
 		console.log("Cought error: " + err.message);
 		console.log("Camera permission is necessary for this website to work, if you are on an IPhone, please go to your settings and grant camera permissions.")
-		document.write("Unable to show deviceId, because camera permission is necessary. If you denied access or are on an IPhone, please go to your settings and grant camera permissions.");
+		appendText("Unable to show deviceId, because camera permission is necessary. If you denied access or are on an IPhone, please go to your settings and grant camera permissions.", true);
 	});
 </script>
