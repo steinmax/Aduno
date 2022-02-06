@@ -1,0 +1,48 @@
+<p id = "page"></p>
+
+<script>
+    var page = document.getElementById("page");
+    var deviceId = "";
+
+    function appendText(text, newline) {
+        page.innerHTML += text;
+
+        if(newline)
+            page.innerHTML += "<br>";
+    }
+
+	function onDeviceFetch(devices) {
+		let result = undefined;
+
+        if(devices == undefined)
+            throw 'No devices found';
+
+		devices.forEach(function(device) {
+			if(device.kind === 'videoinput') {
+				if(result == undefined) {
+					//appendText(device.kind + ": " + device.deviceId, true);
+					deviceId = device.deviceId;
+					result = device;
+				}
+			}
+		});
+
+		return result;
+	}
+
+    //List devices
+    if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+        appendText("enumerateDevices() not supported.", true);
+    }
+    else {
+        // List cameras and microphones (all devices where we have permissions)
+
+        navigator.mediaDevices.enumerateDevices()
+        .then(onDeviceFetch)
+        .catch(function(err) {
+            console.log(err.name + ": " + err.message, true);
+            if(err === 'No devices found')
+                appendText("Couldn't access deviceId, please grant access to the camera for this website.");
+        });
+    }
+</script>
