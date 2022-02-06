@@ -14,7 +14,8 @@
 	function onDeviceFetch(devices) {
 		let result = undefined;
 
-        if(devices == undefined)
+        console.log(devices);
+        if(devices == undefined || devices.length == 0)
             throw 'No devices found';
 
 		devices.forEach(function(device) {
