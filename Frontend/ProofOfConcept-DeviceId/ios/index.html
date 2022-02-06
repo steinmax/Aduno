@@ -34,19 +34,24 @@
 		return result;
 	}
 
-    //List devices
-    if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
-        appendText("enumerateDevices() not supported.", true);
-    }
-    else {
-        // List cameras and microphones (all devices where we have permissions)
-
-        navigator.mediaDevices.enumerateDevices()
+    async function fetchDeviceId(){
+        await navigator.mediaDevices.enumerateDevices()
         .then(onDeviceFetch)
         .catch(function(err) {
             console.log(err.name + ": " + err.message, true);
             if(err === NO_CAMERA_FOUND)
                 appendText("Couldn't access deviceId, please grant access to the camera for this website.");
         });
+    }
+
+    //List devices
+    if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+        appendText("enumerateDevices() not supported.", true);
+    }
+    else {
+        // Get deviceId from camera device
+        fetchDeviceId().then(() => {
+            appendText(deviceId);
+        });        
     }
 </script>
