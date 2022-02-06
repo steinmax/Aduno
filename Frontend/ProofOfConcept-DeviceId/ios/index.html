@@ -1,6 +1,8 @@
 <p id = "page"></p>
 
 <script>
+    const NO_CAMERA_FOUND = "No suitable camera device found";
+
     var page = document.getElementById("page");
     var deviceId = "";
 
@@ -15,8 +17,6 @@
 		let result = undefined;
 
         console.log(devices);
-        if(devices == undefined || devices.length == 0)
-            throw 'No devices found';
 
 		devices.forEach(function(device) {
 			if(device.kind === 'videoinput') {
@@ -27,6 +27,9 @@
 				}
 			}
 		});
+
+        if(result == undefined)
+            throw NO_CAMERA_FOUND;
 
 		return result;
 	}
@@ -42,7 +45,7 @@
         .then(onDeviceFetch)
         .catch(function(err) {
             console.log(err.name + ": " + err.message, true);
-            if(err === 'No devices found')
+            if(err === NO_CAMERA_FOUND)
                 appendText("Couldn't access deviceId, please grant access to the camera for this website.");
         });
     }
