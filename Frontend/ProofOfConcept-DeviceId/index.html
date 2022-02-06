@@ -138,11 +138,14 @@
 				appendText(err.name + ": " + err.message, true);
 			});
 		}
-
+		else{
+			appendText("Permission not granted", true);
+		}
 	})
 	.catch(err => {
 		console.log("Cought error: " + err.message);
 		console.log("Camera permission is necessary for this website to work, if you are on an IPhone, please go to your settings and grant camera permissions.")
 		appendText("Unable to show deviceId, because camera permission is necessary. If you denied access or are on an IPhone, please go to your settings and grant camera permissions.", true);
+		appendText("Error: " + err.message);
 	});
 </script>
