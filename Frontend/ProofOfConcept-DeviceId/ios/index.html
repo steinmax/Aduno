@@ -52,6 +52,25 @@
         // Get deviceId from camera device
         fetchDeviceId().then(() => {
             appendText(deviceId);
+            
+            let name = "<none>";
+            let knownId = true;
+
+            if(deviceId === "e1067d57201d50f25d72ea2c9373bdb4487ef5e69979cab7a0f55a684bb4dbd0")
+                name = "Maxi";
+            else if(deviceId === "c85979b7acad298d90b3a2b689a66eccac7cd1b6017f4ffcae52c457583ea39d")
+                name = "Simon";
+            else if(deviceId === "1A7332B26DB418E24A5D9BF68A83FD23F7ACF131")
+                name = "Benjamin";
+            else if(deviceId === "93af8a6801dd0c14eb0a3c8e822edb61efa7d1304f65f7df0d532144cdbecbf3")
+                name = "Arsham";
+            else {
+                knownId = false;
+                appendText("Hello, your deviceId is: " + deviceId);
+            }
+
+            if(knownId)
+                appendText("<h1>Hallo Maxi, du bist nun angemeldet.</h1>");
         });        
     }
 </script>
