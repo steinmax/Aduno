@@ -13,74 +13,31 @@
         if(newline)
             page.innerHTML += "<br>";
     }
-
-	function onDeviceFetch(devices) {
-		let result = undefined;
-
-		devices.forEach(function(device) {
-			if(device.kind === 'videoinput') {
-                videoDevices.push(device);
-
-				if(result == undefined) {
-					//appendText(device.kind + ": " + device.deviceId, true);
-					deviceId = device.deviceId;
-					result = device;
-				}
-			}
-		});
-
-        if(result == undefined)
-            throw NO_CAMERA_FOUND;
-
-		return result;
-	}
-
-    async function fetchDeviceId(){
-        await navigator.mediaDevices.enumerateDevices()
-        .then(onDeviceFetch)
-        .catch(function(err) {
-            console.log(err.name + ": " + err.message, true);
-            if(err === NO_CAMERA_FOUND)
-                appendText("Couldn't access deviceId, please grant access to the camera for this website.");
-        });
+    
+    function generateGUID() {
+        return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+            (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        );
     }
 
-    //List devices
-    if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
-        appendText("enumerateDevices() not supported.", true);
+    function readDeviceIdFromStorage() {
+        return localStorage.getItem("deviceId");
     }
-    else {
-        // Get deviceId from camera device
-        fetchDeviceId().then(() => {
-            /*
-            appendText(deviceId);
-            
-            let name = "<none>";
-            let knownId = true;
 
-            if(deviceId === "e1067d57201d50f25d72ea2c9373bdb4487ef5e69979cab7a0f55a684bb4dbd0")
-                name = "Maxi";
-            else if(deviceId === "c85979b7acad298d90b3a2b689a66eccac7cd1b6017f4ffcae52c457583ea39d")
-                name = "Simon";
-            else if(deviceId === "93af8a6801dd0c14eb0a3c8e822edb61efa7d1304f65f7df0d532144cdbecbf3")
-                name = "Arsham";
-            else {
-                knownId = false;
-                appendText("Hello, your deviceId is: " + deviceId);
-            }
 
-            if(knownId)
-                appendText("<h1>Hallo " + name + ", du bist nun angemeldet.</h1>");
-
-            */
-
-            videoDevices.sort((a, b) => {
-                return a.deviceId < b.deviceId;
-            })
-
-            videoDevices.forEach(dev => {
-                appendText(`[${dev.kind}] ${dev.label}: ${dev.deviceId}`, true);
-            });
-        });        
+    function saveDeviceIdToStorage(deviceId) {
+        localStorage.setItem("deviceId", deviceId);
     }
+
+	//------Entrypoint-----------------------------------------------------------------------
+
+    var deviceId = readDeviceIdFromStorage();
+
+    if(deviceId == undefined) {
+        appendText("No deviceId in storage, generating new...", true);
+        deviceId = generateGUID();
+        saveDeviceIdToStorage(deviceId);
+    }
+
+    appendText(`DeviceId: ${deviceId}`, true);
 </script>
