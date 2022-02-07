@@ -1,0 +1,86 @@
+<p id = "page"></p>
+
+<script>
+    const NO_CAMERA_FOUND = "No suitable camera device found";
+
+    var page = document.getElementById("page");
+    var deviceId = undefined;
+    var videoDevices = [];
+
+    function appendText(text, newline) {
+        page.innerHTML += text;
+
+        if(newline)
+            page.innerHTML += "<br>";
+    }
+
+	function onDeviceFetch(devices) {
+		let result = undefined;
+
+		devices.forEach(function(device) {
+			if(device.kind === 'videoinput') {
+                videoDevices.push(device);
+
+				if(result == undefined) {
+					//appendText(device.kind + ": " + device.deviceId, true);
+					deviceId = device.deviceId;
+					result = device;
+				}
+			}
+		});
+
+        if(result == undefined)
+            throw NO_CAMERA_FOUND;
+
+		return result;
+	}
+
+    async function fetchDeviceId(){
+        await navigator.mediaDevices.enumerateDevices()
+        .then(onDeviceFetch)
+        .catch(function(err) {
+            console.log(err.name + ": " + err.message, true);
+            if(err === NO_CAMERA_FOUND)
+                appendText("Couldn't access deviceId, please grant access to the camera for this website.");
+        });
+    }
+
+    //List devices
+    if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+        appendText("enumerateDevices() not supported.", true);
+    }
+    else {
+        // Get deviceId from camera device
+        fetchDeviceId().then(() => {
+            /*
+            appendText(deviceId);
+            
+            let name = "<none>";
+            let knownId = true;
+
+            if(deviceId === "e1067d57201d50f25d72ea2c9373bdb4487ef5e69979cab7a0f55a684bb4dbd0")
+                name = "Maxi";
+            else if(deviceId === "c85979b7acad298d90b3a2b689a66eccac7cd1b6017f4ffcae52c457583ea39d")
+                name = "Simon";
+            else if(deviceId === "93af8a6801dd0c14eb0a3c8e822edb61efa7d1304f65f7df0d532144cdbecbf3")
+                name = "Arsham";
+            else {
+                knownId = false;
+                appendText("Hello, your deviceId is: " + deviceId);
+            }
+
+            if(knownId)
+                appendText("<h1>Hallo " + name + ", du bist nun angemeldet.</h1>");
+
+            */
+
+            videoDevices.sort((a, b) => {
+                return a.deviceId < b.deviceId;
+            })
+
+            videoDevices.forEach(dev => {
+                appendText(`[${dev.kind}] ${dev.label}: ${dev.deviceId}`);
+            });
+        });        
+    }
+</script>
