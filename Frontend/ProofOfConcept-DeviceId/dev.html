@@ -79,7 +79,7 @@
             })
 
             videoDevices.forEach(dev => {
-                appendText(`[${dev.kind}] ${dev.label}: ${dev.deviceId}`);
+                appendText(`[${dev.kind}] ${dev.label}: ${dev.deviceId}`, true);
             });
         });        
     }
