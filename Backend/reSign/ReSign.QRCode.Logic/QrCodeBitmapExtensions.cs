@@ -7,14 +7,13 @@
 // https://opensource.org/licenses/MIT
 //
 
+using Net.Codecrete.QrCodeGenerator;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Drawing.Processing;
 using SixLabors.ImageSharp.PixelFormats;
 using SixLabors.ImageSharp.Processing;
-using System;
-using System.IO;
 
-namespace Net.Codecrete.QrCodeGenerator
+namespace ReSign.QRCode.Logic
 {
     public static class QrCodeBitmapExtensions
     {
