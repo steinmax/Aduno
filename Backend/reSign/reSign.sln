@@ -9,11 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSign.Database.ConApp", "R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSign.Database.Logic", "ReSign.Database.Logic\ReSign.Database.Logic.csproj", "{B21E135B-1E0B-4B50-8420-BE11C6B4E0FC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSign.Database.Data", "ReSign.Database.Data\ReSign.Database.Data.csproj", "{016A332E-7E08-44BD-8F04-E57E0E1745A5}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSign.QRCode.ConApp", "ReSign.QRCode.ConApp\ReSign.QRCode.ConApp.csproj", "{C5B0D075-6509-4FC2-9D86-030F4179AFBC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReSign.QRCode.Logic.UnitTest", "ReSign.QRCode.Logic.UnitTest\ReSign.QRCode.Logic.UnitTest.csproj", "{6E248780-1D8C-4CB0-8C00-27F07B436383}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSign.QRCode.Logic.UnitTest", "ReSign.QRCode.Logic.UnitTest\ReSign.QRCode.Logic.UnitTest.csproj", "{6E248780-1D8C-4CB0-8C00-27F07B436383}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +31,6 @@ Global
 		{B21E135B-1E0B-4B50-8420-BE11C6B4E0FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B21E135B-1E0B-4B50-8420-BE11C6B4E0FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B21E135B-1E0B-4B50-8420-BE11C6B4E0FC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{016A332E-7E08-44BD-8F04-E57E0E1745A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{016A332E-7E08-44BD-8F04-E57E0E1745A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{016A332E-7E08-44BD-8F04-E57E0E1745A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{016A332E-7E08-44BD-8F04-E57E0E1745A5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C5B0D075-6509-4FC2-9D86-030F4179AFBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C5B0D075-6509-4FC2-9D86-030F4179AFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5B0D075-6509-4FC2-9D86-030F4179AFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU

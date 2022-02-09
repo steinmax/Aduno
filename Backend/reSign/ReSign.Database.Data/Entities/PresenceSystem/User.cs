@@ -2,7 +2,7 @@
 using ReSign.Database.Data.Entities.General;
 
 namespace ReSign.Database.Data.Entities.PresenceSystem;
-public class Pupil : VersionObject
+public class User : VersionObject
 {
     public string MatNr { get; set; } = string.Empty;
     public string FirstName { get; set; } = string.Empty;

@@ -32,7 +32,7 @@ namespace ReSign.Database.Logic.DataContext
         public DbSet<Room> RoomSet { get; set; }
         public DbSet<Class> ClassSet { get; set; }
         public DbSet<Device> DeviceSet { get; set; }
-        public DbSet<Pupil> PupilSet { get; set; }
+        public DbSet<User> PupilSet { get; set; }
         public DbSet<QRSessionCookie> QRSessionCookieSet { get; set; }
 
         /*public ReSignDbContext(DbContextOptions<ReSignDbContext> options) : base(options)
@@ -96,7 +96,7 @@ namespace ReSign.Database.Logic.DataContext
             deviceBuilder.Property(d => d.UniqueId)
                 .IsRequired();
 
-            var pupilBuilder = modelBuilder.Entity<Pupil>();
+            var pupilBuilder = modelBuilder.Entity<User>();
             pupilBuilder.ToTable("Pupil");
             pupilBuilder.HasKey(p => p.Id);
             pupilBuilder.Property(p => p.RowVersion)
