@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ReSign.Database.Logic.Entities.General
 {
-    [Table("organisation"), Index(nameof(Name), IsUnique = true)]
+    [Table("Organisation"), Index(nameof(Name), IsUnique = true)]
     public class Organisation : VersionObject
     {
         [Required()]
