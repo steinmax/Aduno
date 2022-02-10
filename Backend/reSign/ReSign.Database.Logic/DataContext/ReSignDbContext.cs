@@ -18,7 +18,6 @@ namespace ReSign.Database.Logic.DataContext
         #endregion
 
         #region Testing purposes only: PostgreSQL
-        
         private static string ConnectStr => "User ID=resign;Password=@bb$3O1QM?;Host=193.122.4.14;Port=5432;Database=resign;";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -28,12 +27,14 @@ namespace ReSign.Database.Logic.DataContext
         }
         #endregion
 
-        public DbSet<Display> DisplaySet { get; set; }
-        public DbSet<Room> RoomSet { get; set; }
-        public DbSet<Device> DeviceSet { get; set; }
-        public DbSet<User> PupilSet { get; set; }
-        public DbSet<QRSessionCookie> QRSessionCookieSet { get; set; }
+        public DbSet<Organisation>? OrganisationSet { get; set; }
+        public DbSet<Room>? RoomSet { get; set; }
+        public DbSet<Device>? DeviceSet { get; set; }
+        public DbSet<Interaction>? InteractionSet { get; set; }
+        public DbSet<QRToken>? QRSessionCookieSet { get; set; }
+        public DbSet<User>? UserSet { get; set; }
 
+        /*
         public ReSignDbContext(DbContextOptions<ReSignDbContext> options) : base(options)
         {
         }
@@ -42,5 +43,6 @@ namespace ReSign.Database.Logic.DataContext
         {
 
         }
+        */
     }
 }
