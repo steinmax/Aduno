@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ReSign.Common.Logic\ReSign.Common.Logic.csproj" />
     <ProjectReference Include="..\ReSign.Database.Logic\ReSign.Database.Logic.csproj" />
   </ItemGroup>
 
