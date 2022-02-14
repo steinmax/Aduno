@@ -1,6 +1,6 @@
 <p id = "page"></p>
 
-<form onsubmit="return false;">
+<form id="loginForm" onsubmit="return false;" hidden>
     <input id="loginUser" name="user" type="text">
     <input id="loginPasswd" name="passwd" type="password">
     
@@ -38,13 +38,22 @@
     function login() {
         const formUser = document.getElementById("loginUser");
         const formPasswd = document.getElementById("loginPasswd");
+        const loginForm = document.getElementById("loginForm");
        
         const result = {
             "user": formUser.value,
-            "pass": formPasswd.value
+            "pass": formPasswd.value,
+            "deviceId": undefined
         }
 
         appendText(JSON.stringify(result), true);
+        
+        loginForm.hidden = true;
+
+        //Hardcode deviceId associated with account "admin"
+        if(result.user === "admin" && result.pass === "password")
+            result.deviceId = "e42808c7-d300-47f3-a42d-bf5ad9f595e1";
+            saveDeviceIdToStorage(result.deviceId);
     }
 
 	//------Entrypoint-----------------------------------------------------------------------
@@ -52,9 +61,7 @@
     var deviceId = readDeviceIdFromStorage();
 
     if(deviceId == undefined) {
-        appendText("No deviceId in storage, generating new...", true);
-        deviceId = generateGUID();
-        saveDeviceIdToStorage(deviceId);
+        appendText("Not logged in...", true);
     }
 
     appendText(`DeviceId: ${deviceId}`, true);
