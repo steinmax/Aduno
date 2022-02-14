@@ -32,7 +32,7 @@ namespace ReSign.Database.Logic.DataContext
         public DbSet<Room>? RoomSet { get; set; }
         public DbSet<Device>? DeviceSet { get; set; }
         public DbSet<Interaction>? InteractionSet { get; set; }
-        public DbSet<QRToken>? QRSessionCookieSet { get; set; }
+        public DbSet<QRToken>? QRTokenSet { get; set; }
         public DbSet<User>? UserSet { get; set; }
 
         /*
@@ -57,6 +57,22 @@ namespace ReSign.Database.Logic.DataContext
             else if(typeof(E) == typeof(Room))
             {
                 result = RoomSet as DbSet<E>;
+            }
+            else if (typeof(E) == typeof(Device))
+            {
+                result = DeviceSet as DbSet<E>;
+            }
+            else if (typeof(E) == typeof(Interaction))
+            {
+                result = InteractionSet as DbSet<E>;
+            }
+            else if (typeof(E) == typeof(QRToken))
+            {
+                result = QRTokenSet as DbSet<E>;
+            }
+            else if (typeof(E) == typeof(User))
+            {
+                result = UserSet as DbSet<E>;
             }
             return result;
         }
