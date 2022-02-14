@@ -1,11 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
 using ReSign.Database.Logic.Entities.Base;
 using ReSign.Database.Logic.Entities.General;
 using ReSign.Database.Logic.Entities.PresenceSystem;
 
 namespace ReSign.Database.Logic.DataContext
 {
-    public class ReSignDbContext : DbContext
+    internal class ReSignDbContext : DbContext
     {
         #region Testing purposes only: SQL-Server
         /*
