@@ -1,11 +1,18 @@
 <p id = "page"></p>
 
-<script>
-    const NO_CAMERA_FOUND = "No suitable camera device found";
+<form onsubmit="return false;">
+    <input name="user" type="text">
+    <input name="passwd" type="password">
+    
+    <input type="submit" value="Login" onclick="login()">
+</form>
 
+<script>
     var page = document.getElementById("page");
     var deviceId = undefined;
-    var videoDevices = [];
+    
+	//------Functions-----------------------------------------------------------------------
+
 
     function appendText(text, newline) {
         page.innerHTML += text;
@@ -21,12 +28,16 @@
     }
 
     function readDeviceIdFromStorage() {
-        return localStorage.getItem("deviceId");
+       return localStorage.getItem("deviceId");
     }
-
 
     function saveDeviceIdToStorage(deviceId) {
         localStorage.setItem("deviceId", deviceId);
+    }
+
+    function login() {
+        let user = document.getElementByName("user").innerHTML;
+        appendText(user, true);
     }
 
 	//------Entrypoint-----------------------------------------------------------------------
