@@ -1,8 +1,8 @@
 <p id = "page"></p>
 
 <form onsubmit="return false;">
-    <input name="user" type="text">
-    <input name="passwd" type="password">
+    <input id="loginUser" name="user" type="text">
+    <input id="loginPasswd" name="passwd" type="password">
     
     <input type="submit" value="Login" onclick="login()">
 </form>
@@ -36,8 +36,15 @@
     }
 
     function login() {
-        let user = document.getElementByName("user").innerHTML;
-        appendText(user, true);
+        const formUser = document.getElementById("loginUser");
+        const formPasswd = document.getElementById("loginPasswd");
+       
+        const result = {
+            "user": formUser.value,
+            "pass": formPasswd.value
+        }
+
+        appendText(result, true);
     }
 
 	//------Entrypoint-----------------------------------------------------------------------
