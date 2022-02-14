@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ReSign.Database.Logic.Entities.PresenceSystem;
 
 [Table("Device"), Index(nameof(UniqueId), IsUnique = true)]
-public class Device : VersionObject
+public class Device : VersionEntity
 {
     [Required]
     public string UniqueId { get; set; } = string.Empty; //Could be AndroidId, IMEI or something else

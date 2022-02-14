@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ReSign.Database.Logic.Entities.PresenceSystem;
 
 [Table("Timestamp")]
-public class Interaction : VersionObject
+public class Interaction : VersionEntity
 {
     [Required]
     public DateTime DateTime { get; set; }

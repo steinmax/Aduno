@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ReSign.Database.Logic.Entities.Base;
 using ReSign.Database.Logic.Entities.General;
 using ReSign.Database.Logic.Entities.PresenceSystem;
 
@@ -44,5 +45,20 @@ namespace ReSign.Database.Logic.DataContext
 
         }
         */
+
+        public DbSet<E> GetDbSet<E>() where E : IdentityEntity
+        {
+            var result = default(DbSet<E>);
+
+            if (typeof(E) == typeof(Organisation))
+            {
+                result = OrganisationSet as DbSet<E>;
+            }
+            else if(typeof(E) == typeof(Room))
+            {
+                result = RoomSet as DbSet<E>;
+            }
+            return result;
+        }
     }
 }

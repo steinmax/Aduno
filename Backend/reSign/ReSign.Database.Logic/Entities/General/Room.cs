@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ReSign.Database.Logic.Entities.General;
 
 [Table("Room")]
-public class Room : VersionObject
+public class Room : VersionEntity
 {
     [Required]
     public string Designation { get; set; } = string.Empty;

@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ReSign.Database.Logic.Entities.General;
 
 [Table("Organisation"), Index(nameof(Name), IsUnique = true)]
-public class Organisation : VersionObject
+public class Organisation : VersionEntity
 {
     [Required]
     public string Name { get; set; } = string.Empty;

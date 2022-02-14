@@ -8,7 +8,7 @@ namespace ReSign.Database.Logic.Entities.PresenceSystem
 {
     [Table("QRToken")]
     [Index(nameof(Token), IsUnique = true)]
-    public class QRToken : VersionObject
+    public class QRToken : VersionEntity
     {
         [Required]
         public string Token { get; set; } = string.Empty;

@@ -2,7 +2,7 @@
 
 namespace ReSign.Database.Logic.Entities.General;
 
-public class Display : VersionObject
+public class Display : VersionEntity
 {
     /*
     public string MacAddress { get; set; } = string.Empty;

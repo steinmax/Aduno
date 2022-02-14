@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace ReSign.Database.Logic.Entities.PresenceSystem;
 
 [Table("User"), Index(nameof(FirstName), nameof(LastName), nameof(OrganisationId))]
-public class User : VersionObject
+public class User : VersionEntity
 {
     [Required(), MaxLength(128)]
     public string FirstName { get; set; } = string.Empty;
