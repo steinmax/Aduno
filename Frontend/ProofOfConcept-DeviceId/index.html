@@ -60,6 +60,8 @@
         if(result.user === "admin" && result.pass === "password")
             result.deviceId = "e42808c7-d300-47f3-a42d-bf5ad9f595e1";
             saveDeviceIdToStorage(result.deviceId);
+
+        deviceId = result.deviceId;
     }
 
 	//------Entrypoint-----------------------------------------------------------------------
@@ -69,6 +71,7 @@
     if(deviceId == undefined) {
         appendText("Not logged in...", true);
         login();
+        appendText("Logged in: " + deviceId, true);
     }
 
     appendText(`DeviceId: ${deviceId}`, true);
