@@ -4,7 +4,7 @@
     <input id="loginUser" name="user" type="text">
     <input id="loginPasswd" name="passwd" type="password">
     
-    <input type="submit" value="Login" onclick="login()">
+    <input type="submit" value="Login" onclick="loginCallback()">
 </form>
 
 <script>
@@ -36,6 +36,11 @@
     }
 
     function login() {
+        const form = document.getElementById("loginForm");
+        form.hidden = false;
+    }
+
+    function loginCallback() {
         const formUser = document.getElementById("loginUser");
         const formPasswd = document.getElementById("loginPasswd");
         const loginForm = document.getElementById("loginForm");
@@ -50,7 +55,8 @@
         
         loginForm.hidden = true;
 
-        //Hardcode deviceId associated with account "admin"
+        //Usually fetch deviceId of user from database
+        //  Testing purposes -> Hardcode deviceId associated with account "admin"
         if(result.user === "admin" && result.pass === "password")
             result.deviceId = "e42808c7-d300-47f3-a42d-bf5ad9f595e1";
             saveDeviceIdToStorage(result.deviceId);
@@ -62,6 +68,7 @@
 
     if(deviceId == undefined) {
         appendText("Not logged in...", true);
+        login();
     }
 
     appendText(`DeviceId: ${deviceId}`, true);
