@@ -1,151 +1,75 @@
 <p id = "page"></p>
 
+<form id="loginForm" onsubmit="return false;" hidden>
+    <input id="loginUser" name="user" type="text">
+    <input id="loginPasswd" name="passwd" type="password">
+    
+    <input type="submit" value="Login" onclick="loginCallback()">
+</form>
 
 <script>
-	var page = document.getElementById("page");
-	var deviceId = "";
-
-	function appendText(text, newline) {
-		page.innerHTML += text;
-
-		if(newline)
-			page.innerHTML += "<br>";
-	}
+    var page = document.getElementById("page");
+    var deviceId = undefined;
+    
+	//------Functions-----------------------------------------------------------------------
 
 
-	function onDeviceFetch(devices) {
-		let result = undefined;
+    function appendText(text, newline) {
+        page.innerHTML += text;
 
-		devices.forEach(function(device) {
-			if(device.kind === 'videoinput') {
-				if(result == undefined) {
-					appendText(device.kind + ": " + device.deviceId, true);
-					deviceId = device.deviceId;
-					result = device;
-				}
-			}
-		});
+        if(newline)
+            page.innerHTML += "<br>";
+    }
+    
+    function generateGUID() {
+        return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+            (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+        );
+    }
 
-		return result;
-	}
+    function readDeviceIdFromStorage() {
+       return localStorage.getItem("deviceId");
+    }
 
-	async function requestCameraPermission() {
-		//Access the camera stream => thus force browser to ask for permission
-		/*
-		let task = navigator.mediaDevices.getUserMedia({ audio: false, video: true }).then((stream) => {
-			//Ask (force) for camera permission
-			stream.getVideoTracks().forEach(function(track) {
-				track.stop();
-			});
-		});
-		
-		await task;
-		*/
+    function saveDeviceIdToStorage(deviceId) {
+        localStorage.setItem("deviceId", deviceId);
+    }
 
-		// Get access to the camera!
-		if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-			console.log("Default prefixed permission request...");
-			appendText("Default prefixed permission request...", true);
-			await navigator.mediaDevices.getUserMedia({ video: true }).then (function (stream) {
-				stream.getVideoTracks().forEach(function(track) {
-					track.stop();
-				});
-			});
-		} /* Legacy code below: getUserMedia */
-		else if(navigator.getUserMedia) { // Standard
-			console.log("Legacy Standard permission request...");
-			appendText("Legacy Standard permission request...", true);
-			await navigator.getUserMedia ({ video: true }, function(stream) {
-				stream.getVideoTracks().forEach(function(track) {
-					track.stop();
-				});
-			});
-		} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
-			console.log("Legacy WebKit prefixed permission request...");
-			appendText("Legacy WebKit prefixed permission request...", true);
-			await navigator.webkitGetUserMedia({ video: true }, function(stream){
-				stream.getVideoTracks().forEach(function(track) {
-					track.stop();
-				});
-			});
-		} else if(navigator.mozGetUserMedia) { // Mozilla-prefixed
-			console.log("Legacy Mozilla prefixed permission request...");
-			appendText("Legacy Mozilla prefixed permission request...", true);
-			await navigator.mozGetUserMedia({ video: true }, function(stream){
-				stream.getVideoTracks().forEach(function(track) {
-					track.stop();
-				});
-			});
-		}
-	}
+    function login() {
+        const form = document.getElementById("loginForm");
+        form.hidden = false;
+    }
 
-	async function checkCameraPermission() {
-		let r_result = false;
+    function loginCallback() {
+        const formUser = document.getElementById("loginUser");
+        const formPasswd = document.getElementById("loginPasswd");
+        const loginForm = document.getElementById("loginForm");
+       
+        const result = {
+            "user": formUser.value,
+            "pass": formPasswd.value,
+            "deviceId": undefined
+        }
 
-		let task = navigator.permissions.query({name:'camera'}).then(function(result) {
-			//alert(result.state);
-			if (result.state === 'granted') {
-				//permission has already been granted, no prompt is shown
-				console.log("Camera permission is already granted.");
-				appendText("Permission already granted", true);
-				r_result = true;
-			} else if (result.state === 'prompt') {
-				//there's no peristent permission registered, will be showing the prompt
-				console.log("Camera permission not yet granted, showing promt.");
-				appendText("Permission not yet granted: showing prompt", true);
-				r_result = false;
-			} else if (result.state === 'denied') {
-				//permission has been denied
-				console.log("Camera denied. Necessary for this!");
-				appendText("Permission denied. Necessary for this to work...", true);
-				r_result = false;
-			}
-		});
+        appendText(JSON.stringify(result), true);
+        
+        loginForm.hidden = true;
 
-		await task;
-		console.log("Camerastate is: " + r_result);
-		return r_result;
-	}
+        //Usually fetch deviceId of user from database
+        //  Testing purposes -> Hardcode deviceId associated with account "admin"
+        if(result.user === "admin" && result.pass === "password")
+            result.deviceId = "e42808c7-d300-47f3-a42d-bf5ad9f595e1";
+            saveDeviceIdToStorage(result.deviceId);
+    }
 
-	async function initPermission() {
-		let granted = await checkCameraPermission();
-		
-		if(!granted){
-			await requestCameraPermission();
-		}
-		
-		granted = await checkCameraPermission();
+	//------Entrypoint-----------------------------------------------------------------------
 
-		return granted;
-	}
+    var deviceId = readDeviceIdFromStorage();
 
-	//---Starting point----------------------------------------------------------------------------
-	appendText("Loading...", true);
+    if(deviceId == undefined) {
+        appendText("Not logged in...", true);
+        login();
+    }
 
-	initPermission().then(granted => {
-		console.log("Result of check: " + granted)
-
-		//List devices
-		if (granted && !navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
-			appendText("enumerateDevices() not supported.", true);
-		}
-		else if(granted){
-			// List cameras and microphones (all devices where we have permissions)
-
-			navigator.mediaDevices.enumerateDevices()
-			.then(onDeviceFetch)
-			.catch(function(err) {
-				appendText(err.name + ": " + err.message, true);
-			});
-		}
-		else{
-			appendText("Permission not granted", true);
-		}
-	})
-	.catch(err => {
-		console.log("Cought error: " + err.message);
-		console.log("Camera permission is necessary for this website to work, if you are on an IPhone, please go to your settings and grant camera permissions.")
-		appendText("Unable to show deviceId, because camera permission is necessary. If you denied access or are on an IPhone, please go to your settings and grant camera permissions.", true);
-		appendText("Error: " + err.message);
-	});
+    appendText(`DeviceId: ${deviceId}`, true);
 </script>
