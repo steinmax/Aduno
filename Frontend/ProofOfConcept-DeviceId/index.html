@@ -62,6 +62,10 @@
             saveDeviceIdToStorage(result.deviceId);
 
         deviceId = result.deviceId;
+        appendText("Logged in: " + deviceId, true);
+
+        setTimeout(() => window.location.reload(true), 5000);
+        appendText("reloading page in 5 sec");
     }
 
 	//------Entrypoint-----------------------------------------------------------------------
@@ -71,10 +75,9 @@
         if(deviceId == undefined) {
             appendText("Not logged in...", true);
             login();
-            appendText("Logged in: " + deviceId, true);
+        } else {
+            appendText(`DeviceId: ${deviceId}`, true);
         }
-
-        appendText(`DeviceId: ${deviceId}`, true);
     } catch(error) {
         appendText(error, true);
     }
