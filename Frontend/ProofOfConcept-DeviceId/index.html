@@ -65,14 +65,18 @@
     }
 
 	//------Entrypoint-----------------------------------------------------------------------
+    try {
+        var deviceId = readDeviceIdFromStorage();
 
-    var deviceId = readDeviceIdFromStorage();
+        if(deviceId == undefined) {
+            appendText("Not logged in...", true);
+            login();
+            appendText("Logged in: " + deviceId, true);
+        }
 
-    if(deviceId == undefined) {
-        appendText("Not logged in...", true);
-        login();
-        appendText("Logged in: " + deviceId, true);
+        appendText(`DeviceId: ${deviceId}`, true);
+    } catch(error) {
+        appendText(error, true);
     }
 
-    appendText(`DeviceId: ${deviceId}`, true);
 </script>
