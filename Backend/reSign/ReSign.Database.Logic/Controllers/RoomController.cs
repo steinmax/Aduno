@@ -1,4 +1,6 @@
-﻿namespace ReSign.Database.Logic.Controllers
+﻿using ReSign.Database.Logic.Entities.General;
+
+namespace ReSign.Database.Logic.Controllers
 {
     public sealed class RoomController : GenericController<Room>
     {

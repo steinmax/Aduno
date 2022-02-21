@@ -1,6 +1,7 @@
 ﻿//@BaseCode
 //MdStart
 
+using CommonBase.Extensions;
 using System.Reflection;
 
 namespace ReSign.Common.Logic.Extensions
