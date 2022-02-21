@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ReSign.Database.Logic.Entities.Base;
+﻿using ReSign.Database.Logic.Entities.Base;
 using ReSign.Database.Logic.Entities.General;
 using ReSign.Database.Logic.Enumerations;
 using System.ComponentModel.DataAnnotations;
@@ -10,13 +9,22 @@ namespace ReSign.Database.Logic.Entities.PresenceSystem;
 [Table("User"), Index(nameof(FirstName), nameof(LastName), nameof(OrganisationId))]
 public class User : VersionEntity
 {
-    [Required(), MaxLength(128)]
+    [Required, MaxLength(128)]
     public string FirstName { get; set; } = string.Empty;
 
-    [Required(), MaxLength(128)]
+    [Required, MaxLength(128)]
     public string LastName { get; set; } = string.Empty;
 
-    [Required()]
+    [Required]
+    public string GUID { get; set; } = string.Empty;        //Replaces the deviceId of previous concepts
+
+    [Required]
+    public string Username { get; set; } = string.Empty;
+
+    [Required]
+    public string Password { get; set; } = string.Empty;
+
+    [Required]
     public Role Role { get; set; } = Role.Member;
 
     //reference
@@ -24,6 +32,4 @@ public class User : VersionEntity
 
     //navigation
     public Organisation? Organisation { get; set; }
-    public List<Device> Devices { get; set; } = new();
-
 }
