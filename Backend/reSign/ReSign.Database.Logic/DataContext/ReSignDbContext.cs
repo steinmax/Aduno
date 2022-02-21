@@ -29,21 +29,9 @@ namespace ReSign.Database.Logic.DataContext
 
         public DbSet<Organisation>? OrganisationSet { get; set; }
         public DbSet<Room>? RoomSet { get; set; }
-        public DbSet<Device>? DeviceSet { get; set; }
         public DbSet<Interaction>? InteractionSet { get; set; }
         public DbSet<QRToken>? QRTokenSet { get; set; }
         public DbSet<User>? UserSet { get; set; }
-
-        /*
-        public ReSignDbContext(DbContextOptions<ReSignDbContext> options) : base(options)
-        {
-        }
-
-        public ReSignDbContext()
-        {
-
-        }
-        */
 
         public DbSet<E> GetDbSet<E>() where E : IdentityEntity
         {
@@ -56,10 +44,6 @@ namespace ReSign.Database.Logic.DataContext
             else if(typeof(E) == typeof(Room))
             {
                 result = RoomSet as DbSet<E>;
-            }
-            else if (typeof(E) == typeof(Device))
-            {
-                result = DeviceSet as DbSet<E>;
             }
             else if (typeof(E) == typeof(Interaction))
             {
