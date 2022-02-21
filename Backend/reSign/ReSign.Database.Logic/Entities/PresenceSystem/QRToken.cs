@@ -16,15 +16,11 @@ namespace ReSign.Database.Logic.Entities.PresenceSystem
         public DateTime DateCreated { get; set; } = DateTime.Now;
         [Required]
         public bool IsValid { get; set; } = true;
-
-        [Column("UsedByDeviceId")]
-        public int? DeviceId { get; set; }
         
         public int? DisplayId { get; set; }
 
      
         //navigation
-        public Device? UsedByDevice { get; set; }
         public Display? Display { get; set; }
     }
 }
