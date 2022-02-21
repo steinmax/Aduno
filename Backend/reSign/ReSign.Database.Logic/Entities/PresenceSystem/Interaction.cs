@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ReSign.Database.Logic.Entities.PresenceSystem;
 
-[Table("Timestamp")]
+[Table("Interaction")]
 public class Interaction : VersionEntity
 {
     [Required]
@@ -19,8 +19,11 @@ public class Interaction : VersionEntity
     public int UserId { get; set; }
     [Required]
     public int RoomId { get; set; }
+    [Required]
+    public int QRTokenId { get; set; }
 
     //navigations
     public User? User { get; set; }
     public Room? Room { get; set; }
+    public QRToken? QRToken { get; set; }
 }
