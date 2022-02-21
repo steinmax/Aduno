@@ -20,7 +20,7 @@ public class Room : VersionEntity
 
     //relations
     [Required]
-    public int OranisationId { get; set; }
+    public int OrganisationId { get; set; }
 
     //navigation
     public Organisation? Organisation { get; set; }
