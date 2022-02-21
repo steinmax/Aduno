@@ -15,7 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSign.QRCode.Logic.UnitTes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSign.WebAPI", "ReSign.WebAPI\ReSign.WebAPI.csproj", "{760A5A63-A646-451E-91E0-200D29B86352}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReSign.Common.Logic", "ReSign.Common.Logic\ReSign.Common.Logic.csproj", "{1A605DEE-EC43-48B8-8DE2-853C4C078559}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSign.Common.Logic", "ReSign.Common.Logic\ReSign.Common.Logic.csproj", "{1A605DEE-EC43-48B8-8DE2-853C4C078559}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B2F2C6F8-FDEC-4A44-954A-9A0306421667}"
+	ProjectSection(SolutionItems) = preProject
+		BusinessRules.md = BusinessRules.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
