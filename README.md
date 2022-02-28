@@ -20,7 +20,7 @@ Das Backend und der REST Service wir in C# verfasst und die Datenbank(postgresql
 Das alles läuft auf der Oracel VM. Die Schnittstellen kommunizieren mit dem REST Service und die Endpoints werden so angesteuert.
 
 ### Organisation
-**Productowner**
+**Product owner**
 - Prof. Hammer 
 - Prof. Aberger
 
