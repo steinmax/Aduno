@@ -48,7 +48,7 @@
         const result = {
             "user": formUser.value,
             "pass": formPasswd.value,
-            //"deviceId": undefined
+            "deviceId": undefined
         }
 
         appendText(JSON.stringify(result), true);
@@ -57,15 +57,20 @@
 
         //Usually fetch deviceId of user from database
         //  Testing purposes -> Hardcode deviceId associated with account "admin"
-        if(result.user === "admin" && result.pass === "password")
+        if(result.user === "admin" && result.pass === "password") {
             result.deviceId = "e42808c7-d300-47f3-a42d-bf5ad9f595e1";
             saveDeviceIdToStorage(result.deviceId);
+        }
 
         deviceId = result.deviceId;
-        appendText("Logged in: " + deviceId, true);
-
-        setTimeout(() => window.location.reload(true), 5000);
-        appendText("reloading page in 5 sec");
+        if(deviceId != undefined){
+            appendText("Logged in: " + deviceId, true);
+            setTimeout(() => window.location.reload(true), 5000);
+            appendText("reloading page in 5 sec");
+        }
+        else{
+            appendText("No suitable account");
+        }
     }
 
 	//------Entrypoint-----------------------------------------------------------------------
