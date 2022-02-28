@@ -48,7 +48,7 @@
         const result = {
             "user": formUser.value,
             "pass": formPasswd.value,
-            "deviceId": undefined
+            //"deviceId": undefined
         }
 
         appendText(JSON.stringify(result), true);
@@ -72,7 +72,7 @@
     try {
         var deviceId = readDeviceIdFromStorage();
 
-        if(deviceId == undefined) {
+        if(deviceId == undefined || deviceId === undefined) {
             appendText("Not logged in...", true);
             login();
         } else {
