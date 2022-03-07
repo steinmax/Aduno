@@ -12,7 +12,7 @@ using ReSign.Database.Logic.DataContext;
 namespace ReSign.Database.Logic.Migrations
 {
     [DbContext(typeof(ReSignDbContext))]
-    [Migration("20220210190422_InitDb")]
+    [Migration("20220307122357_InitDb#")]
     partial class InitDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,12 +32,6 @@ namespace ReSign.Database.Logic.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("bytea");
-
                     b.HasKey("Id");
 
                     b.ToTable("Display");
@@ -54,12 +48,6 @@ namespace ReSign.Database.Logic.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("bytea");
 
                     b.HasKey("Id");
 
@@ -87,57 +75,17 @@ namespace ReSign.Database.Logic.Migrations
                     b.Property<string>("Notes")
                         .HasColumnType("text");
 
-                    b.Property<int>("OranisationId")
-                        .HasColumnType("integer");
-
-                    b.Property<int?>("OrganisationId")
+                    b.Property<int>("OrganisationId")
                         .HasColumnType("integer");
 
                     b.Property<int>("RoomNumber")
                         .HasColumnType("integer");
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("bytea");
 
                     b.HasKey("Id");
 
                     b.HasIndex("OrganisationId");
 
                     b.ToTable("Room");
-                });
-
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.PresenceSystem.Device", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("bytea");
-
-                    b.Property<string>("UniqueId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UniqueId")
-                        .IsUnique();
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Device");
                 });
 
             modelBuilder.Entity("ReSign.Database.Logic.Entities.PresenceSystem.Interaction", b =>
@@ -151,14 +99,11 @@ namespace ReSign.Database.Logic.Migrations
                     b.Property<DateTime>("DateTime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int>("RoomId")
+                    b.Property<int>("QRTokenId")
                         .HasColumnType("integer");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("bytea");
+                    b.Property<int>("RoomId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Type")
                         .HasColumnType("integer");
@@ -168,11 +113,13 @@ namespace ReSign.Database.Logic.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("QRTokenId");
+
                     b.HasIndex("RoomId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Timestamp");
+                    b.ToTable("Interaction");
                 });
 
             modelBuilder.Entity("ReSign.Database.Logic.Entities.PresenceSystem.QRToken", b =>
@@ -186,29 +133,17 @@ namespace ReSign.Database.Logic.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("DeviceId")
-                        .HasColumnType("integer")
-                        .HasColumnName("UsedByDeviceId");
-
                     b.Property<int?>("DisplayId")
                         .HasColumnType("integer");
 
                     b.Property<bool>("IsValid")
                         .HasColumnType("boolean");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("bytea");
-
                     b.Property<string>("Token")
                         .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DeviceId");
 
                     b.HasIndex("DisplayId");
 
@@ -231,6 +166,10 @@ namespace ReSign.Database.Logic.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("character varying(128)");
 
+                    b.Property<string>("GUID")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasMaxLength(128)
@@ -239,14 +178,16 @@ namespace ReSign.Database.Logic.Migrations
                     b.Property<int>("OrganisationId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<int>("Role")
                         .HasColumnType("integer");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
+                    b.Property<string>("Username")
                         .IsRequired()
-                        .ValueGeneratedOnAddOrUpdate()
-                        .HasColumnType("bytea");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
@@ -261,24 +202,21 @@ namespace ReSign.Database.Logic.Migrations
                 {
                     b.HasOne("ReSign.Database.Logic.Entities.General.Organisation", "Organisation")
                         .WithMany("Rooms")
-                        .HasForeignKey("OrganisationId");
+                        .HasForeignKey("OrganisationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Organisation");
                 });
 
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.PresenceSystem.Device", b =>
+            modelBuilder.Entity("ReSign.Database.Logic.Entities.PresenceSystem.Interaction", b =>
                 {
-                    b.HasOne("ReSign.Database.Logic.Entities.PresenceSystem.User", "User")
-                        .WithMany("Devices")
-                        .HasForeignKey("UserId")
+                    b.HasOne("ReSign.Database.Logic.Entities.PresenceSystem.QRToken", "QRToken")
+                        .WithMany()
+                        .HasForeignKey("QRTokenId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.PresenceSystem.Interaction", b =>
-                {
                     b.HasOne("ReSign.Database.Logic.Entities.General.Room", "Room")
                         .WithMany()
                         .HasForeignKey("RoomId")
@@ -291,6 +229,8 @@ namespace ReSign.Database.Logic.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("QRToken");
+
                     b.Navigation("Room");
 
                     b.Navigation("User");
@@ -298,17 +238,11 @@ namespace ReSign.Database.Logic.Migrations
 
             modelBuilder.Entity("ReSign.Database.Logic.Entities.PresenceSystem.QRToken", b =>
                 {
-                    b.HasOne("ReSign.Database.Logic.Entities.PresenceSystem.Device", "UsedByDevice")
-                        .WithMany()
-                        .HasForeignKey("DeviceId");
-
                     b.HasOne("ReSign.Database.Logic.Entities.General.Display", "Display")
                         .WithMany()
                         .HasForeignKey("DisplayId");
 
                     b.Navigation("Display");
-
-                    b.Navigation("UsedByDevice");
                 });
 
             modelBuilder.Entity("ReSign.Database.Logic.Entities.PresenceSystem.User", b =>
@@ -327,11 +261,6 @@ namespace ReSign.Database.Logic.Migrations
                     b.Navigation("Rooms");
 
                     b.Navigation("Users");
-                });
-
-            modelBuilder.Entity("ReSign.Database.Logic.Entities.PresenceSystem.User", b =>
-                {
-                    b.Navigation("Devices");
                 });
 #pragma warning restore 612, 618
         }
