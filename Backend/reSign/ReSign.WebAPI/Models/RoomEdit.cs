@@ -8,5 +8,6 @@ namespace ReSign.WebAPI.Models
         public Floor Floor { get; set; }
         public int RoomNumber { get; set; }
         public string? Notes { get; set; }
+        public int OranisationId { get; set; }
     }
 }
