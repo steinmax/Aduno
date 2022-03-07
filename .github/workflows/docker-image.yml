@@ -10,5 +10,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    - name:
+      run: pwd
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag resign-backend:latest
