@@ -1,0 +1,16 @@
+name: Docker Image CI
+
+on:
+  push:
+    paths: 'Backend/reSign/**'
+
+jobs:
+  build-docker:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build API docker image
+      run: |
+        cd Backend/reSign/ReSign.WebAPI
+        docker build . --file Dockerfile --tag resign-backend:latest

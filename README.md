@@ -31,3 +31,5 @@ Das alles läuft auf der Oracel VM. Die Schnittstellen kommunizieren mit dem RES
 - Edalathkah Arsham
 - Rausch-Schott Simon
 - Siegl Maximilian
+
+[![Docker Image CI](https://github.com/steinmax/reSign/actions/workflows/docker-image.yml/badge.svg)](https://github.com/steinmax/reSign/actions/workflows/docker-image.yml)
