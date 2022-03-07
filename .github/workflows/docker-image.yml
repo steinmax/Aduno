@@ -12,7 +12,6 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build API docker image
       run: |
-        ls
-        cd reSign/Backend/reSign/ReSign.WebAPI
+        cd Backend/reSign/ReSign.WebAPI
         pwd
-
+        ls
