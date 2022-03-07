@@ -2,7 +2,12 @@
 const url = "resign.byiconic.at/api";
 const user = readFromLocalStorage(userId);
 
+if(user == undefined) {
+  //Prompt the user to login
+}
 
+
+//Functions from here
 function readFromLocalStorage(keyword) {
   try{
     let result = localStorage.getItem(keyword);
