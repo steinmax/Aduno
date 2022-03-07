@@ -1,10 +1,22 @@
 
 const url = "resign.byiconic.at/api";
+const user = readFromLocalStorage(userId);
 
+if(user == undefined) {
+  //Prompt the user to login
+  prompt("Need to login");
+}
+
+
+//Functions from here
 function readFromLocalStorage(keyword) {
+  try{
     let result = localStorage.getItem(keyword);
-
     return result;
+  }catch(error) {
+    console.error(error);
+    return undefined;
+  }
 }
 
 function writeToLocalStorage(keyword, value) {
@@ -16,6 +28,7 @@ function writeToLocalStorage(keyword, value) {
     localStorage.setItem(keyword, value);
 }
 
+//[Async] function that returns a Promise of the response
 function getResponse(httpverb, urlext, body){
     //check parameters
     const httpMethod = httpverb.toUpperCase();
@@ -48,11 +61,12 @@ function getResponse(httpverb, urlext, body){
     return fetch(reqUrl, request);
 }
 
+//function that checks if the given user and password represent an existing user in our system
 async function login(username, password) {
     const reqUrl = url + "/users/login";
 
     const response = await fetch(reqUrl, {
-        method: 'GET', // *GET, POST, PUT, DELETE, etc.
+        method: 'POST', // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
         credentials: 'same-origin', // include, *same-origin, omit
@@ -70,7 +84,11 @@ async function login(username, password) {
     return response;
 }
 
-//Gets the current status of the user, if he is checked in or checked out currently
-function getCurrentStatus() {
-    
+//Gets the current status of the user, if he is checked in or checked out currently (or undefined if not logged in)
+async function getCurrentStatus() {
+  if(userId == undefined)
+    return undefined;
+
+  const response = await (await getResponse("GET", `/users/status/${userId}`, undefined)).json();
+  return 
 }
