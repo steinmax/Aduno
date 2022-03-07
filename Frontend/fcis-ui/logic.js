@@ -4,6 +4,7 @@ const user = readFromLocalStorage(userId);
 
 if(user == undefined) {
   //Prompt the user to login
+  prompt("Need to login");
 }
 
 
