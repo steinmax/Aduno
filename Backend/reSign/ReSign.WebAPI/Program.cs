@@ -21,6 +21,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//Enable once we know how to run it in parallel to nginx (port 80)
 //app.UseHttpsRedirection();
 
 app.UseAuthorization();
