@@ -12,5 +12,5 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build API docker image
       run: |
-        cd Backend/reSign/ReSign.WebAPI
+        cd Backend
         docker build . --file Dockerfile --tag resign-backend:latest
