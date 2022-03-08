@@ -13,4 +13,7 @@ jobs:
     - name: Build API docker image
       run: |
         cd Backend/reSign
-        docker build . --file Dockerfile --tag resign-backend:latest
+        docker login -u ${{ secrets.DOCKER_USER }} -p ${{ secrets.DOCKER_PASS }}
+        docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USER }}/${{ secrets.DOCKER_IMAGE }}:latest
+        docker push ${{ secrets.DOCKER_USER }}/${{ secrets.DOCKER_IMAGE }}
+        docker logout
