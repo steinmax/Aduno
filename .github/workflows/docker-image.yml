@@ -3,6 +3,7 @@ name: Docker Image CI
 on:
   push:
     paths: 'Backend/reSign/**'
+  workflow_dispatch:
 
 env:
   DOCKER_USER: nydery
