@@ -1,10 +1,16 @@
 
-const url = "resign.byiconic.at/api";
-const user = readFromLocalStorage(userId);
+const URL = "https://resign.byiconic.at/api";
+const USER = readFromLocalStorage(LOCALSTORAGE_KEY);
+const LOCALSTORAGE_KEY = "userId";
 
 if(user == undefined) {
   //Prompt the user to login
   prompt("Need to login");
+  showLoginPage();
+}
+else {
+  //CheckIn or CheckOut
+  //....
 }
 
 
@@ -61,8 +67,22 @@ function getResponse(httpverb, urlext, body){
     return fetch(reqUrl, request);
 }
 
+function login(username, password) {
+  getLoginResponse(username, password).then(res => {
+    if (res.ok){
+      //Save userId to localstorage
+      
+      writeToLocalStorage(LOCALSTORAGE_KEY, /*res.json().userId*/);
+    }
+    else {
+      //Show "failed to login" message
+      console.error("Failed to login, username or password wrong?");
+    }
+  });
+}
+
 //function that checks if the given user and password represent an existing user in our system
-async function login(username, password) {
+async function getLoginResponse(username, password) {
     const reqUrl = url + "/users/login";
 
     const response = await fetch(reqUrl, {
@@ -90,5 +110,5 @@ async function getCurrentStatus() {
     return undefined;
 
   const response = await (await getResponse("GET", `/users/status/${userId}`, undefined)).json();
-  return 
+  
 }
