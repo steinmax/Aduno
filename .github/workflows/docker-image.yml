@@ -46,7 +46,7 @@ jobs:
             alias: server
 
       - name: Remove existing container
-        run: docker rm ${{ env.DOCKER_CONTAINER }}
+        run: ssh server "sudo docker rm ${{ env.DOCKER_CONTAINER }}"
 
       - name: Create docker container
         run: ssh server "sudo docker run -d --name ${{ env.DOCKER_CONTAINER }} -p 8080:80 -p 8081:443 ${{ env.DOCKER_USER }}/${{ env.DOCKER_IMAGE }}:latest"
