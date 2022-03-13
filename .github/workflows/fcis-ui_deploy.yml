@@ -3,13 +3,26 @@ name: Frontend-UI CD
 on: 
   push:
     paths: 'Frontend/fcis-ui/**'
-    
+  workflow_dispatch:
+
 jobs:
   deploy-website:
     runs-on: ubuntu-latest
 
-    steps:
+    steps:    
     - uses: actions/checkout@v1
+    
+#    - name: Install ssh key
+#      uses: caberger/install-ssh-key@v1.0
+#      with:
+#        ssh-private-key:  ${{ secrets.SSH_PRIVATE_KEY }}
+#        user: ${{ secrets.REMOTE_USER }}
+#        server: ${{ secrets.REMOTE_HOST }}
+#        alias: server
+    
+#    - name: Create target folder if not exists
+#      run: ssh server "[ ! -d "${{ secrets.REMOTE_TARGET }}" ] && sudo mkdir ${{ secrets.REMOTE_TARGET }} && sudo chmod 777 ${{ secrets.REMOTE_TARGET }}"
+    
     - name: Deploy to OraVM
       uses: easingthemes/ssh-deploy@main
       env:
