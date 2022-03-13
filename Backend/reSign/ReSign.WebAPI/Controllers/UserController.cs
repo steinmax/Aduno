@@ -80,7 +80,7 @@ namespace ReSign.WebAPI.Controllers
             return entity == null ? NotFound() : Ok(ToModel(entity));
         }
 
-        [Route("check")]
+        [Route("/api/check")]
         [HttpGet()]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
