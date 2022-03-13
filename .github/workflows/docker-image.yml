@@ -47,7 +47,7 @@ jobs:
 
       - name: Remove existing container
         run: |
-          ssh server "sudo docker stop ${{ env.DOCKER_CONTAINER }} || echo 'Container doesn't exist!'"
+          ssh server "sudo docker stop ${{ env.DOCKER_CONTAINER }} || echo 'Container doesnt exist!'"
           ssh server "sudo docker rm ${{ env.DOCKER_CONTAINER }} || echo 'No container to remove'"
 
       - name: Create docker container
