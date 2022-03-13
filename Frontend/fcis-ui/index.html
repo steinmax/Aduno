@@ -100,13 +100,15 @@
 	<script src="logic.js"></script>
 
 	<script>
-		function callLogin() {
+		async function callLogin() {
 			const username = document.getElementById("usernameInput").value;
 			const password = document.getElementById("passwordInput").value;
 
-			const res = login(username, password);
+			const res = await login(username, password);
 
 			//Do something with the response
+			if(res === false)
+				prompt("Failed to login!");
 		}
 	</script>
 </body>
