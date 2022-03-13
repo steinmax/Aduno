@@ -18,7 +18,7 @@ namespace ReSign.Database.Logic.DataContext
         #endregion
 
         #region Testing purposes only: PostgreSQL
-        private static string ConnectStr => "User ID=resign;Password=@bb$3O1QM?;Host=193.122.4.14;Port=5432;Database=resign;";
+        private static string ConnectStr => "User ID=resign;Password=@bb$3O1QM?;Host=144.24.177.22;Port=5432;Database=resign;";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
