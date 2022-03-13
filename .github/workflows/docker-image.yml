@@ -45,4 +45,4 @@ jobs:
             alias: server
 
       - name: Create docker container
-        run: ssh server "sudo docker run --name resign-backend -p 8080:80 -p 8081:443 ${{ env.DOCKER_USER }}/${{ env.DOCKER_IMAGE }}:latest"
+        run: ssh server "sudo docker run -d --name resign-backend -p 8080:80 -p 8081:443 ${{ env.DOCKER_USER }}/${{ env.DOCKER_IMAGE }}:latest"
