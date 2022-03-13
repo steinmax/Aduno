@@ -46,7 +46,7 @@ function getResponse(httpverb, urlext, body){
 
 
     //Build the request 🔥
-    const reqUrl = url + urlext;
+    const reqUrl = URL + urlext;
     const request = {
         method: httpMethod, // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
@@ -86,7 +86,7 @@ async function login(username, password) {
 
 //function that checks if the given user and password represent an existing user in our system
 async function getLoginResponse(username, password) {
-    const reqUrl = url + "/user/check";
+    const reqUrl = URL + "/user/check";
 
     const response = await fetch(reqUrl, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
