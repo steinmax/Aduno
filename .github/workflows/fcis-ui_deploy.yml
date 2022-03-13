@@ -15,7 +15,7 @@ jobs:
     - name: Install ssh key
       uses: caberger/install-ssh-key@v1.0
       with:
-        ssh-private-key:  ${{ secrets.SSH_PRIVATE_KEY }
+        ssh-private-key:  ${{ secrets.SSH_PRIVATE_KEY }}
         user: ${{ secrets.REMOTE_USER }}
         server: ${{ secrets.REMOTE_HOST }}
         alias: server
