@@ -73,7 +73,7 @@ async function login(username, password) {
   if (res.ok){
     //Save userId to localstorage
     
-    writeToLocalStorage(LOCALSTORAGE_KEY, res.json().guid);
+    writeToLocalStorage(LOCALSTORAGE_KEY, user.guid);
     return true;
   }
   else {
