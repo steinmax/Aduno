@@ -8,6 +8,7 @@ on:
 env:
   DOCKER_USER: nydery
   DOCKER_IMAGE: resign_backend
+  DOCKER_CONTAINER: resign-backend
   
 
 jobs:
@@ -44,5 +45,8 @@ jobs:
             server: ${{ secrets.REMOTE_HOST }}
             alias: server
 
+      - name: Remove existing container
+        run: docker rm ${{ env.DOCKER_CONTAINER }}
+
       - name: Create docker container
-        run: ssh server "sudo docker run -d --name resign-backend -p 8080:80 -p 8081:443 ${{ env.DOCKER_USER }}/${{ env.DOCKER_IMAGE }}:latest"
+        run: ssh server "sudo docker run -d --name ${{ env.DOCKER_CONTAINER }} -p 8080:80 -p 8081:443 ${{ env.DOCKER_USER }}/${{ env.DOCKER_IMAGE }}:latest"
