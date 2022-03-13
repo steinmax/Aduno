@@ -102,7 +102,7 @@ async function getLoginResponse(username, password) {
       //body: JSON.stringify(reqBody) // body data type must match "Content-Type" header
     });
 
-    user = response.json();
+    user = await response.json();
     return response;
 }
 
