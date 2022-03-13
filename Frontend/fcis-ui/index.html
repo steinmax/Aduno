@@ -106,6 +106,8 @@
 
 			const res = await login(username, password);
 
+			console.log(user);
+
 			//Do something with the response
 			if(res === false)
 				prompt("Failed to login!");

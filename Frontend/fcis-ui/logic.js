@@ -1,7 +1,6 @@
-
 const URL = "https://resign.byiconic.at/api";
 const LOCALSTORAGE_KEY = "userId";
-const user = readFromLocalStorage(LOCALSTORAGE_KEY);
+let user = readFromLocalStorage(LOCALSTORAGE_KEY);
 
 if(user == undefined) {
   //Prompt the user to login
@@ -103,6 +102,7 @@ async function getLoginResponse(username, password) {
       //body: JSON.stringify(reqBody) // body data type must match "Content-Type" header
     });
 
+    user = response.json();
     return response;
 }
 
