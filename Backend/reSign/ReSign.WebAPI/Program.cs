@@ -15,12 +15,11 @@ builder.Services.AddTransient<ReSign.Database.Logic.Controllers.UserController>(
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-//Enable swagger also for production
-//if (app.Environment.IsDevelopment())
-//{
+if (app.Environment.IsDevelopment())
+{
     app.UseSwagger();
     app.UseSwaggerUI();
-//}
+}
 
 //Enable once we know how to run it in parallel to nginx (port 80)
 //app.UseHttpsRedirection();
