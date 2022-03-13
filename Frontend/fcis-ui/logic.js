@@ -1,7 +1,7 @@
 
 const URL = "https://resign.byiconic.at/api";
 const LOCALSTORAGE_KEY = "userId";
-const USER = readFromLocalStorage(LOCALSTORAGE_KEY);
+const user = readFromLocalStorage(LOCALSTORAGE_KEY);
 
 if(user == undefined) {
   //Prompt the user to login
