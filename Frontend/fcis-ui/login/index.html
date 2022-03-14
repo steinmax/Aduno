@@ -100,6 +100,12 @@
 	<script src="../logic.js"></script>
 
 	<script>
+		//check if logged in
+		if(isLoggedIn()) {
+			//if logged in, redirect to starting page
+			window.location.replace(URL);
+		}
+
 		async function callLogin() {
 			const username = document.getElementById("usernameInput").value;
 			const password = document.getElementById("passwordInput").value;

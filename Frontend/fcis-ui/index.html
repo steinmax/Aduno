@@ -1,0 +1,14 @@
+<script>
+    const LOGIN_HREF = URL + "/login";
+
+    //check if already logged in
+    if(isLoggedIn()) {
+        //If not logged in, redirect to login page
+        window.location.replace(LOGIN_HREF);
+    }
+
+    prompt("Already logged in, ready to check in/out.");
+
+</script>
+
+<script src="logic.js"></script>
