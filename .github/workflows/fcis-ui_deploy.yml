@@ -21,7 +21,7 @@ jobs:
         alias: server
     
     - name: Remove all files not existing in new deploy
-      run: for filename in Frontend/fcis-ui; do ssh server "if [[ ! -f $filename ]]; then echo 'Delete $filename' fi "; done
+      run: for filename in Frontend/fcis-ui; do echo "$filename"; done
     
     - name: Deploy to OraVM
       uses: easingthemes/ssh-deploy@main
