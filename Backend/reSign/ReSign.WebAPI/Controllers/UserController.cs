@@ -97,7 +97,7 @@ namespace ReSign.WebAPI.Controllers
         }
 
         /// <summary>
-        /// Adds a model.
+        /// Adds a user (Register)
         /// </summary>
         /// <param name="model">Model to add</param>
         /// <returns>Data about the created model (including primary key)</returns>
