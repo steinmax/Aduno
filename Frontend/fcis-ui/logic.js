@@ -1,17 +1,7 @@
-const URL = "https://resign.byiconic.at/api";
+const URL = "https://resign.byiconic.at";
+const API_URL = URL + "/api";
+
 const LOCALSTORAGE_KEY = "userId";
-let user = readFromLocalStorage(LOCALSTORAGE_KEY);
-
-if(user == undefined) {
-  //Prompt the user to login
-  prompt("Need to login");
-  showLoginPage();
-}
-else {
-  //CheckIn or CheckOut
-  //....
-}
-
 
 //Functions from here
 function readFromLocalStorage(keyword) {
@@ -33,6 +23,15 @@ function writeToLocalStorage(keyword, value) {
     localStorage.setItem(keyword, value);
 }
 
+function isLoggedIn() {
+  let user = readFromLocalStorage(LOCALSTORAGE_KEY);
+
+  if(user === undefined)
+    return false;
+
+  return true;
+}
+
 //[Async] function that returns a Promise of the response
 function getResponse(httpverb, urlext, body){
     //check parameters
@@ -45,7 +44,7 @@ function getResponse(httpverb, urlext, body){
 
 
     //Build the request 🔥
-    const reqUrl = URL + urlext;
+    const reqUrl = API_URL + urlext;
     const request = {
         method: httpMethod, // *GET, POST, PUT, DELETE, etc.
         mode: 'cors', // no-cors, *cors, same-origin
@@ -85,7 +84,7 @@ async function login(username, password) {
 
 //function that checks if the given user and password represent an existing user in our system
 async function getLoginResponse(username, password) {
-    const reqUrl = URL + "/user/check";
+    const reqUrl = API_URL + "/user/check";
 
     const response = await fetch(reqUrl, {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
