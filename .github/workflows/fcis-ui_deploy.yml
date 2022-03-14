@@ -20,8 +20,12 @@ jobs:
         server: ${{ secrets.REMOTE_HOST }}
         alias: server
     
-    - name: Remove all files not existing in new deploy
-      run: for filename in ./Frontend/fcis-ui; do echo "$filename"; done
+    - name: Remove and recreate existing target folder
+      run: |
+        ssh server "sudo rm -rf ${{ secrets.REMOTE_TARGET }}"
+        ssh server "sudo mkdir ${{ secrets.REMOTE_TARGET }}"
+        ssh server "sudo chmod 777 ${{ secrets.REMOTE_TARGET }}"
+      
     
     - name: Deploy to OraVM
       uses: easingthemes/ssh-deploy@main
