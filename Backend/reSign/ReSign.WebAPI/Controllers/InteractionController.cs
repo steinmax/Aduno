@@ -12,6 +12,15 @@ namespace ReSign.WebAPI.Controllers
         public InteractionController(Database.Logic.Controllers.InteractionController controller) : base(controller)
         {
         }
+        
+        [HttpPost]
+        public override Task<ActionResult<InteractionModel>> PostAsync([FromBody] InteractionEdit model)
+        {
+            var ctrl = EntityController as Database.Logic.Controllers.InteractionController;
+
+
+            return base.PostAsync(model);
+        }
     }
 }
  
