@@ -91,7 +91,8 @@ async function register(username, firstname, lastname, password, confirmPassword
 
   const res = await getRegisterResponse(username, firstname, lastname, password);
 
-  console.log("register response: " + res);
+  console.log("register response: ");
+  console.log(res);
 
   if(res.ok){
     return true;
