@@ -82,6 +82,31 @@ async function login(username, password) {
   }  
 }
 
+async function getRegisterResponse(username, firstname, lastname, password){
+  const reqUrl = API_URL + "/user";
+  const reqBody = {
+    "username" : username,
+    "firstname" : firstname,
+    "lastname" : lastname,
+    "organisationId" : 1
+  }
+    const response = await fetch(reqUrl, {
+      method: 'POST', // *GET, POST, PUT, DELETE, etc.
+      mode: 'cors', // no-cors, *cors, same-origin
+      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+      credentials: 'same-origin', // include, *same-origin, omit
+      headers: {
+        //'Content-Type': 'application/json',
+        'password': password
+      },
+      redirect: 'follow', // manual, *follow, error
+      referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+      body: JSON.stringify(reqBody) // body data type must match "Content-Type" header
+    });
+
+    user = await response.json();
+    return response;
+}
 //function that checks if the given user and password represent an existing user in our system
 async function getLoginResponse(username, password) {
     const reqUrl = API_URL + "/user/check";
