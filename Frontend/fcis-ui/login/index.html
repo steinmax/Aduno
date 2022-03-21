@@ -52,8 +52,7 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<input type="button" class="login100-form-btn" onclick="callLogin()" value="Login">
-							
+						<input id="loginButton" type="button" class="login100-form-btn" onclick="callLogin()" value="Login">
 						</input>
 					</div>
 <!--
@@ -104,6 +103,16 @@
 		if(isLoggedIn()) {
 			//if logged in, redirect to starting page
 			window.location.replace(URL);
+		}
+
+		//Add event listener to click button on enter
+		document.querySelector('#passwordInput').addEventListener('keypress', onEnterInputForm);
+		document.querySelector('#usernameInput').addEventListener('keypress', onEnterInputForm);
+
+		function onEnterInputForm(event){
+			if(e.key === 'Enter') {
+				document.getElementById('loginButton').click();
+			}
 		}
 
 		async function callLogin() {
