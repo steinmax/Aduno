@@ -110,7 +110,7 @@
 		document.querySelector('#usernameInput').addEventListener('keypress', onEnterInputForm);
 
 		function onEnterInputForm(event){
-			if(e.key === 'Enter') {
+			if(event.key === 'Enter') {
 				document.getElementById('loginButton').click();
 			}
 		}
