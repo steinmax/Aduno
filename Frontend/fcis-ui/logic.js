@@ -91,12 +91,12 @@ async function register(username, firstname, lastname, password, confirmPassword
 
   const res = await getRegisterResponse(username, firstname, lastname, password);
 
+  console.log("register response: " + res);
+
   if(res.ok){
-    prompt("Register successfully completed!");
     return true;
   }
-  
-  prompt("Register failed!");
+
   return false;
 }
 
