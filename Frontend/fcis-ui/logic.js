@@ -26,7 +26,7 @@ function writeToLocalStorage(keyword, value) {
 function isLoggedIn() {
   let user = readFromLocalStorage(LOCALSTORAGE_KEY);
 
-  if(user === undefined)
+  if(user == undefined)
     return false;
 
   return true;
