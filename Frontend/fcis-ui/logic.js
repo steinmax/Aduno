@@ -106,7 +106,8 @@ async function getRegisterResponse(username, firstname, lastname, password){
     "username" : username,
     "firstname" : firstname,
     "lastname" : lastname,
-    "organisationId" : 1
+    "organisationId" : 1,
+    "role": 0
   }
     const response = await fetch(reqUrl, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
