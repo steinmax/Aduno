@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using ReSign.Database.Logic.DataContext;
@@ -11,9 +12,10 @@ using ReSign.Database.Logic.DataContext;
 namespace ReSign.Database.Logic.Migrations
 {
     [DbContext(typeof(ReSignDbContext))]
-    partial class ReSignDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220321184114_addUsernameUnique")]
+    partial class addUsernameUnique
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

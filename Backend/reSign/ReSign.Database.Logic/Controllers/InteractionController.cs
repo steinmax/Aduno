@@ -15,13 +15,17 @@ namespace ReSign.Database.Logic.Controllers
 
         //further BL
 
-        public async Task<InteractionType?> GetCurrentInteractionType(int userId)
+        public async Task<Interaction?> GetLastInteraction(int userId)
         {
             using var userController = new UserController(this);
             var user = await userController.GetByIdAsync(userId);
 
             if (user == null)
                 return null;
+
+            var lastInteraction = EntitySet.Where(e => e.UserId == userId).OrderBy(e => e.DateTime).FirstOrDefault();
+
+            return lastInteraction;
         }
     }
 }

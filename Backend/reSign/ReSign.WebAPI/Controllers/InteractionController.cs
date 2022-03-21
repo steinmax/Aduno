@@ -21,6 +21,17 @@ namespace ReSign.WebAPI.Controllers
 
             return base.PostAsync(model);
         }
+
+        [HttpGet("latest/{id}")]
+        public async Task<ActionResult<InteractionModel>> GetLastInteractionAsync(int id)
+        {
+            var ctrl = EntityController as Database.Logic.Controllers.InteractionController;
+
+            if (ctrl == null)
+                throw new Exception("Controller null");
+
+            return ToModel(await ctrl.GetLastInteraction(id));
+        }
     }
 }
  

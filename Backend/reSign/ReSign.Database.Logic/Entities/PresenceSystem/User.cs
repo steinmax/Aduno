@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ReSign.Database.Logic.Entities.PresenceSystem;
 
-[Table("User"), Index(nameof(FirstName), nameof(LastName), nameof(OrganisationId))]
+[Table("User"), Index(nameof(FirstName), nameof(LastName), nameof(OrganisationId)), Index(nameof(Username), IsUnique = true)]
 public class User : VersionEntity
 {
     [Required, MaxLength(128)]
