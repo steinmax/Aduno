@@ -44,7 +44,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Name is required">
-						<input id="usernameInput" class="input100" type="text" name="name" placeholder="Name">
+						<input id="nameInput" class="input100" type="text" name="name" placeholder="Name">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user-circle" aria-hidden="true"></i>
@@ -52,7 +52,7 @@
 					</div>
 
                     <div class="wrap-input100 validate-input" data-validate = "Valid Lastname is required">
-						<input id="usernameInput" class="input100" type="text" name="lastname" placeholder="Lastname">
+						<input id="lastnameInput" class="input100" type="text" name="lastname" placeholder="Lastname">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-id-card-o" aria-hidden="true"></i>
@@ -60,7 +60,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="pass" placeholder="Password">
+						<input id="passwordInput" class="input100" type="password" name="pass" placeholder="Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
@@ -68,7 +68,7 @@
 					</div>
 
                     <div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="confirm pass" placeholder="Confirm Password">
+						<input id="confirmPasswordInput" class="input100" type="password" name="confirm pass" placeholder="Confirm Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-check-circle-o" aria-hidden="true"></i>
@@ -76,10 +76,10 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<input type="button" class="login100-form-btn" onclick="callLogin()" value="Register">
+						<input type="button" class="login100-form-btn" onclick="callRegister()" value="Register">
 						</input>
 					</div>
-<!--
+				<!--
 					<div class="text-center p-t-12">
 						<span class="txt1">
 							Forgot
@@ -104,29 +104,48 @@
 
 	
 <!--===============================================================================================-->	
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="../vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/bootstrap/js/popper.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../vendor/bootstrap/js/popper.js"></script>
+	<script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/select2/select2.min.js"></script>
+	<script src="../vendor/select2/select2.min.js"></script>
 <!--===============================================================================================-->
-	<script src="vendor/tilt/tilt.jquery.min.js"></script>
+	<script src="../vendor/tilt/tilt.jquery.min.js"></script>
 	<script >
 		$('.js-tilt').tilt({
 			scale: 1.1
 		})
 	</script>
 <!--===============================================================================================-->
-	<script src="js/main.js"></script>
+	<script src="../js/main.js"></script>
 
-	<script src="logic.js"></script>
+	<script src="../logic.js"></script>
 
 	<script>
 		//check if already logged in
 		if(isLoggedIn())
 			window.location.replace(URL);
 		//do register
+		async function callRegister(){
+			const username = document.getElementById('usernameInput').value;
+			const firstname = document.getElementById('nameInput').value;
+			const lastname = document.getElementById('lastnameInput').value;
+			const password = document.getElementById('passwordInput').value;
+			const confirmPassword = document.getElementById('confirmPasswordInput').value;
+
+			const res = await register(username, firstname, lastname, password, confirmPassword)
+
+			if(res === false) {
+				prompt("Failed to register!");
+				//Show error message in form
+			}
+			else{
+				//prompt("Sucessfully register in. :)");
+				//redirect to index.html
+				window.location.replace(URL + "/login");
+			}
+		}
 	</script>
 </body>
 </html>
