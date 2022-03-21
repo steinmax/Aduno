@@ -1,0 +1,10 @@
+- Ablaufplan A4 aufzeichnen
+- QRToken nicht mehr notwedig, da man sich nicht mehr als anderer ausgeben kann (CA registrierung)
+- sperren von accounts
+- javascript und nfc?
+- möglichst simple registrierung mittels mobile device => projekt
+
+Vorteile:
+- Zeitersparnis
+- Nie wieder falsche Klassenbucheinträge
+- Einfache (keine App) und schnelle Registrierung
