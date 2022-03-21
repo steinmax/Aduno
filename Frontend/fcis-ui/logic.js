@@ -2,6 +2,7 @@ const URL = "https://resign.byiconic.at";
 const API_URL = URL + "/api";
 
 const LOCALSTORAGE_KEY = "userId";
+const PASSWORDS_NOT_EQUAL = "pass_not_equal";
 
 //Functions from here
 function readFromLocalStorage(keyword) {
@@ -80,6 +81,23 @@ async function login(username, password) {
     console.error("Failed to login, username or password wrong?");
     return false;
   }  
+}
+
+async function register(username, firstname, lastname, password, confirmPassword) {
+  //Check if passwords are equal
+  if(password !== confirmPassword) {
+    return PASSWORDS_NOT_EQUAL;
+  }
+
+  const res = await getRegisterResponse(username, firstname, lastname, password);
+
+  if(res.ok){
+    prompt("Register successfully completed!");
+    return true;
+  }
+  
+  prompt("Register failed!");
+  return false;
 }
 
 async function getRegisterResponse(username, firstname, lastname, password){
