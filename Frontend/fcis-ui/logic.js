@@ -107,8 +107,7 @@ async function getRegisterResponse(username, firstname, lastname, password){
     "username" : username,
     "firstname" : firstname,
     "lastname" : lastname,
-    "organisationId" : 1,
-    "role": 0
+    "organisationId" : 1
   }
     const response = await fetch(reqUrl, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
@@ -116,7 +115,7 @@ async function getRegisterResponse(username, firstname, lastname, password){
       cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
       credentials: 'same-origin', // include, *same-origin, omit
       headers: {
-        //'Content-Type': 'application/json',
+        'Content-Type': 'application/json',
         'password': password
       },
       redirect: 'follow', // manual, *follow, error
