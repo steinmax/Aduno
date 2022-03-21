@@ -115,10 +115,15 @@
 			console.log(user);
 
 			//Do something with the response
-			if(res === false)
+			if(res === false) {
 				prompt("Failed to login!");
-			else
-				prompt("Sucessfully logged in. :)");
+				//Show error message in form
+			}
+			else{
+				//prompt("Sucessfully logged in. :)");
+				//redirect to index.html
+				window.location.replace(URL);
+			}
 		}
 	</script>
 </body>
