@@ -51,6 +51,9 @@
 						</span>
 					</div>
 					
+					<div id="login-fail-msg" hidden>
+						<p>Invalid username or password!</p>
+					</div>
 					<div class="container-login100-form-btn">
 						<input id="loginButton" type="button" class="login100-form-btn" onclick="callLogin()" value="Login">
 						</input>
@@ -127,6 +130,7 @@
 			if(res === false) {
 				prompt("Failed to login!");
 				//Show error message in form
+				document.getElementById("login-fail-msg").hidden=false;
 			}
 			else{
 				//prompt("Sucessfully logged in. :)");
