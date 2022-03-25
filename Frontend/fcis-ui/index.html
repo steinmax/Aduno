@@ -12,21 +12,21 @@
             <div class="container">
                 <div class="card text-white bg-success align-items-center">
                     <img class="img-fluid" src="../images/checkIn.jpg">
-                    <p>Sucessfully checked in</p>
-                    <p id="datetime">23.03.2022 11:41:29</p>
-                    <button class="btn btn-secondary">Confirm</button>
+                    <h1>Sucessfully checked in</h1>
+                    <h3 id="datetime">23.03.2022 11:41:29</h3>
+                    <button class="btn btn-success">Confirm</button>
                 </div>
             </div>
         </section>
 
-        <!-- Card for successful check out-->
-        <section id="checkIn">      <!-- mark as hidden normally-->
+        <!-- Card for successful check in-->
+        <section id="checkOut">      <!-- mark as hidden normally-->
             <div class="container">
                 <div class="card text-white bg-danger align-items-center">
                     <img class="img-fluid" src="../images/checkOut.jpg">
-                    <p>Sucessfully checked out</p>
-                    <p id="datetime">23.03.2022 11:44:42</p>
-                    <button class="btn btn-secondary">Confirm</button>
+                    <h1>Sucessfully checked out</h1>
+                    <h3 id="datetime">23.03.2022 12:35:11</h3>
+                    <button class="btn btn-danger">Confirm</button>
                 </div>
             </div>
         </section>
@@ -43,6 +43,31 @@
         window.location.replace(LOGIN_HREF);
     }
 
-    //prompt("Already logged in, ready to check in/out.");
-    document.write("Check In or out here.");
+    //Read roomId from URL
+    const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+    let roomId = params.roomId;
+
+    if(roomId == null || roomId == undefined){
+        //error, no roomId specified
+        console.error("Error: No roomId specified!");
+        document.write("No room specified...");
+    }
+    else {
+        //Call to API to create Interaction (aka. ckeck in or out)
+        const reqBody = {
+            "userId": USER,
+            "roomId": roomId
+        };
+
+        const reqRes = await getResponse("POST", "/interaction", reqBody);
+
+        //Check response
+        //Not implemented yet
+    }
+
+
+
+
 </script>
