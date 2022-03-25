@@ -4,6 +4,8 @@ const API_URL = URL + "/api";
 const LOCALSTORAGE_KEY = "userId";
 const PASSWORDS_NOT_EQUAL = "pass_not_equal";
 
+let USER;
+
 //Functions from here
 function readFromLocalStorage(keyword) {
   try{
@@ -30,6 +32,7 @@ function isLoggedIn() {
   if(user == undefined)
     return false;
 
+  USER = user;
   return true;
 }
 
@@ -52,8 +55,7 @@ function getResponse(httpverb, urlext, body){
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
         credentials: 'same-origin', // include, *same-origin, omit
         headers: {
-          'Content-Type': 'application/json'
-
+          //'Content-Type': 'application/json'
         },
         redirect: 'follow', // manual, *follow, error
         referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
@@ -61,8 +63,15 @@ function getResponse(httpverb, urlext, body){
     };
 
     //if body is set, add it to the request (as JSON)
-    if(body !== undefined)
-        request.body = JSON.stringify(body);
+    if(body !== undefined) {
+      //Add body
+      request.body = JSON.stringify(body);
+      //Add content-type for body
+      request.headers = {
+        'Content-Type': 'application/json'
+      };
+
+    }
 
     return fetch(reqUrl, request);
 }
@@ -101,6 +110,7 @@ async function register(username, firstname, lastname, password, confirmPassword
   return false;
 }
 
+//function that registers a new user
 async function getRegisterResponse(username, firstname, lastname, password){
   const reqUrl = API_URL + "/user";
   const reqBody = {
@@ -155,5 +165,5 @@ async function getCurrentStatus() {
     return undefined;
 
   const response = await (await getResponse("GET", `/user/status/${userId}`, undefined)).json();
-  
+  //Not finished, maybe obsolete ?..
 }
