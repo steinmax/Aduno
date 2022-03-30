@@ -51,7 +51,7 @@
 						</span>
 					</div>
 					
-					<div id="login-fail-msg" hidden>
+					<div id="login-fail-msg" class="text-center" hidden>
 						<p>Invalid username or password!</p>
 					</div>
 					<div class="container-login100-form-btn">
@@ -128,7 +128,7 @@
 
 			//Do something with the response
 			if(res === false) {
-				prompt("Failed to login!");
+				//prompt("Failed to login!");
 				//Show error message in form
 				document.getElementById("login-fail-msg").hidden=false;
 			}
