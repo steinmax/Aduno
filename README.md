@@ -1,7 +1,7 @@
 # reSign 
 
 ## Unsere Idee
-Das reSign Team möchte, ein einfach zu bedienendes Fast-Check-In-System (FCIS) für viele verschiedene Anwendungsfälle bereitstellen. Mit unserem Projekt wollen wir das Zeitalter des Kartenschleppens und Passwort merken beenden. Mit einer einfachen Handbewegung wird ein QR-Code, mit ihrem mobilen Endgerät gescannt und dadurch den User automatisch angemeldet. Die Idee soll Kunden aber auch den Usern dieser Applikation wichtige Zeit und Geld sparen und somit die Effizienz im Unternehmen steigern.
+Das reSign Team stellt ein einfach zu bedienendes Fast-Check-In-System (FCIS) für viele verschiedene Anwendungsfälle bereit. Mit unserem Projekt werden wir das Zeitalter des Kartenschleppens und Passwort merkens beenden. Mit einer einfachen Handbewegung wird ein QR-Code, mit ihrem mobilen Endgerät gescannt und dadurch den User automatisch angemeldet. Die Idee soll Kunden aber auch den Usern dieser Applikation wichtige Zeit und Geld sparen und somit die Effizienz im Unternehmen steigern.
 
 ### Anwendungsfälle
 
@@ -9,15 +9,15 @@ Was ist ein gutes System ohne Anwendungsfall, nicht brauchbar. Deshalb werden nu
 
 ***Krankenhaus***
 
-Eine Studie hat gezeigt, dass Ärzte in Krankenhäusern mit An/Abmelden in einer 10-Stunden Schicht bis zu 45 Minuten verlieren. Das große Problem ist, dass in Krankenhäusern ein reger Verkehr an PC herrscht, da sich ein Arzt in jedem Zimmer oder zumindest in jeder Abteilung neu anmelden muss um streng vertrauliche Patientendaten einzusehen. Wenn dieser Prozess auf ein Minimum verkleinert werden könnte, würde es den Menschen die behandelt werden müssen sehr weiterhelfen da sich die Ärzte dann nur auf sie konzentrieren könnten und die Ärzte hätten fast eine Stunde weniger Aufwand und mehr Zeit für Pausen oder mehr Zeit Patienten zu helfen. Für solchen Systemen mit sehr hohen Sicherheitsstandart werden wir in nächster Zeit eine höhere Sicherheitsstruktur anbieten.
+Durch An/Abmelden in einem Krankehaus wird durchschnittlich in jeder Schicht bis zu 45 Minuten verloren. Das große Problem ist, dass in Krankenhäusern ein reger Verkehr an PC herrscht, da sich ein Arzt in jedem Zimmer oder zumindest in jeder Abteilung neu anmelden muss um streng vertrauliche Patientendaten einzusehen. Wenn dieser Prozess auf ein Minimum verkleinert werden könnte, würde es den Menschen die behandelt werden müssen sehr weiterhelfen da sich die Ärzte dann nur auf sie konzentrieren könnten und die Ärzte hätten fast eine Stunde weniger Aufwand und mehr Zeit für Pausen oder mehr Zeit Patienten zu helfen. Für solchen Systemen mit sehr hohen Sicherheitsstandart werden wir in nächster Zeit eine höhere Sicherheitsstruktur anbieten.
 
 ***Schule***
 
-Ein weiterer Anwendungsfall wäre eine Schule. Jeden Morgen müssen alle Schüler von einer Lehrkraft als anwesend eigetragen werden. Dieser Vorgang kann einige Minuten dauern, Minuten die kostbare Unterrichtszeit in Anspruch nehmen. Diese Vorgang könnte man ganz einfach mit unserem FCIS-System bereinigen. Jeder Schüler registriert sich einfach einmal und ist damit nun registriert. Sobald er also den Raum betritt, kann er mit Hilfe eines QR-Code ganz einfach auf die Seite weitergeleitet werden, wo der User dann automatisch als anwesend für den Tag eingetragen ist. Der Lehrer übernimmt dann einfach diese Daten und kann dadurch gleich mit dem Unterrichten anfangen.
+Ein weiterer Anwendungsfall ist eine Schule. Jeden Morgen müssen alle Schüler von einer Lehrkraft als anwesend eigetragen werden. Dieser Vorgang kann einige Minuten dauern, Minuten die kostbare Unterrichtszeit in Anspruch nehmen. Diese Vorgang kann man ganz einfach mit unserem FCIS-System bereinigen. Jeder Schüler registriert sich einfach einmal und ist damit nun registriert. Sobald er also den Raum betritt, kann er mit Hilfe eines QR-Code ganz einfach auf die Seite weitergeleitet werden, wo der User dann automatisch als anwesend für den Tag eingetragen ist. Der Lehrer übernimmt dann einfach diese Daten und kann dadurch gleich mit dem Unterrichten anfangen.
 
 ***Unternehmen***
 
-Ein weiterer Anwendungsfall ist eine Firma mit vielen Arbeitern. Oftmals wird bei einer herkömmlichen Stempeluhr ein Chip oder eine Karte benötigt. Diese könnte im schlimmsten Fall abhandenkommen und noch dazu dauert der Vorgang noch länger, wenn man sich verifizieren muss. Mit unserem FCIS-System können wir eine schnellen und einfachen Einstempelsystem garantieren und somit auch Frust und Zeit bei den Usern sparen
+Ein weiterer Anwendungsfall ist eine Unternehmen mit Angestellten oder Arbeitern. Oftmals wird bei einer herkömmlichen Stempeluhr ein Chip oder eine Karte benötigt. Diese könnte im schlimmsten Fall abhandenkommen und noch dazu dauert der Vorgang noch länger, wenn man sich Verifizieren muss. Mit unserem FCIS-System können wir eine schnellen und einfachen Einstempelsystem garantieren und somit auch Frust und Zeit bei den Usern sparen
 
 ### Fast-Check-In-System (FCIS)
 Das Fast-Check-In-System kurz FCIS ermöglicht das leichte und schnelle An/Abmelden eines Users. Durch einen QR-Code wird man auf die Website weitergeleitet, wo man dann bei Registrierung sofort angemeldet wird. Wenn man sich noch nicht registriert hat, wird man Aufgerufen den Anmeldeprozess zu absolvieren und dadurch dann das Fast-Check-In-System einfach und schnell benützen zu können.
