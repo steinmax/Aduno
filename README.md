@@ -9,7 +9,7 @@ Was ist ein gutes System ohne Anwendungsfall, nicht brauchbar. Deshalb werden nu
 
 ***Krankenhaus***
 
-Durch An/Abmelden in einem Krankehaus wird durchschnittlich in jeder Schicht bis zu 45 Minuten verrloren. Das große Problem ist, dass in Krankenhäusern ein reger Verkehr an PC herrscht, da sich ein Arzt in jedem Zimmer oder zumindest in jeder Abteilung neu anmelden muss um streng vertrauliche Patientendaten einzusehen. Wenn dieser Prozess auf ein Minimum verkleinert werden könnte, würde es den Menschen die behandelt werden müssen sehr weiterhelfen da sich die Ärzte dann nur auf sie konzentrieren könnten und die Ärzte hätten fast eine Stunde weniger Aufwand und mehr Zeit für Pausen oder mehr Zeit Patienten zu helfen. Für solchen Systemen mit sehr hohen Sicherheitsstandart werden wir in nächster Zeit eine höhere Sicherheitsstruktur anbieten.
+Durch An/Abmelden in einem Krankehaus wird durchschnittlich in jeder Schicht bis zu 45 Minuten verloren. Das große Problem ist, dass in Krankenhäusern ein reger Verkehr an PC herrscht, da sich ein Arzt in jedem Zimmer oder zumindest in jeder Abteilung neu anmelden muss um streng vertrauliche Patientendaten einzusehen. Wenn dieser Prozess auf ein Minimum verkleinert werden könnte, würde es den Menschen die behandelt werden müssen sehr weiterhelfen da sich die Ärzte dann nur auf sie konzentrieren könnten und die Ärzte hätten fast eine Stunde weniger Aufwand und mehr Zeit für Pausen oder mehr Zeit Patienten zu helfen. Für solchen Systemen mit sehr hohen Sicherheitsstandart werden wir in nächster Zeit eine höhere Sicherheitsstruktur anbieten.
 
 ***Schule***
 
