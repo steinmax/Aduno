@@ -8,6 +8,6 @@ namespace ReSign.Database.Logic.Enumerations;
 
 public enum InteractionType
 {
-    CheckIn,
-    CheckOut,
+    CheckOut = 0,
+    CheckIn = 1
 }
