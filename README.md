@@ -1,3 +1,5 @@
+[![Docker Image CI](https://github.com/steinmax/reSign/actions/workflows/docker-image.yml/badge.svg)](https://github.com/steinmax/reSign/actions/workflows/docker-image.yml)
+
 # reSign 
 
 ## Unsere Idee
@@ -58,6 +60,3 @@ Der zweite Token der generiert wird ist beim Anlegen eines neuen Users. Dieser T
 - Edalathkah Arsham
 - Rausch-Schott Simon
 - Siegl Maximilian
-
-
-[![Docker Image CI](https://github.com/steinmax/reSign/actions/workflows/docker-image.yml/badge.svg)](https://github.com/steinmax/reSign/actions/workflows/docker-image.yml)
