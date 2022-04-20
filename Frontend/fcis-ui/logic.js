@@ -4,7 +4,7 @@ const API_URL = URL + "/api";
 const LOCALSTORAGE_KEY = "userId";
 const PASSWORDS_NOT_EQUAL = "pass_not_equal";
 
-let USER;
+let USER_ID;
 
 //Functions from here
 function readFromLocalStorage(keyword) {
@@ -32,7 +32,7 @@ function isLoggedIn() {
   if(user == undefined)
     return false;
 
-  USER = user;
+  USER_ID = user;
   return true;
 }
 
