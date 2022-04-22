@@ -65,12 +65,20 @@
     if(roomId == null || roomId == undefined){
         //error, no roomId specified
         console.error("Error: No roomId specified!");
-        document.write("No room specified...");
     }
     else {
+        //Get current user status
+        const latestUrl = "/interaction/latest/" + USER_ID;
+        getResponse("GET", latestUrl, undefined).then(response => {
+            if(response.ok){
+                //If response is ok (200-299) check if type is checkIn or checkOut and perform the opposite action
+                const responseBodyJson = response.json();
+                
+            }
+        });
         //Call to API to create Interaction (aka. ckeck in or out)
         const reqBody = {
-            "userId": USER,
+            "userId": USER_ID,
             "roomId": roomId
         };
 
