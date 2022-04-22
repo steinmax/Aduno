@@ -17,11 +17,4 @@ public class Room : VersionEntity
     public int RoomNumber { get; set; }
 
     public string? Notes { get; set; }
-
-    //relations
-    [Required]
-    public int OrganisationId { get; set; }
-
-    //navigation
-    public Organisation? Organisation { get; set; }
 }

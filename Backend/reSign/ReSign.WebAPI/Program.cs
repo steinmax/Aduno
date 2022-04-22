@@ -7,8 +7,6 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ReSign.Database.Logic.Controllers.InteractionController>();
-builder.Services.AddTransient<ReSign.Database.Logic.Controllers.OrganisationController>();
-builder.Services.AddTransient<ReSign.Database.Logic.Controllers.QRTokenController>();
 builder.Services.AddTransient<ReSign.Database.Logic.Controllers.RoomController>();
 builder.Services.AddTransient<ReSign.Database.Logic.Controllers.UserController>();
 

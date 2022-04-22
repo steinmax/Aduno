@@ -27,31 +27,21 @@ namespace ReSign.Database.Logic.DataContext
         }
         #endregion
 
-        public DbSet<Organisation>? OrganisationSet { get; set; }
         public DbSet<Room>? RoomSet { get; set; }
         public DbSet<Interaction>? InteractionSet { get; set; }
-        public DbSet<QRToken>? QRTokenSet { get; set; }
         public DbSet<User>? UserSet { get; set; }
 
         public DbSet<E> GetDbSet<E>() where E : IdentityEntity
         {
             var result = default(DbSet<E>);
 
-            if (typeof(E) == typeof(Organisation))
-            {
-                result = OrganisationSet as DbSet<E>;
-            }
-            else if(typeof(E) == typeof(Room))
+            if(typeof(E) == typeof(Room))
             {
                 result = RoomSet as DbSet<E>;
             }
             else if (typeof(E) == typeof(Interaction))
             {
                 result = InteractionSet as DbSet<E>;
-            }
-            else if (typeof(E) == typeof(QRToken))
-            {
-                result = QRTokenSet as DbSet<E>;
             }
             else if (typeof(E) == typeof(User))
             {

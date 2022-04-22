@@ -25,5 +25,4 @@ public class Interaction : VersionEntity
     //navigations
     public User? User { get; set; }
     public Room? Room { get; set; }
-    public QRToken? QRToken { get; set; }
 }
