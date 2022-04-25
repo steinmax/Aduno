@@ -20,6 +20,8 @@
         <div class="container h-100 w-100">
             <div class="row align-items-center h-100">
                 
+                <p id="roomIdOutput"></p>
+
                 <!-- Card for successful check in -->
                 <div class="col-md-6">
                     <div class="card text-white bg-success align-items-center p-4 pb-2 m-2">
@@ -67,6 +69,11 @@
         console.error("Error: No roomId specified!");
     }
     else {
+        //Temp. output of roomId (specified in URL)
+        document.getElementById("roomIdOutput").innerHTML = "<p>RoomId: "+ roomId +"</p>";
+
+
+
         //Get current user status
         const latestUrl = "/interaction/latest/" + USER_ID;
         getResponse("GET", latestUrl, undefined).then(response => {
