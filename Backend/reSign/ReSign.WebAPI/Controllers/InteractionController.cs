@@ -39,22 +39,21 @@ namespace ReSign.WebAPI.Controllers
         }
 
 
-        [HttpPost("{userId}/{roomId}/{qrtokenId}")]
-        public async Task<ActionResult<InteractionModel>> ToggleCheckState(int userId, int roomId, int qrtokenId)
+        [HttpPost("{userId}/{roomId}")]
+        public async Task<ActionResult<InteractionModel>> ToggleCheckState(int userId, int roomId)
         {
             var ctrl = EntityController as Database.Logic.Controllers.InteractionController;
 
             if (ctrl == null)
                 throw new Exception("Controller null");
 
-            Interaction last = await ctrl.GetLastInteraction(userId);
+            Interaction? last = await ctrl.GetLastInteraction(userId);
 
             InteractionType type = last == null ? InteractionType.CheckIn : last.Type == InteractionType.CheckIn ? InteractionType.CheckOut : InteractionType.CheckIn;
 
             Interaction interaction = new Interaction();
             interaction.UserId = userId;
             interaction.RoomId = roomId;
-            interaction.QRTokenId = qrtokenId;
             interaction.DateTime = DateTime.Now;
             interaction.Type = type;
 
