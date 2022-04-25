@@ -3,7 +3,7 @@ using ReSign.Database.Logic.Enumerations;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ReSign.Database.Logic.Entities.General;
+namespace ReSign.Database.Logic.Entities;
 
 [Table("Room")]
 public class Room : VersionEntity

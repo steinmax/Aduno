@@ -1,10 +1,9 @@
 ﻿using ReSign.Database.Logic.Entities.Base;
-using ReSign.Database.Logic.Entities.General;
 using ReSign.Database.Logic.Enumerations;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ReSign.Database.Logic.Entities.PresenceSystem;
+namespace ReSign.Database.Logic.Entities;
 
 [Table("Interaction")]
 public class Interaction : VersionEntity
@@ -19,8 +18,6 @@ public class Interaction : VersionEntity
     public int UserId { get; set; }
     [Required]
     public int RoomId { get; set; }
-    [Required]
-    public int QRTokenId { get; set; }
 
     //navigations
     public User? User { get; set; }
