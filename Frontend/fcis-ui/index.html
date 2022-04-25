@@ -75,21 +75,29 @@
 
 
         //Get current user status
+        let typeToPerform = "in";       //default type is in
+
         const latestUrl = "/interaction/latest/" + USER_ID;
         getResponse("GET", latestUrl, undefined).then(response => {
             if(response.ok){
                 //If response is ok (200-299) check if type is checkIn or checkOut and perform the opposite action
                 const responseBodyJson = response.json();
                 
+                //Not implemented yet
+                if(responseBodyJson.Type == 1) {        //if latest interaction type was checkIn (= 1), perform checkOut
+                    typeToPerform = "out";
+                }
             }
         });
+
         //Call to API to create Interaction (aka. ckeck in or out)
         const reqBody = {
             "userId": USER_ID,
             "roomId": roomId
         };
 
-        //const reqRes = await getResponse("POST", "/interaction", reqBody);
+        const toggleReqURL = "/interaction/" + USER_ID + "/" + roomId;
+        //const reqRes = await getResponse("POST", toggleReqURL, undefined);
 
         //Check response
         //Not implemented yet
