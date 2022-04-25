@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ReSign.Database.Logic.Controllers;
-using ReSign.Database.Logic.Entities.PresenceSystem;
+using ReSign.Database.Logic.Entities;
 using ReSign.Database.Logic.Enumerations;
 using ReSign.WebAPI.Models;
 
@@ -8,12 +7,12 @@ namespace ReSign.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InteractionController : GenericController<Database.Logic.Entities.PresenceSystem.Interaction, InteractionEdit, InteractionModel>
+    public class InteractionController : GenericController<Database.Logic.Entities.Interaction, InteractionEdit, InteractionModel>
     {
         public InteractionController(Database.Logic.Controllers.InteractionController controller) : base(controller)
         {
         }
-        
+
         [HttpPost]
         public override Task<ActionResult<InteractionModel>> PostAsync([FromBody] InteractionEdit model)
         {
@@ -47,7 +46,7 @@ namespace ReSign.WebAPI.Controllers
 
             if (ctrl == null)
                 throw new Exception("Controller null");
-            
+
             Interaction last = await ctrl.GetLastInteraction(userId);
 
             InteractionType type = last == null ? InteractionType.CheckIn : last.Type == InteractionType.CheckIn ? InteractionType.CheckOut : InteractionType.CheckIn;
@@ -65,4 +64,3 @@ namespace ReSign.WebAPI.Controllers
         }
     }
 }
- 

@@ -1,4 +1,4 @@
-﻿using ReSign.Database.Logic.Entities.PresenceSystem;
+﻿using ReSign.Database.Logic.Entities;
 
 namespace ReSign.Database.Logic.Controllers
 {

@@ -25,7 +25,7 @@ namespace ReSign.WebAPI.Controllers
         /// </summary>
         /// <param name="entity">The entity to be converted</param>
         /// <returns>The model with the property values of the same name</returns>
-        protected virtual Models.UserModel ToModel(Database.Logic.Entities.PresenceSystem.User? entity)
+        protected virtual Models.UserModel ToModel(Database.Logic.Entities.User? entity)
         {
             var result = new Models.UserModel();
 
@@ -40,7 +40,7 @@ namespace ReSign.WebAPI.Controllers
         /// </summary>
         /// <param name="entities">The entities to be converted</param>
         /// <returns>The models</returns>
-        protected virtual IEnumerable<Models.UserModel> ToModel(IEnumerable<Database.Logic.Entities.PresenceSystem.User> entities)
+        protected virtual IEnumerable<Models.UserModel> ToModel(IEnumerable<Database.Logic.Entities.User> entities)
         {
             var result = new List<Models.UserModel>();
 
@@ -106,7 +106,7 @@ namespace ReSign.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         public virtual async Task<ActionResult<Models.UserModel>> PostAsync([FromBody] Models.UserEdit model, [FromHeader] string password)
         {
-            var entity = new Database.Logic.Entities.PresenceSystem.User();
+            var entity = new Database.Logic.Entities.User();
 
             if (model != null)
             {
