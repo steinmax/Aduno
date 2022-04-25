@@ -31,7 +31,12 @@ namespace ReSign.WebAPI.Controllers
             if (ctrl == null)
                 throw new Exception("Controller null");
 
-            return ToModel(await ctrl.GetLastInteraction(id));
+            var entity = await ctrl.GetLastInteraction(id);
+
+            if (entity == null)
+                return NotFound();
+
+            return ToModel(entity);
         }
 
 
