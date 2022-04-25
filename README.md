@@ -1,9 +1,9 @@
 [![Docker Image CI](https://github.com/steinmax/reSign/actions/workflows/docker-image.yml/badge.svg)](https://github.com/steinmax/reSign/actions/workflows/docker-image.yml)
 
-# reSign 
+# aduno 
 
 ## Unsere Idee
-Das reSign Team stellt ein einfach zu bedienendes Fast-Check-In-System (FCIS) für viele verschiedene Anwendungsfälle bereit. Mit unserem Projekt werden wir das Zeitalter des Kartenschleppens und Passwort Merkens beenden. Mit einer einfachen Handbewegung wird ein QR-Code, mit Ihrem mobilen Endgerät gescannt und dadurch werden Sie automatisch angemeldet. Die Idee soll Kunden aber auch den Usern dieser Applikation wichtige Zeit und Geld sparen und somit die Effizienz im Unternehmen steigern.
+Das aduno Team stellt ein einfach zu bedienendes Fast-Check-In-System (FCIS) für viele verschiedene Anwendungsfälle bereit. Mit unserem Projekt werden wir das Zeitalter des Kartenschleppens und Passwort Merkens beenden. Mit einer einfachen Handbewegung wird ein QR-Code, mit Ihrem mobilen Endgerät gescannt und dadurch werden Sie automatisch angemeldet. Die Idee soll Kunden aber auch den Usern dieser Applikation wichtige Zeit und Geld sparen und somit die Effizienz im Unternehmen steigern.
 
 ### Anwendungsfälle
 
@@ -23,7 +23,7 @@ Ein weiterer Anwendungsfall ist eine Unternehmen mit Angestellten oder Arbeitern
 
 ***Handy als Schlüssel***
 
-Ein weiterer Anwendungsfall ist, Türen mit reSign zu öffnen. Da das Mobile-Endgerät selbst auch verschlüsselt ist und jede Person ein eigenes Mobiles-Endgerät hat ist ein Anwendungsfall wie ein Schlüssel zu einem Schloss denkbar. In unserem Fall wäre das Schloss der QR-Code und unsere Schlüssel ist das Mobile-Endgerät.
+Ein weiterer Anwendungsfall ist, Türen mit aduno zu öffnen. Da das Mobile-Endgerät selbst auch verschlüsselt ist und jede Person ein eigenes Mobiles-Endgerät hat ist ein Anwendungsfall wie ein Schlüssel zu einem Schloss denkbar. In unserem Fall wäre das Schloss der QR-Code und unsere Schlüssel ist das Mobile-Endgerät.
 
 ### Fast-Check-In-System (FCIS)
 Das Fast-Check-In-System kurz FCIS ermöglicht das leichte und schnelle An/Abmelden eines Users. Durch einen QR-Code wird man auf die Website weitergeleitet, wo man dann bei Registrierung sofort angemeldet wird. Wenn man sich noch nicht registriert hat, wird man Aufgerufen den Anmeldeprozess zu absolvieren und dadurch dann das Fast-Check-In-System einfach und schnell benützen zu können.
