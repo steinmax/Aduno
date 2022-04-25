@@ -16,9 +16,6 @@ public class User : VersionEntity
     public string LastName { get; set; } = string.Empty;
 
     [Required]
-    public string GUID { get; set; } = string.Empty;        //Replaces the deviceId of previous concepts
-
-    [Required]
     public string Username { get; set; } = string.Empty;
 
     [Required]
