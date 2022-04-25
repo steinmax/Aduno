@@ -1,6 +1,5 @@
 using ReSign.Database.Logic.Entities.Base;
-using ReSign.Database.Logic.Entities.General;
-using ReSign.Database.Logic.Entities.PresenceSystem;
+using ReSign.Database.Logic.Entities;
 
 namespace ReSign.Database.Logic.DataContext
 {
