@@ -30,7 +30,7 @@ namespace ReSign.WebAPI.Controllers
             if (ctrl == null)
                 throw new Exception("Controller null");
 
-            var entity = await ctrl.GetLastInteraction(id);
+            var entity = await ctrl.GetLastInteractionAsync(id);
 
             if (entity == null)
                 return NotFound();
@@ -47,7 +47,7 @@ namespace ReSign.WebAPI.Controllers
             if (ctrl == null)
                 throw new Exception("Controller null");
 
-            Interaction? last = await ctrl.GetLastInteraction(userId);
+            Interaction? last = await ctrl.GetLastInteractionAsync(userId);
 
             InteractionType type = last == null ? InteractionType.CheckIn : last.Type == InteractionType.CheckIn ? InteractionType.CheckOut : InteractionType.CheckIn;
 

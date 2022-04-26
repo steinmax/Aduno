@@ -1,5 +1,4 @@
 ﻿using ReSign.Database.Logic.Entities;
-using ReSign.Database.Logic.Enumerations;
 
 namespace ReSign.Database.Logic.Controllers
 {
@@ -13,9 +12,9 @@ namespace ReSign.Database.Logic.Controllers
         {
         }
 
-        //further BL
+        //further Business logics
 
-        public async Task<Interaction?> GetLastInteraction(int userId)
+        public async Task<Interaction?> GetLastInteractionAsync(int userId)
         {
             using var userController = new UserController(this);
             var user = await userController.GetByIdAsync(userId);
@@ -23,8 +22,25 @@ namespace ReSign.Database.Logic.Controllers
             if (user == null)
                 return null;
 
-            var lastInteraction = EntitySet.Where(e => e.UserId == userId).OrderBy(e => e.DateTime).FirstOrDefault();
+            var lastInteraction = EntitySet.Where(e => e.UserId == userId)
+                                            .OrderBy(e => e.DateTime)
+                                            .FirstOrDefault();
 
+            return lastInteraction;
+        }
+
+        public async Task<Interaction?> GetLastInteractionOfDateAsync(int userId, DateTime filterDate)
+        {
+            using var userCtrl = new UserController(this);
+            var user = await userCtrl.GetByIdAsync(userId);
+
+            if (user == null)
+                return null;
+
+            var lastInteraction = EntitySet.Where(i => i.UserId == userId 
+                                                        && i.DateTime.Date == filterDate.Date)
+                                            .OrderBy(i => i.DateTime)
+                                            .FirstOrDefault();
             return lastInteraction;
         }
     }
