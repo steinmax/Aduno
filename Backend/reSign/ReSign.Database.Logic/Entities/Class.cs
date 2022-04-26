@@ -8,7 +8,7 @@ namespace ReSign.Database.Logic.Entities
         [Required]
         public string Name { get; set; } = string.Empty;
 
-        //nav
-        List<User> users = new List<User>();
+        //nav props
+        public List<User> Users { get; set; } = new();
     }
 }
