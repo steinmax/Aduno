@@ -1,0 +1,66 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSign.QRCode.Logic", "ReSign.QRCode.Logic\ReSign.QRCode.Logic.csproj", "{E6190FCF-CCCE-445D-B4BE-C736C309792B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSign.QRCode.ConApp", "ReSign.QRCode.ConApp\ReSign.QRCode.ConApp.csproj", "{C5B0D075-6509-4FC2-9D86-030F4179AFBC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReSign.QRCode.Logic.UnitTest", "ReSign.QRCode.Logic.UnitTest\ReSign.QRCode.Logic.UnitTest.csproj", "{6E248780-1D8C-4CB0-8C00-27F07B436383}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B2F2C6F8-FDEC-4A44-954A-9A0306421667}"
+	ProjectSection(SolutionItems) = preProject
+		BusinessRules.md = BusinessRules.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aduno.Common.Logic", "Aduno.Common.Logic\Aduno.Common.Logic.csproj", "{D5C4C9A5-2EB2-4CF6-B71E-D515DEBCE639}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aduno.Database.ConApp", "Aduno.Database.ConApp\Aduno.Database.ConApp.csproj", "{C34C02B4-107D-4514-AA7A-D2231B6E26FA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aduno.Database.Logic", "Aduno.Database.Logic\Aduno.Database.Logic.csproj", "{9923B388-57B5-4581-9877-FEA69DF245A0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Aduno.WebAPI", "Aduno.WebAPI\Aduno.WebAPI.csproj", "{AECCD568-E7BC-401B-8C84-149DBC0B26F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6190FCF-CCCE-445D-B4BE-C736C309792B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6190FCF-CCCE-445D-B4BE-C736C309792B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6190FCF-CCCE-445D-B4BE-C736C309792B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6190FCF-CCCE-445D-B4BE-C736C309792B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5B0D075-6509-4FC2-9D86-030F4179AFBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5B0D075-6509-4FC2-9D86-030F4179AFBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5B0D075-6509-4FC2-9D86-030F4179AFBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5B0D075-6509-4FC2-9D86-030F4179AFBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E248780-1D8C-4CB0-8C00-27F07B436383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E248780-1D8C-4CB0-8C00-27F07B436383}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E248780-1D8C-4CB0-8C00-27F07B436383}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E248780-1D8C-4CB0-8C00-27F07B436383}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5C4C9A5-2EB2-4CF6-B71E-D515DEBCE639}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5C4C9A5-2EB2-4CF6-B71E-D515DEBCE639}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5C4C9A5-2EB2-4CF6-B71E-D515DEBCE639}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5C4C9A5-2EB2-4CF6-B71E-D515DEBCE639}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C34C02B4-107D-4514-AA7A-D2231B6E26FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C34C02B4-107D-4514-AA7A-D2231B6E26FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C34C02B4-107D-4514-AA7A-D2231B6E26FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C34C02B4-107D-4514-AA7A-D2231B6E26FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9923B388-57B5-4581-9877-FEA69DF245A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9923B388-57B5-4581-9877-FEA69DF245A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9923B388-57B5-4581-9877-FEA69DF245A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9923B388-57B5-4581-9877-FEA69DF245A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AECCD568-E7BC-401B-8C84-149DBC0B26F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AECCD568-E7BC-401B-8C84-149DBC0B26F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AECCD568-E7BC-401B-8C84-149DBC0B26F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AECCD568-E7BC-401B-8C84-149DBC0B26F7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8F02CF95-E337-42C8-B784-607EAA91B822}
+	EndGlobalSection
+EndGlobal
