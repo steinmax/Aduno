@@ -2,12 +2,12 @@ name: Docker Image CI
 
 on:
   push:
-    paths: 'Backend/reSign/**'
+    paths: 'Backend/Aduno/**'
   workflow_dispatch:
 
 env:
   DOCKER_USER: nydery
-  DOCKER_IMAGE: resign_backend
+  DOCKER_IMAGE: aduno_backend
   DOCKER_CONTAINER: resign-backend
   
 
