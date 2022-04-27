@@ -20,7 +20,7 @@ jobs:
     
     - name: Build API docker image
       run: |
-        cd Backend/reSign
+        cd Backend/Aduno
         docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USER }}/${{ secrets.DOCKER_IMAGE }}:latest
     - name: Login to the Container registry (docker)
       uses: docker/login-action@v1
