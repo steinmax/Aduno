@@ -6,18 +6,18 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["ReSign.WebAPI/ReSign.WebAPI.csproj", "ReSign.WebAPI/"]
-COPY ["ReSign.Database.Logic/ReSign.Database.Logic.csproj", "ReSign.Database.Logic/"]
-COPY ["ReSign.Common.Logic/ReSign.Common.Logic.csproj", "ReSign.Common.Logic/"]
-RUN dotnet restore "ReSign.WebAPI/ReSign.WebAPI.csproj"
+COPY ["Aduno.WebAPI/Aduno.WebAPI.csproj", "Aduno.WebAPI/"]
+COPY ["Aduno.Database.Logic/Aduno.Database.Logic.csproj", "Aduno.Database.Logic/"]
+COPY ["Aduno.Common.Logic/Aduno.Common.Logic.csproj", "Aduno.Common.Logic/"]
+RUN dotnet restore "Aduno.WebAPI/Aduno.WebAPI.csproj"
 COPY . .
-WORKDIR "/src/ReSign.WebAPI"
-RUN dotnet build "ReSign.WebAPI.csproj" -c Release -o /app/build
+WORKDIR "/src/Aduno.WebAPI"
+RUN dotnet build "Aduno.WebAPI.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "ReSign.WebAPI.csproj" -c Release -o /app/publish
+RUN dotnet publish "Aduno.WebAPI.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "ReSign.WebAPI.dll"]
+ENTRYPOINT ["dotnet", "Aduno.WebAPI.dll"]
