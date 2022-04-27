@@ -7,7 +7,7 @@ on:
 
 env:
   DOCKER_USER: nydery
-  DOCKER_IMAGE: resign_backend
+  DOCKER_IMAGE: aduno_backend
   DOCKER_CONTAINER: resign-backend
   
 
