@@ -99,7 +99,7 @@
         };
 
         const toggleReqURL = "/interaction/" + USER_ID + "/" + roomId;
-        const reqRes = await getResponse("POST", toggleReqURL, undefined)
+        const reqRes = getResponse("POST", toggleReqURL, undefined)
             .then(reqRes => {
 
                 //Check response
