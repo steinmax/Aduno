@@ -111,7 +111,11 @@ namespace Aduno.WebAPI.Controllers
             {
                 entity.CopyFrom(model);
             }
+
+            //Implement hashing !!
             entity.Password = password;
+            
+            
             var insertEntity = await EntityController.InsertAsync(entity);
 
             await EntityController.SaveChangesAsync();
