@@ -145,8 +145,9 @@
 			const lastname = document.getElementById('lastnameInput').value;
 			const password = document.getElementById('passwordInput').value;
 			const confirmPassword = document.getElementById('confirmPasswordInput').value;
+			const classId = document.getElementById('classIdInput').value;
 
-			const res = await register(username, firstname, lastname, password, confirmPassword)
+			const res = await register(username, firstname, lastname, password, confirmPassword, classId)
 
 			if(res === false) {
 				prompt("Failed to register!");

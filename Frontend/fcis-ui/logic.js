@@ -93,16 +93,13 @@ async function login(username, password) {
   }
 }
 
-async function register(username, firstname, lastname, password, confirmPassword) {
+async function register(username, firstname, lastname, password, confirmPassword, classId) {
   //Check if passwords are equal
   if(password !== confirmPassword) {
     return PASSWORDS_NOT_EQUAL;
   }
 
-  const res = await getRegisterResponse(username, firstname, lastname, password);
-
-  console.log("register response: ");
-  console.log(res);
+  const res = await getRegisterResponse(username, firstname, lastname, password, classId);
 
   if(res.ok){
     return true;
@@ -112,12 +109,13 @@ async function register(username, firstname, lastname, password, confirmPassword
 }
 
 //function that registers a new user
-async function getRegisterResponse(username, firstname, lastname, password){
+async function getRegisterResponse(username, firstname, lastname, password, classId){
   const reqUrl = API_URL + "/user";
   const reqBody = {
     "username" : username,
     "firstname" : firstname,
-    "lastname" : lastname
+    "lastname" : lastname,
+    "classId": classId
   }
     const response = await fetch(reqUrl, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
