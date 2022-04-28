@@ -9,6 +9,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<Aduno.Database.Logic.Controllers.InteractionController>();
 builder.Services.AddTransient<Aduno.Database.Logic.Controllers.RoomController>();
 builder.Services.AddTransient<Aduno.Database.Logic.Controllers.UserController>();
+builder.Services.AddTransient<Aduno.Database.Logic.Controllers.ClassController>();
 
 var app = builder.Build();
 
