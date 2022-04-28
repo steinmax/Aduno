@@ -8,7 +8,7 @@ on:
 env:
   DOCKER_USER: nydery
   DOCKER_IMAGE: aduno_backend
-  DOCKER_CONTAINER: resign-backend
+  DOCKER_CONTAINER: aduno-backend
   
 
 jobs:
