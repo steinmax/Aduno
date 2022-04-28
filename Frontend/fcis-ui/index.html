@@ -71,6 +71,7 @@
     if(roomId == null || roomId == undefined){
         //error, no roomId specified
         console.error("Error: No roomId specified!");
+        document.getElementById("errorDiv").hidden = false;
     }
     else {
         //Temp. output of roomId (specified in URL)
