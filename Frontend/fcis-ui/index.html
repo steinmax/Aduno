@@ -86,15 +86,16 @@
 
         const latestUrl = "/interaction/latest/" + USER_ID;
         getResponse("GET", latestUrl, undefined).then(response => {
-            if(response.ok){
-                //If response is ok (200-299) check if type is checkIn or checkOut and perform the opposite action
+            if(response.status == 200){
+                //If response is 200 OK (Interaction found)
+                //check if type is checkIn or checkOut and perform the opposite action
                 const responseBodyJson = response.json();
                 
                 if(responseBodyJson.type == 1) {        //if latest interaction type was checkIn (= 1), perform checkOut
                     typeToPerform = "out";
                 }
             }
-        }).error(error => {
+        }).catch(error => {
             console.error("Error: " + error);
             showErrorDiv();
         });
@@ -110,8 +111,8 @@
             .then(reqRes => {
 
                 //Check response
-                if(reqRes.ok){
-                    //if response is ok(200-299)
+                if(reqRes.status == 201){
+                    //if response is 201 Created (interaction created)
                     const responseBodyJson = reqRes.json();
                     const typeExecuted = responseBodyJson.type;
 
@@ -127,8 +128,4 @@
                 }
             });
     }
-
-
-
-
 </script>
