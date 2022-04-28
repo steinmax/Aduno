@@ -44,7 +44,7 @@
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Name is required">
-						<input id="nameInput" class="input100" type="text" name="name" placeholder="Name">
+						<input id="firstnameInput" class="input100" type="text" name="firstname" placeholder="Firstname">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user-circle" aria-hidden="true"></i>
@@ -129,7 +129,7 @@
 		//do register
 		async function callRegister(){
 			const username = document.getElementById('usernameInput').value;
-			const firstname = document.getElementById('nameInput').value;
+			const firstname = document.getElementById('firstnameInput').value;
 			const lastname = document.getElementById('lastnameInput').value;
 			const password = document.getElementById('passwordInput').value;
 			const confirmPassword = document.getElementById('confirmPasswordInput').value;
