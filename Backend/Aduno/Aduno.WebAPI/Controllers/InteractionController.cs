@@ -11,16 +11,9 @@ namespace Aduno.WebAPI.Controllers
         {
         }
 
-        [HttpPost]
-        public override Task<ActionResult<InteractionModel>> PostAsync([FromBody] InteractionEdit model)
-        {
-            var ctrl = EntityController as Database.Logic.Controllers.InteractionController;
-
-
-            return base.PostAsync(model);
-        }
-
         [HttpGet("latest/{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<ActionResult<InteractionModel>> GetLastInteractionAsync(int id)
         {
             var ctrl = EntityController as Database.Logic.Controllers.InteractionController;
@@ -31,13 +24,14 @@ namespace Aduno.WebAPI.Controllers
             var entity = await ctrl.GetLastInteractionAsync(id);
 
             if (entity == null)
-                return NotFound();
+                return NoContent();
 
-            return ToModel(entity);
+            return Ok(ToModel(entity));
         }
 
 
         [HttpPost("{userId}/{roomId}")]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public async Task<ActionResult<InteractionModel>> ToggleCheckState(int userId, int roomId)
         {
             var ctrl = EntityController as Database.Logic.Controllers.InteractionController;
@@ -57,7 +51,7 @@ namespace Aduno.WebAPI.Controllers
 
             Interaction act = await ctrl.InsertAsync(interaction);
 
-            return ToModel(act);
+            return CreatedAtAction("Get", new { Id=act.Id }, ToModel(act));
         }
     }
 }
