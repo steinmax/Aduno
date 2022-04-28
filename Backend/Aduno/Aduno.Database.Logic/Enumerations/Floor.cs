@@ -2,8 +2,8 @@
 
 public enum Floor
 {
-    U = 'U',
-    E = 'E',
-    First = '1',
-    Second = '2'
+    U,
+    E,
+    First,
+    Second
 }
