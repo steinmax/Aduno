@@ -10,6 +10,8 @@ namespace Aduno.WebAPI.Controllers
     /// </summary>
     /// <typeparam name="TEntity">The type of entity</typeparam>
     /// <typeparam name="TModel">The type of model</typeparam>
+    [Route("api/[controller]")]
+    [ApiController]
     public abstract partial class GenericController<TEntity, TEditModel, TModel> : ControllerBase, IDisposable
         where TEntity : Database.Logic.Entities.Base.IdentityEntity, new()
         where TEditModel : class, new()

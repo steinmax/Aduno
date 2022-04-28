@@ -5,8 +5,6 @@ using Aduno.WebAPI.Models;
 
 namespace Aduno.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class InteractionController : GenericController<Database.Logic.Entities.Interaction, InteractionEdit, InteractionModel>
     {
         public InteractionController(Database.Logic.Controllers.InteractionController controller) : base(controller)
