@@ -89,7 +89,7 @@ async function login(username, password) {
     //Show "failed to login" message
     console.error("Failed to login, username or password wrong?");
     return false;
-  }  
+  }
 }
 
 async function register(username, firstname, lastname, password, confirmPassword) {
@@ -116,8 +116,7 @@ async function getRegisterResponse(username, firstname, lastname, password){
   const reqBody = {
     "username" : username,
     "firstname" : firstname,
-    "lastname" : lastname,
-    "organisationId" : 1
+    "lastname" : lastname
   }
     const response = await fetch(reqUrl, {
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
