@@ -4,6 +4,7 @@ const API_URL = URL + "/api";
 const LOCALSTORAGE_KEY = "userId";
 const PASSWORDS_NOT_EQUAL = "pass_not_equal";
 
+let USER;
 let USER_ID;
 
 //Functions from here
@@ -27,12 +28,12 @@ function writeToLocalStorage(keyword, value) {
 }
 
 function isLoggedIn() {
-  let user = readFromLocalStorage(LOCALSTORAGE_KEY);
+  let localUserId = readFromLocalStorage(LOCALSTORAGE_KEY);
 
-  if(user == undefined)
+  if(localUserId == undefined)
     return false;
 
-  USER_ID = user;
+  USER_ID = localUserId;
   return true;
 }
 
@@ -82,7 +83,7 @@ async function login(username, password) {
   if (res.ok){
     //Save userId to localstorage
     
-    writeToLocalStorage(LOCALSTORAGE_KEY, user.guid);
+    writeToLocalStorage(LOCALSTORAGE_KEY, USER_ID);
     return true;
   }
   else {
@@ -154,7 +155,9 @@ async function getLoginResponse(username, password) {
       //body: JSON.stringify(reqBody) // body data type must match "Content-Type" header
     });
 
-    user = await response.json();
+    USER = await response.json();
+    USER_ID = USER.id;
+
     return response;
 }
 
