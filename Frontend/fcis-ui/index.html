@@ -53,6 +53,10 @@
 
 <script src="logic.js"></script>
 <script>
+    var showErrorDiv = function(){
+        document.getElementById("errorDiv").hidden = false;
+    }
+
     const LOGIN_HREF = URL + "/login";
 
     //check if already logged in
@@ -71,7 +75,7 @@
     if(roomId == null || roomId == undefined){
         //error, no roomId specified
         console.error("Error: No roomId specified!");
-        document.getElementById("errorDiv").hidden = false;
+        showErrorDiv();
     }
     else {
         //Temp. output of roomId (specified in URL)
@@ -90,6 +94,9 @@
                     typeToPerform = "out";
                 }
             }
+        }).error(error => {
+            console.error("Error: " + error);
+            showErrorDiv();
         });
 
         //Call to API to create Interaction (aka. ckeck in or out)
@@ -116,7 +123,7 @@
                 else {
                     //if response is not ok(200-299)
                     console.error("Error: Could not checkIn or checkOut!");
-                    document.getElementById("errorDiv").hidden = false;
+                    showErrorDiv();
                 }
             });
     }
