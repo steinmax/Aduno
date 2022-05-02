@@ -17,7 +17,6 @@ function readFromLocalStorage(keyword) {
     return undefined;
   }
 }
-
 function writeToLocalStorage(keyword, value) {
     if(keyword == undefined || value == undefined) {
         console.error(`(Func: ${arguments.callee.toString()}) Keyword or value cannot be undefined!`);
@@ -71,7 +70,6 @@ function getResponse(httpverb, urlext, body){
       request.headers = {
         'Content-Type': 'application/json'
       };
-
     }
 
     return fetch(reqUrl, request);
@@ -161,9 +159,11 @@ async function getLoginResponse(username, password) {
 
 //Gets the current status of the user, if he is checked in or checked out currently (or undefined if not logged in)
 async function getCurrentStatus() {
-  if(userId == undefined)
+  if(USER_ID == undefined){
+    console.error("USER_ID not specified");
     return undefined;
+  }
 
-  const response = await (await getResponse("GET", `/user/status/${userId}`, undefined)).json();
-  //Not finished, maybe obsolete ?..
+  const response = await (await getResponse("GET", `/interaction/latest/${userId}`, undefined)).json();
+  return response.type == 0 ? "in" : "out";
 }
