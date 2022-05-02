@@ -1,0 +1,39 @@
+@startuml
+entity Class {
+  * Id : number <<generated>>
+  --
+  * Name : text
+}
+
+entity Interaction{
+  * Id : number <<generated>>
+  --
+  * DateTime : DateTime
+  * Type : InteractionType 
+  UserId : number <<FK>>
+  RoomId : number <<FK>>
+}
+
+entity User {
+  * Id : number <<generated>>
+  --
+  * FirstName : text(128)
+  * LastName : text(128)
+  * Username : text
+  * Password : text
+  * CreationDate : DateTime
+  * Role : Role
+  ClassId : number <<FK>>
+}
+
+entity Room {
+  * Id : number <<generated>>
+  --
+  * Designation : text
+  * Floor : floor
+  * RoomNumber : number
+}
+Class ||--o{ User
+User ||--o{ Interaction
+Room ||--o{ Interaction
+@enduml

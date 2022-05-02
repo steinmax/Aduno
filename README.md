@@ -7,7 +7,7 @@ Das aduno Team stellt ein einfach zu bedienendes Fast-Check-In-System (FCIS) fü
 
 ### Anwendungsfälle
 
-Was ist ein gutes System ohne Anwendungsfall, nicht brauchbar. Deshalb werden nun drei sehr unterschiedliche Anwendungsfälle gezeigt, dass es auch für das ReSign-Projekt einen vielfältigen Markt gibt.
+Was ist ein gutes System ohne Anwendungsfall, nicht brauchbar. Deshalb werden nun drei sehr unterschiedliche Anwendungsfälle gezeigt, dass es auch für das Aduno-Projekt einen vielfältigen Markt gibt.
 
 ***Krankenhaus***
 
@@ -37,7 +37,7 @@ Das alles läuft auf der Oracle VM. Die Schnittstellen kommunizieren mit dem RES
 
 ***Token Generierung***
 
-Da der QR-Code ja nur ein Link zu der Website ist, wo man dann beim Aufrufen registriert wird, könnte man einfach sobald man einmal den Link hat gemütlich von zu Hause anmelden. Das ist nicht Sinn der Sache und somit hat sich das ReSign-Team eine Lösung erarbeitet. Mit sogenannten Tokens werden nun immer wieder neue QR-Codes erstellt Bsp: (https://resign.byiconic.at?t=709e3f82). Sie sind jedes Mal Unique und somit wird das System immer nur den Link mit dem aktuellen Token zum Anmelden zulassen. Damit können wir garantiert, dass sich der User sich direkt bei der Anmeldestation befindet. Nach jeder Anmeldung wird ein neuer Token generiert und ist damit dann der neue aktuelle Token.
+Da der QR-Code ja nur ein Link zu der Website ist, wo man dann beim Aufrufen registriert wird, könnte man einfach sobald man einmal den Link hat gemütlich von zu Hause anmelden. Das ist nicht Sinn der Sache und somit hat sich das Aduno-Team eine Lösung erarbeitet. Mit sogenannten Tokens werden nun immer wieder neue QR-Codes erstellt Bsp: (https://resign.byiconic.at?t=709e3f82). Sie sind jedes Mal Unique und somit wird das System immer nur den Link mit dem aktuellen Token zum Anmelden zulassen. Damit können wir garantiert, dass sich der User sich direkt bei der Anmeldestation befindet. Nach jeder Anmeldung wird ein neuer Token generiert und ist damit dann der neue aktuelle Token.
 
 Der zweite Token der generiert wird ist beim Anlegen eines neuen Users. Dieser Token ist länger da er das System nicht verlangsamt. Jedes Mobile-Endgerät bekommt so einen Bsp: (83ea1b86-75b4-4507-a5af-e27a50ebae0a) Unique-Token und wird damit automatisch einem User zugewiesen.
 
