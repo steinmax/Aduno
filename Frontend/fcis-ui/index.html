@@ -65,15 +65,18 @@
         return params.roomId;
     };
 
-    const handleLatestInteractionRequest = function(response) {
+    const handleLatestInteractionRequest = async function(response) {
         if(response.status == 200){
                 //If response is 200 OK (Interaction found)
                 //check if type is checkIn or checkOut and perform the opposite action
-                const responseBodyJson = response.json();
+                const responseBodyJson = await response.json();
                 
                 if(responseBodyJson.type == 1) {        //if latest interaction type was checkIn (= 1), perform checkOut
                     typeToPerform = "out";
                 }
+
+                console.log("last interaction");
+                console.log(responseBodyJson);
             }
     };
 
