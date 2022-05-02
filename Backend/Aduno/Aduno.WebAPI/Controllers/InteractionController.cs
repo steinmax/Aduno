@@ -69,8 +69,9 @@ namespace Aduno.WebAPI.Controllers
             interaction.Type = type;
 
             Interaction act = await ctrl.InsertAsync(interaction);
+            await ctrl.SaveChangesAsync();
 
-            return CreatedAtAction("Get", new { Id=act.Id }, ToModel(act));
+            return CreatedAtAction("Get", new { Id = act.Id }, ToModel(act));
         }
     }
 }
