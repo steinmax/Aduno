@@ -132,8 +132,8 @@ if(!isLoggedIn()) {
     
             //Call to API to create Interaction (aka. ckeck in or out)
             const toggleReqURL = "/interaction/" + USER_ID + "/" + roomId;
-            const reqRes = getResponse("POST", toggleReqURL, undefined)
-                .then(handleToggleInteractionRequest);
+            //const reqRes = getResponse("POST", toggleReqURL, undefined)
+            //    .then(handleToggleInteractionRequest);
         });
 
     }
