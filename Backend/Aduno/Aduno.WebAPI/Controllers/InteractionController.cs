@@ -5,10 +5,27 @@ using Aduno.WebAPI.Models;
 
 namespace Aduno.WebAPI.Controllers
 {
+    /// <summary>
+    /// A generic one for the standard CRUD operations.
+    /// </summary>
+    /// <typeparam name="TEntity">The type of entity</typeparam>
+    /// <typeparam name="TModel">The type of model</typeparam>
+    [Route("api/[controller]")]
+    [ApiController]
     public class InteractionController : GenericController<Database.Logic.Entities.Interaction, InteractionEdit, InteractionModel>
     {
         public InteractionController(Database.Logic.Controllers.InteractionController controller) : base(controller)
         {
+        }
+
+        [HttpGet("absencelist/{classId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public ActionResult<InteractionModel> GetAbsencelist(int classId)
+        {
+            using var classCtrl = new Database.Logic.Controllers.ClassController();
+            using var ctrl = EntityController as Database.Logic.Controllers.InteractionController;
+
+            return null;
         }
 
         [HttpGet("latest/{id}")]
