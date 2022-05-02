@@ -84,6 +84,8 @@
             const responseBodyJson = response.json();
             const typeExecuted = responseBodyJson.type;
 
+            console.log(response);
+            console.log(responseBodyJson);
             console.log("Executed toggle: now " + typeExecuted);
 
             if(typeExecuted == 0){
