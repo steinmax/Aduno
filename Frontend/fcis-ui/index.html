@@ -126,14 +126,16 @@ if(!isLoggedIn()) {
         document.getElementById("roomIdOutput").innerHTML = "[temp] RoomId: "+ roomId;
 
         //Get current user status
-        let typeToPerform = await getCurrentStatus();
+        getCurrentStatus().then(currentStatus => {
+            let typeToPerform = currentStatus === "in" ? "out" : "in";
+            console.log("Performing: " + typeToPerform);
+    
+            //Call to API to create Interaction (aka. ckeck in or out)
+            const toggleReqURL = "/interaction/" + USER_ID + "/" + roomId;
+            const reqRes = getResponse("POST", toggleReqURL, undefined)
+                .then(handleToggleInteractionRequest);
+        });
 
-        console.log("Performing: " + typeToPerform);
-
-        //Call to API to create Interaction (aka. ckeck in or out)
-        const toggleReqURL = "/interaction/" + USER_ID + "/" + roomId;
-        const reqRes = getResponse("POST", toggleReqURL, undefined)
-            .then(handleToggleInteractionRequest);
     }
 
 </script>
