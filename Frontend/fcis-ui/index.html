@@ -55,7 +55,7 @@
 <script>
     const showErrorDiv = function(){
         document.getElementById("errorDiv").hidden = false;
-    }
+    };
 
     const getRoomIdFromURL = function() {
         const params = new Proxy(new URLSearchParams(window.location.search), {
@@ -63,7 +63,7 @@
         });
 
         return params.roomId;
-    }
+    };
 
     const handleLatestInteractionRequest = function(response) {
         if(response.status == 200){
@@ -75,29 +75,28 @@
                     typeToPerform = "out";
                 }
             }
-    } 
+    };
 
     const handleToggleInteractionRequest = function(response) {
         //Check response
         if(reqRes.status == 201){
-                //if response is 201 Created (interaction created)
-                const responseBodyJson = reqRes.json();
-                const typeExecuted = responseBodyJson.type;
+            //if response is 201 Created (interaction created)
+            const responseBodyJson = reqRes.json();
+            const typeExecuted = responseBodyJson.type;
 
-                console.log("Executed toggle: now " + typeExecuted);
+            console.log("Executed toggle: now " + typeExecuted);
 
-                if(typeExecuted == 0)
-                    document.getElementById("checkInDiv").hidden = false;
-                else if(typeExecuted == 1)
-                    document.getElementById("checkOutDiv").hidden = false;
-            }
-            else {
-                //if response is not ok(200-299)
-                console.error("Error: Could not checkIn or checkOut!");
-                showErrorDiv();
-            }
+            if(typeExecuted == 0)
+                document.getElementById("checkInDiv").hidden = false;
+            else if(typeExecuted == 1)
+                document.getElementById("checkOutDiv").hidden = false;
         }
-    }
+        else {
+            //if response is not ok(200-299)
+            console.error("Error: Could not checkIn or checkOut!");
+            showErrorDiv();
+        }
+    };
 
 
     //Constants
