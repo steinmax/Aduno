@@ -166,10 +166,11 @@ async function getCurrentStatus() {
 
   const response = await getResponse("GET", `/interaction/latest/${USER_ID}`, undefined);
 
-  console.log(response);
-
-  const jsonResponse = await response.json();
-
-
+  //Check if response is 204 or 200 (204 means there is no interaction for today yet; 200 returns the latest one of today)
+  if(response.status == 204)
+    return "out";
+  
+  //else, return type of latest interaction
+  let jsonResponse = await response.json();
   return jsonResponse.type == 0 ? "in" : "out";
 }
