@@ -79,9 +79,9 @@
 
     const handleToggleInteractionRequest = function(response) {
         //Check response
-        if(reqRes.status == 201){
+        if(response.status == 201){
             //if response is 201 Created (interaction created)
-            const responseBodyJson = reqRes.json();
+            const responseBodyJson = response.json();
             const typeExecuted = responseBodyJson.type;
 
             console.log("Executed toggle: now " + typeExecuted);
