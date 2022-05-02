@@ -77,11 +77,11 @@
             }
     };
 
-    const handleToggleInteractionRequest = function(response) {
+    const handleToggleInteractionRequest = async function(response) {
         //Check response
         if(response.status == 201){
             //if response is 201 Created (interaction created)
-            const responseBodyJson = response.json();
+            const responseBodyJson = await response.json();
             const typeExecuted = responseBodyJson.type;
 
             console.log(response);
