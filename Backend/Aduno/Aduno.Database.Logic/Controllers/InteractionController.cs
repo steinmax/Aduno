@@ -23,7 +23,7 @@ namespace Aduno.Database.Logic.Controllers
                 return null;
 
             var lastInteraction = EntitySet.Where(e => e.UserId == userId)
-                                            .OrderBy(e => e.DateTime)
+                                            .OrderByDescending(e => e.DateTime)
                                             .FirstOrDefault();
 
             return lastInteraction;
