@@ -20,12 +20,14 @@ namespace Aduno.WebAPI.Controllers
 
         [HttpGet("absencelist/{classId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<InteractionModel> GetAbsencelist(int classId)
+        public async Task<ActionResult<InteractionModel>> GetAbsencelist(int classId)
         {
             using var classCtrl = new Database.Logic.Controllers.ClassController();
             using var ctrl = EntityController as Database.Logic.Controllers.InteractionController;
 
-            return null;
+            var users = await classCtrl.GetUsersOfClassByIdAsync(classId);
+
+            return Ok();
         }
 
         [HttpGet("latest/{id}")]
