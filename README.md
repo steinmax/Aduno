@@ -7,7 +7,7 @@ Das aduno Team stellt ein einfach zu bedienendes Fast-Check-In-System (FCIS) fü
 
 ### Anwendungsfälle
 
-Was ist ein gutes System ohne Anwendungsfall, nicht brauchbar. Deshalb werden nun drei sehr unterschiedliche Anwendungsfälle gezeigt, dass es auch für das ReSign-Projekt einen vielfältigen Markt gibt.
+Was ist ein gutes System ohne Anwendungsfall, nicht brauchbar. Deshalb werden nun drei sehr unterschiedliche Anwendungsfälle gezeigt, dass es auch für das Aduno-Projekt einen vielfältigen Markt gibt.
 
 ***Krankenhaus***
 
