@@ -51,6 +51,7 @@ namespace Aduno.WebAPI.Controllers
 
         [HttpPost("{userId}/{roomId}")]
         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<InteractionModel>> ToggleCheckState(int userId, int roomId)
         {
             var ctrl = EntityController as Database.Logic.Controllers.InteractionController;
@@ -58,6 +59,21 @@ namespace Aduno.WebAPI.Controllers
             if (ctrl == null)
                 throw new Exception("Controller null");
 
+            //Check if user exists
+            using var userCtrl = new Aduno.Database.Logic.Controllers.UserController();
+            var user = await userCtrl.GetByIdAsync(userId);
+
+            if (user == null)
+                return NotFound("User with id: " + userId);
+
+            using var roomCtrl = new Aduno.Database.Logic.Controllers.RoomController();
+            var room = await roomCtrl.GetByIdAsync(roomId);
+
+            if(room == null)
+                return NotFound("Room with id: " + roomId);
+
+
+            //Build entity to persist
             Interaction? last = await ctrl.GetLastInteractionAsync(userId);
 
             InteractionType type = last == null ? InteractionType.CheckIn : last.Type == InteractionType.CheckIn ? InteractionType.CheckOut : InteractionType.CheckIn;
