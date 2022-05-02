@@ -91,6 +91,11 @@
             console.log(responseBodyJson);
             console.log("Executed toggle: now " + typeExecuted);
 
+            console.log(responseBodyJson.datetime);
+
+            const responseDateTime = Date.parse(responseBodyJson.datetime);
+            console.log(responseDateTime);
+
             if(typeExecuted == 0){
                 document.getElementById("checkInDiv").hidden = false;
                 document.getElementById("checkInDatetime").innerHTML = responseBodyJson.datetime;
