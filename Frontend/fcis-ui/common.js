@@ -1,4 +1,4 @@
-const URL = "https://resign.byiconic.at";
+const URL = "https://aduno.byiconic.at";
 const API_URL = URL + "/api";
 
 const LOCALSTORAGE_KEY = "userId";
