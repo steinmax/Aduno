@@ -27,7 +27,7 @@
                     <div class="card text-white bg-success align-items-center p-4 pb-2 m-2">
                         <img class="img-fluid" src="images/icons8-check-96.png">
                         <h1 class="text-center">Sucessfully checked in</h1>
-                        <h3 class="text-center" id="datetime">23.03.2022 11:41:29</h3>
+                        <h3 class="text-center" id="checkInDatetime">--.--.---- --:--:--</h3>
                         <button class="btn btn-outline-light mt-4">Confirm</button>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                     <div class="card text-white bg-danger align-items-center p-4 pb-2 m-2">
                         <img class="img-fluid" src="images/icons8-cross-96.png">
                         <h1 class="text-center">Sucessfully checked out</h1>
-                        <h3 class="text-center" id="datetime">23.03.2022 12:35:11</h3>
+                        <h3 class="text-center" id="checkOutDatetime">--.--.---- --:--:--</h3>
                         <button class="btn btn-outline-light mt-4">Confirm</button>
                     </div>
                 </div>
@@ -86,10 +86,14 @@
 
             console.log("Executed toggle: now " + typeExecuted);
 
-            if(typeExecuted == 0)
+            if(typeExecuted == 0){
                 document.getElementById("checkInDiv").hidden = false;
-            else if(typeExecuted == 1)
+                document.getElementById("checkInDatetime").innerHTML = responseBodyJson.datetime;
+            }
+            else if(typeExecuted == 1) {
                 document.getElementById("checkOutDiv").hidden = false;
+                document.getElementById("checkOutDatetime").innerHTML = responseBodyJson.datetime;
+            }
         }
         else {
             //if response is not ok(200-299)
@@ -132,8 +136,8 @@ if(!isLoggedIn()) {
     
             //Call to API to create Interaction (aka. ckeck in or out)
             const toggleReqURL = "/interaction/" + USER_ID + "/" + roomId;
-            //const reqRes = getResponse("POST", toggleReqURL, undefined)
-            //    .then(handleToggleInteractionRequest);
+            const reqRes = getResponse("POST", toggleReqURL, undefined)
+                .then(handleToggleInteractionRequest);
         });
 
     }
