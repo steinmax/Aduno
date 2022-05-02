@@ -51,26 +51,70 @@
     </body>
 </html>
 
-<script src="logic.js"></script>
+<script src="common.js"></script>
 <script>
-    var showErrorDiv = function(){
+    const showErrorDiv = function(){
         document.getElementById("errorDiv").hidden = false;
-    }
+    };
 
+    const getRoomIdFromURL = function() {
+        const params = new Proxy(new URLSearchParams(window.location.search), {
+            get: (searchParams, prop) => searchParams.get(prop),
+        });
+
+        return params.roomId;
+    };
+
+    const handleLatestInteractionRequest = function(response) {
+        if(response.status == 200){
+                //If response is 200 OK (Interaction found)
+                //check if type is checkIn or checkOut and perform the opposite action
+                const responseBodyJson = response.json();
+                
+                if(responseBodyJson.type == 1) {        //if latest interaction type was checkIn (= 1), perform checkOut
+                    typeToPerform = "out";
+                }
+            }
+    };
+
+    const handleToggleInteractionRequest = function(response) {
+        //Check response
+        if(reqRes.status == 201){
+            //if response is 201 Created (interaction created)
+            const responseBodyJson = reqRes.json();
+            const typeExecuted = responseBodyJson.type;
+
+            console.log("Executed toggle: now " + typeExecuted);
+
+            if(typeExecuted == 0)
+                document.getElementById("checkInDiv").hidden = false;
+            else if(typeExecuted == 1)
+                document.getElementById("checkOutDiv").hidden = false;
+        }
+        else {
+            //if response is not ok(200-299)
+            console.error("Error: Could not checkIn or checkOut!");
+            showErrorDiv();
+        }
+    };
+
+
+    //Constants
     const LOGIN_HREF = URL + "/login";
 
-    //check if already logged in
-    if(!isLoggedIn()) {
+</script>
+
+<!-- Executing JS code -->
+<script>
+//check if already logged in
+if(!isLoggedIn()) {
         //If not logged in, redirect to login page
         console.log("Logged in, redirecting...");
         window.location.replace(LOGIN_HREF);
     }
 
     //Read roomId from URL
-    const params = new Proxy(new URLSearchParams(window.location.search), {
-            get: (searchParams, prop) => searchParams.get(prop),
-        });
-    let roomId = params.roomId;
+    let roomId = getRoomIdFromURL();
 
     if(roomId == null || roomId == undefined){
         //error, no roomId specified
@@ -82,50 +126,16 @@
         document.getElementById("roomIdOutput").innerHTML = "[temp] RoomId: "+ roomId;
 
         //Get current user status
-        let typeToPerform = "in";       //default type is in
-
-        const latestUrl = "/interaction/latest/" + USER_ID;
-        getResponse("GET", latestUrl, undefined).then(response => {
-            if(response.status == 200){
-                //If response is 200 OK (Interaction found)
-                //check if type is checkIn or checkOut and perform the opposite action
-                const responseBodyJson = response.json();
-                
-                if(responseBodyJson.type == 1) {        //if latest interaction type was checkIn (= 1), perform checkOut
-                    typeToPerform = "out";
-                }
-            }
-        }).catch(error => {
-            console.error("Error: " + error);
-            showErrorDiv();
+        getCurrentStatus().then(currentStatus => {
+            let typeToPerform = currentStatus === "in" ? "out" : "in";
+            console.log("Performing: " + typeToPerform);
+    
+            //Call to API to create Interaction (aka. ckeck in or out)
+            const toggleReqURL = "/interaction/" + USER_ID + "/" + roomId;
+            //const reqRes = getResponse("POST", toggleReqURL, undefined)
+            //    .then(handleToggleInteractionRequest);
         });
 
-        //Call to API to create Interaction (aka. ckeck in or out)
-        const reqBody = {
-            "userId": USER_ID,
-            "roomId": roomId
-        };
-
-        const toggleReqURL = "/interaction/" + USER_ID + "/" + roomId;
-        const reqRes = getResponse("POST", toggleReqURL, undefined)
-            .then(reqRes => {
-
-                //Check response
-                if(reqRes.status == 201){
-                    //if response is 201 Created (interaction created)
-                    const responseBodyJson = reqRes.json();
-                    const typeExecuted = responseBodyJson.type;
-
-                    if(typeExecuted == 0)
-                        document.getElementById("checkInDiv").hidden = false;
-                    else if(typeExecuted == 1)
-                        document.getElementById("checkOutDiv").hidden = false;
-                }
-                else {
-                    //if response is not ok(200-299)
-                    console.error("Error: Could not checkIn or checkOut!");
-                    showErrorDiv();
-                }
-            });
     }
+
 </script>
