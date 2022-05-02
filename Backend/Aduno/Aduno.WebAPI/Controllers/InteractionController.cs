@@ -51,6 +51,7 @@ namespace Aduno.WebAPI.Controllers
 
         [HttpPost("{userId}/{roomId}")]
         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<InteractionModel>> ToggleCheckState(int userId, int roomId)
         {
             var ctrl = EntityController as Database.Logic.Controllers.InteractionController;
@@ -58,19 +59,37 @@ namespace Aduno.WebAPI.Controllers
             if (ctrl == null)
                 throw new Exception("Controller null");
 
+            //Check if user exists
+            using var userCtrl = new Database.Logic.Controllers.UserController();
+            var user = await userCtrl.GetByIdAsync(userId);
+
+            if (user == null)
+                return NotFound("User with id: " + userId + " doesn't exist!");
+
+            using var roomCtrl = new Database.Logic.Controllers.RoomController();
+            var room = await roomCtrl.GetByIdAsync(roomId);
+
+            if(room == null)
+                return NotFound("Room with id: " + roomId + " doesn't exist!");
+
+
+            //Build entity to persist
             Interaction? last = await ctrl.GetLastInteractionAsync(userId);
 
             InteractionType type = last == null ? InteractionType.CheckIn : last.Type == InteractionType.CheckIn ? InteractionType.CheckOut : InteractionType.CheckIn;
 
-            Interaction interaction = new Interaction();
-            interaction.UserId = userId;
-            interaction.RoomId = roomId;
-            interaction.DateTime = DateTime.Now;
-            interaction.Type = type;
+            var interaction = new Interaction
+            {
+                UserId = userId,
+                RoomId = roomId,
+                DateTime = DateTime.Now,
+                Type = type
+            };
 
-            Interaction act = await ctrl.InsertAsync(interaction);
+            await ctrl.InsertAsync(interaction);
+            await ctrl.SaveChangesAsync();
 
-            return CreatedAtAction("Get", new { Id=act.Id }, ToModel(act));
+            return CreatedAtAction("Get", new { Id = interaction.Id }, ToModel(interaction));
         }
     }
 }
