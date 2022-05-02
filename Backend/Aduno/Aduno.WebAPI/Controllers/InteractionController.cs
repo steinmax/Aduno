@@ -64,13 +64,13 @@ namespace Aduno.WebAPI.Controllers
             var user = await userCtrl.GetByIdAsync(userId);
 
             if (user == null)
-                return NotFound("User with id: " + userId);
+                return NotFound("User with id: " + userId + " doesn't exist!");
 
             using var roomCtrl = new Aduno.Database.Logic.Controllers.RoomController();
             var room = await roomCtrl.GetByIdAsync(roomId);
 
             if(room == null)
-                return NotFound("Room with id: " + roomId);
+                return NotFound("Room with id: " + roomId + " doesn't exist!");
 
 
             //Build entity to persist
@@ -78,16 +78,18 @@ namespace Aduno.WebAPI.Controllers
 
             InteractionType type = last == null ? InteractionType.CheckIn : last.Type == InteractionType.CheckIn ? InteractionType.CheckOut : InteractionType.CheckIn;
 
-            Interaction interaction = new Interaction();
-            interaction.UserId = userId;
-            interaction.RoomId = roomId;
-            interaction.DateTime = DateTime.Now;
-            interaction.Type = type;
+            var interaction = new Interaction
+            {
+                UserId = userId,
+                RoomId = roomId,
+                DateTime = DateTime.Now,
+                Type = type
+            };
 
-            Interaction act = await ctrl.InsertAsync(interaction);
+            await ctrl.InsertAsync(interaction);
             await ctrl.SaveChangesAsync();
 
-            return CreatedAtAction("Get", new { Id = act.Id }, ToModel(act));
+            return CreatedAtAction("Get", new { Id = interaction.Id }, ToModel(interaction));
         }
     }
 }
