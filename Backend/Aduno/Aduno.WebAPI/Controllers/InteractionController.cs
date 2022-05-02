@@ -60,13 +60,13 @@ namespace Aduno.WebAPI.Controllers
                 throw new Exception("Controller null");
 
             //Check if user exists
-            using var userCtrl = new Aduno.Database.Logic.Controllers.UserController();
+            using var userCtrl = new Database.Logic.Controllers.UserController();
             var user = await userCtrl.GetByIdAsync(userId);
 
             if (user == null)
                 return NotFound("User with id: " + userId + " doesn't exist!");
 
-            using var roomCtrl = new Aduno.Database.Logic.Controllers.RoomController();
+            using var roomCtrl = new Database.Logic.Controllers.RoomController();
             var room = await roomCtrl.GetByIdAsync(roomId);
 
             if(room == null)
