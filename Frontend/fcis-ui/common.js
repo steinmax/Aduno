@@ -165,7 +165,11 @@ async function getCurrentStatus() {
   }
 
   const response = await getResponse("GET", `/interaction/latest/${USER_ID}`, undefined);
+
+  console.log(response);
+
   const jsonResponse = await response.json();
+
 
   return jsonResponse.type == 0 ? "in" : "out";
 }
