@@ -9,6 +9,7 @@ namespace Aduno.Database.Logic.Entities;
 public class Interaction : VersionEntity
 {
     [Required]
+    [Column(TypeName = "timestamp")]
     public DateTime DateTime { get; set; }
     [Required]
     public InteractionType Type { get; set; }
