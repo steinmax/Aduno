@@ -15,7 +15,9 @@
 
         public async Task<IEnumerable<Entities.User>?> GetUsersOfClassByIdAsync(int id)
         {
-            var _class = await GetByIdAsync(id);
+            var _class = await EntitySet.Where(c => c.Id == id)
+                .Include(c => c.Users).FirstOrDefaultAsync();
+
             if (_class == null)
                 return null;
 
