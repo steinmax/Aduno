@@ -2,6 +2,7 @@
 using Aduno.Database.Logic.Entities;
 using Aduno.Database.Logic.Enumerations;
 using Aduno.WebAPI.Models;
+using Aduno.Common.Logic.Extensions;
 
 namespace Aduno.WebAPI.Controllers
 {
@@ -20,14 +21,23 @@ namespace Aduno.WebAPI.Controllers
 
         [HttpGet("absencelist/{classId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<ActionResult<InteractionModel>> GetAbsencelist(int classId)
+        public async Task<ActionResult<UserModel>> GetAbsenceList(int classId)
         {
             using var classCtrl = new Database.Logic.Controllers.ClassController();
             using var ctrl = EntityController as Database.Logic.Controllers.InteractionController;
 
             var users = await classCtrl.GetUsersOfClassByIdAsync(classId);
 
-            return Ok();
+            var userModels = users?.ToList().Select(u =>
+            {
+                var user = new UserModel();
+                user.CopyFrom(u);
+
+                return user;
+            });
+
+
+            return Ok(userModels);
         }
 
         [HttpGet("latest/{id}")]
