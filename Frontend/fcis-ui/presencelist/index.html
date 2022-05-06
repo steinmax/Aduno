@@ -76,6 +76,19 @@
 
         tableBody.appendChild(newRow);
     };
+
+    const handlePresenceListResponse = function (response) {
+        if(response.ok){
+            const json = response.json().then(data => {
+                data.forEach(user => {
+                    addTableRow(user);
+                });
+            });
+        } else
+        {
+            console.log("Error: " + response.status);
+        }
+    };
 </script>
 <script>
     const classId = getAllUrlParams().classId;
@@ -84,9 +97,12 @@
         throw new Error("No classId provided");
     }
 
-    const reqUrlExt = "/class/" + classId;
+    let reqUrlExt = "/class/" + classId;
     const className = getResponse("GET", reqUrlExt, undefined)
                         .then(handleSetClassHeadingText);
 
+    reqUrlExt = "/presence" + classId; 
+    const presenceList = getResponse("GET", reqUrlExt, undefined)
+                        .then(handlePresenceListResponse);
 
 </script>
