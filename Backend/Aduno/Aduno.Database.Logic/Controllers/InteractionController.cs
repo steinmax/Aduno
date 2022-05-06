@@ -70,7 +70,7 @@ namespace Aduno.Database.Logic.Controllers
             };
 
             await interactionCtrl.InsertAsync(interaction);
-            await interactionCtrl.SaveChangesAsync();
+            await SaveChangesAsync();
 
             return interaction;
         }
