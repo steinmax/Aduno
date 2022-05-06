@@ -101,7 +101,7 @@
     const className = getResponse("GET", reqUrlExt, undefined)
                         .then(handleSetClassHeadingText);
 
-    reqUrlExt = "/presence" + classId; 
+    reqUrlExt = "/presence/" + classId; 
     const presenceList = getResponse("GET", reqUrlExt, undefined)
                         .then(handlePresenceListResponse);
 
