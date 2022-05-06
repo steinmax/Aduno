@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aduno - Presencelist</title>
 
+    <link rel="icon" type="image/png" href="../images/icons/favicon.ico"/>
+
     <style>
         #presenceTable {
           font-family: Arial, Helvetica, sans-serif;
@@ -28,7 +30,7 @@
           background-color: #04AA6D;
           color: white;
         }
-        </style>
+    </style>
 </head>
 <body>
     <h1 id="classHeading"></h1>
@@ -89,6 +91,10 @@
             console.log("Error: " + response.status);
         }
     };
+    
+    const refreshPage = function () {
+        window.location.reload();
+    };
 </script>
 <script>
     const classId = getAllUrlParams().classId;
@@ -105,4 +111,6 @@
     const presenceList = getResponse("GET", reqUrlExt, undefined)
                         .then(handlePresenceListResponse);
 
+
+    setTimeout(refreshPage, 5000);
 </script>
