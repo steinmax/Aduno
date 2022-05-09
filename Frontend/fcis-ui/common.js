@@ -31,9 +31,6 @@ function parseJwt(token) {
 function getUserFromJwtToken(token) {
   const jwtData = parseJwt(token);
 
-  console.log("getUserFromJwt(): ");
-  console.log(token);
-
   let result = {
     "id": jwtData.userId,
     "username": jwtData.username,
@@ -199,9 +196,6 @@ async function getLoginResponse(username, password) {
     USER_JWT_TOKEN = data.token;
     USER = getUserFromJwtToken(USER_JWT_TOKEN);
     USER_ID = USER.id;
-
-    console.log(USER);
-    console.log(USER_ID);
 
     return response;
 }
