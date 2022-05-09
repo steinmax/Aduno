@@ -64,4 +64,4 @@ jobs:
  #       run: ssh server "sudo docker pull ${{ env.DOCKER_USER }}/${{ env.DOCKER_IMAGE }}:latest"
 
       - name: Create docker container
-        run: ssh server "sudo docker run -d --name ${{ env.DOCKER_CONTAINER }} -p 8080:80 -p 8081:443 ${{ env.DOCKER_USER }}/${{ env.IMAGE_NAME }}:latest"
+        run: ssh server "sudo docker run -d --name ${{ env.DOCKER_CONTAINER }} -p 8080:80 -p 8081:443 $IMAGE_PULL_URL"
