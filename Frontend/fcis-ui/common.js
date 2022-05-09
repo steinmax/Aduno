@@ -188,8 +188,12 @@ async function getLoginResponse(username, password) {
       //body: JSON.stringify(reqBody) // body data type must match "Content-Type" header
     });
 
-    console.log(response);
-    USER_JWT_TOKEN = await response.text();
+    const data = await response.json();
+
+    USER_JWT_TOKEN = data.token;
+
+    console.log(USER_JWT_TOKEN);
+
     USER = getUserFromJwtToken(USER_JWT_TOKEN);
     USER_ID = USER.id;
 
