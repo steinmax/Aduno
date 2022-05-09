@@ -3,6 +3,7 @@ using Aduno.Database.Logic.Entities;
 using Aduno.Database.Logic.Enumerations;
 using Aduno.WebAPI.Models;
 using Aduno.Common.Logic.Extensions;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Aduno.WebAPI.Controllers
 {
@@ -11,6 +12,7 @@ namespace Aduno.WebAPI.Controllers
     /// </summary>
     /// <typeparam name="TEntity">The type of entity</typeparam>
     /// <typeparam name="TModel">The type of model</typeparam>
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class InteractionController : GenericController<Database.Logic.Entities.Interaction, InteractionEdit, InteractionModel>
@@ -36,7 +38,7 @@ namespace Aduno.WebAPI.Controllers
                 return user;
             });
 
-
+            
             return Ok(userModels);
         }
 
