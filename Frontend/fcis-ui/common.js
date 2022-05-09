@@ -37,7 +37,7 @@ function getUserFromJwtToken(token) {
     "firstname": jwtData.firstname,
     "lastname": jwtData.lastname,
     "classId": jwtData.classId,
-    "role": jwtData.role
+    "role": jwtData.userrole
   };
 
   return result;
