@@ -95,13 +95,13 @@
 
             const responseDateTime = new Date(responseBodyJson.dateTime).toLocaleString();
 
-            if(typeExecuted == 0){
-                document.getElementById("checkInDiv").hidden = false;
-                document.getElementById("checkInDatetime").innerHTML = responseDateTime;
-            }
-            else if(typeExecuted == 1) {
+            if(typeExecuted == 0) {
                 document.getElementById("checkOutDiv").hidden = false;
                 document.getElementById("checkOutDatetime").innerHTML = responseDateTime;
+            }
+            else if(typeExecuted == 1) {
+                document.getElementById("checkInDiv").hidden = false;
+                document.getElementById("checkInDatetime").innerHTML = responseDateTime;
             }
         }
         else {
@@ -136,7 +136,7 @@ if(!isLoggedIn()) {
     }
     else {
         //Temp. output of roomId (specified in URL)
-        document.getElementById("roomIdOutput").innerHTML = "[temp] RoomId: "+ roomId;
+        //document.getElementById("roomIdOutput").innerHTML = "[temp] RoomId: "+ roomId;
 
         //Get current user status
         getCurrentStatus().then(currentStatus => {

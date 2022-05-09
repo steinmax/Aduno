@@ -101,10 +101,20 @@
 
 	<script src="../common.js"></script>
 	<script>
+		const redirectToCallbackUrl = function() {
+			const callbackUrl = getAllUrlParams().callback;
+
+			if(callbackUrl == undefined){
+				console.log("No callback url: dunno what to do..");
+			}
+			else {
+				window.location.replace(callbackUrl);
+			}
+		};
 		//check if logged in
 		if(isLoggedIn()) {
 			//if logged in, redirect to starting page
-			window.location.replace(URL);
+			redirectToCallbackUrl();
 		}
 
 		//Add event listener to click button on enter
@@ -134,7 +144,7 @@
 			else{
 				//prompt("Sucessfully logged in. :)");
 				//redirect to index.html
-				window.location.replace(URL);
+				redirectToCallbackUrl();
 			}
 		}
 	</script>

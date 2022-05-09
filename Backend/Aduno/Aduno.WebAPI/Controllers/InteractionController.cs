@@ -42,17 +42,18 @@ namespace Aduno.WebAPI.Controllers
             return Ok(userModels);
         }
 
+
         [HttpGet("latest/{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<ActionResult<InteractionModel>> GetLastInteractionAsync(int id)
+        public async Task<ActionResult<InteractionModel>> GetLastInteractionOfTodayAsync(int id)
         {
             var ctrl = EntityController as Database.Logic.Controllers.InteractionController;
 
             if (ctrl == null)
                 throw new Exception("Controller null");
 
-            var entity = await ctrl.GetLastInteractionAsync(id);
+            var entity = await ctrl.GetLastInteractionOfTodayAsync(id);
 
             if (entity == null)
                 return NoContent();
@@ -71,37 +72,13 @@ namespace Aduno.WebAPI.Controllers
             if (ctrl == null)
                 throw new Exception("Controller null");
 
-            //Check if user exists
-            using var userCtrl = new Database.Logic.Controllers.UserController();
-            var user = await userCtrl.GetByIdAsync(userId);
+            var toggleResult = await ctrl.TogglePresenceState(userId, roomId);
 
-            if (user == null)
-                return NotFound("User with id: " + userId + " doesn't exist!");
+            if (toggleResult == null)
+                return NotFound("Something went wrong! Check user- and room-Id specified.");
+            
 
-            using var roomCtrl = new Database.Logic.Controllers.RoomController();
-            var room = await roomCtrl.GetByIdAsync(roomId);
-
-            if(room == null)
-                return NotFound("Room with id: " + roomId + " doesn't exist!");
-
-
-            //Build entity to persist
-            Interaction? last = await ctrl.GetLastInteractionAsync(userId);
-
-            InteractionType type = last == null ? InteractionType.CheckIn : last.Type == InteractionType.CheckIn ? InteractionType.CheckOut : InteractionType.CheckIn;
-
-            var interaction = new Interaction
-            {
-                UserId = userId,
-                RoomId = roomId,
-                DateTime = DateTime.Now,
-                Type = type
-            };
-
-            await ctrl.InsertAsync(interaction);
-            await ctrl.SaveChangesAsync();
-
-            return CreatedAtAction("Get", new { Id = interaction.Id }, ToModel(interaction));
+            return CreatedAtAction("Get", new { Id = toggleResult.Id }, ToModel(toggleResult));
         }
     }
 }

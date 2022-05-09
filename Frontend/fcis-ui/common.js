@@ -8,6 +8,15 @@ let USER;
 let USER_ID;
 
 //Functions from here
+
+function getAllUrlParams() {
+  const params = new Proxy(new URLSearchParams(window.location.search), {
+    get: (searchParams, prop) => searchParams.get(prop),
+  });
+
+  return params;
+}
+
 function readFromLocalStorage(keyword) {
   try{
     let result = localStorage.getItem(keyword);

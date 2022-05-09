@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Aduno.Common.Logic.Extensions;
 
 namespace Aduno.WebAPI.Controllers
 {
@@ -16,5 +17,24 @@ namespace Aduno.WebAPI.Controllers
         public ClassController(Database.Logic.Controllers.ClassController controller) : base(controller)
         {
         }
+
+        [HttpGet("{id}/users")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<IEnumerable<Models.UserModel>>> GetUsersByClassId(int id)
+        {
+            using var ctrl = new Database.Logic.Controllers.ClassController();
+
+            var result = await ctrl.GetUsersOfClassByIdAsync(id);
+            if(result == null)
+                return NotFound();
+
+            return Ok(result.Select(u =>
+            {
+                var model = new Models.UserModel();
+                model.CopyFrom(u);
+                return model;
+            }));
+        } 
     }
 }
