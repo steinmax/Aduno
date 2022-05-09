@@ -31,6 +31,9 @@ function parseJwt(token) {
 function getUserFromJwtToken(token) {
   const jwtData = parseJwt(token);
 
+  console.log("getUserFromJwt(): ");
+  console.log(token);
+
   let result = {
     "id": jwtData.userId,
     "username": jwtData.username,
@@ -191,19 +194,19 @@ async function getLoginResponse(username, password) {
     const data = await response.json();
 
     USER_JWT_TOKEN = data.token;
-
-    console.log(USER_JWT_TOKEN);
-
     USER = getUserFromJwtToken(USER_JWT_TOKEN);
     USER_ID = USER.id;
+
+    console.log(USER);
+    console.log(USER_ID);
 
     return response;
 }
 
 //Gets the current status of the user, if he is checked in or checked out currently (or undefined if not logged in)
 async function getCurrentStatus() {
-  if(USER_ID == undefined){
-    console.error("USER_ID not specified");
+  if(USER_JWT_TOKEN == undefined){
+    console.error("USER_JWT_TOKEN not specified");
     return undefined;
   }
 
