@@ -10,9 +10,6 @@ env:
   DOCKER_CONTAINER: aduno-backend
   REGISTRY: ghcr.io
   IMAGE_NAME: aduno-backend
-defaults:
-  run:
-    working-directory: ./Backend/Aduno
 
 jobs:
   build-and-push-docker-image:
@@ -28,7 +25,9 @@ jobs:
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build API docker image
-      run: docker build . --tag ${{ env.IMAGE_NAME }}
+      run: |
+        cd Backend/Aduno
+        docker build . --tag ${{ env.IMAGE_NAME }}
     
     - name: Push image
       run: |
