@@ -112,11 +112,12 @@ namespace Aduno.WebAPI.Controllers
                         new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
                         new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                         new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
-                        new Claim("UserId", user.Id.ToString()),
-                        new Claim("Username", user.Username),
-                        new Claim("Firstname", user.FirstName),
-                        new Claim("Lastname", user.LastName),
-                        new Claim("ClassId", user.ClassId.ToString())
+                        new Claim("userId", user.Id.ToString()),
+                        new Claim("username", user.Username),
+                        new Claim("firstname", user.FirstName),
+                        new Claim("lastname", user.LastName),
+                        new Claim("classId", user.ClassId.ToString()),
+                        new Claim("role", ((int)user.Role).ToString())
                     };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
