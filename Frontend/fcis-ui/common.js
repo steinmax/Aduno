@@ -71,6 +71,9 @@ function isLoggedIn() {
     return false;
 
   USER_JWT_TOKEN = localUserToken;
+  USER = getUserFromJwtToken(USER_JWT_TOKEN);
+  USER_ID = USER.id;
+
   return true;
 }
 
