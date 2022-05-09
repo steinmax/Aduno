@@ -1,11 +1,12 @@
 const URL = "https://aduno.byiconic.at";
 const API_URL = URL + "/api";
 
-const LOCALSTORAGE_KEY = "userId";
+const LOCALSTORAGE_KEY = "userToken";
 const PASSWORDS_NOT_EQUAL = "pass_not_equal";
 
 let USER;
 let USER_ID;
+let USER_JWT_TOKEN;
 
 //Functions from here
 
@@ -16,6 +17,17 @@ function getAllUrlParams() {
 
   return params;
 }
+
+function parseJwt(token) {
+  var base64Url = token.split('.')[1];
+  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  var jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+
+  return JSON.parse(jsonPayload);
+};
+
 
 function readFromLocalStorage(keyword) {
   try{
@@ -90,7 +102,7 @@ async function login(username, password) {
   if (res.ok){
     //Save userId to localstorage
     
-    writeToLocalStorage(LOCALSTORAGE_KEY, USER_ID);
+    writeToLocalStorage(LOCALSTORAGE_KEY, USER_JWT_TOKEN);
     return true;
   }
   else {

@@ -10,6 +10,9 @@ env:
   DOCKER_CONTAINER: aduno-backend
   REGISTRY: ghcr.io
   IMAGE_NAME: aduno-backend
+defaults:
+  run:
+    working-directory: ./Backend/Aduno
 
 jobs:
   build-and-push-docker-image:
@@ -29,25 +32,19 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Extract metadata (tags, labels) for Docker
-      id: meta
-      uses: docker/metadata-action@98669ae865ea3cffbcbaa878cf57c20bbf1c6c38
-      with:
-         images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-         
-    - name: Build and push Docker image
-      uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
-      with:
-        context: ./Backend/Aduno
-        push: true
-        tags: ${{ steps.meta.outputs.tags }}
-        labels: ${{ steps.meta.outputs.labels }}
-  
-#    - name: Push docker image
-#      run: |
-#        docker push ${{ env.DOCKER_USER }}/${{ env.DOCKER_IMAGE }}
-#        docker logout
+    - name: Build image
+      run: docker build . --tag {{ env.IMAGE_NAME }}
     
+    - name: Push image
+      run: |
+        IMAGE_ID=ghcr.io/${{ github.repository_owner }}/{{ env.IMAGE_NAME }}
+        IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+        VERSION=latest
+        echo IMAGE_ID=$IMAGE_ID
+        echo VERSION=$VERSION
+        docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+        docker push $IMAGE_ID:$VERSION
+        
   start-docker-container-on-vm:
     needs:
       - build-and-push-docker-image
