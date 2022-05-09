@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Aduno.Database.Logic.Enumerations;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -14,6 +15,14 @@ namespace Aduno.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<Models.PrecenceModel>>> GetPresenceListByClassId(int classId)
         {
+            Role? role = Common.GetUserRoleFromUser(User);
+
+            if(role == null)
+                return NotFound();
+
+            if(role != Role.Admin)
+                Unauthorized();
+
             using var classCtrl = new Database.Logic.Controllers.ClassController();
             var users = await classCtrl.GetUsersOfClassByIdAsync(classId);
 
