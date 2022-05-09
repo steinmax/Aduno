@@ -117,7 +117,7 @@ namespace Aduno.WebAPI.Controllers
                         new Claim("firstname", user.FirstName),
                         new Claim("lastname", user.LastName),
                         new Claim("classId", user.ClassId.ToString()),
-                        new Claim("role", ((int)user.Role).ToString())
+                        new Claim("userrole", ((int)user.Role).ToString())
                     };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
