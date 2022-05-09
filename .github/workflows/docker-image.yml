@@ -21,18 +21,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     
-#   - name: Build API docker image
-#      run: |
-#        cd Backend/Aduno
-#        docker build . --file Dockerfile --tag ${{ secrets.DOCKER_USER }}/${{ env.IMAGE_NAME }}:latest
-        
     - name: Login to the Container registry (Github container registry)
       uses: docker/login-action@v1
       with:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Build image
+    - name: Build API docker image
       run: docker build . --tag ${{ env.IMAGE_NAME }}
     
     - name: Push image
@@ -64,7 +59,9 @@ jobs:
           ssh server "sudo docker rm ${{ env.DOCKER_CONTAINER }} || echo 'No container to remove'"
           
       - name: Pull latest docker image
-        run: ssh server "sudo docker pull ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest"
+        run: | 
+          IMAGE_PULL_URL=${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+          ssh server "sudo docker pull $IMAGE_PULL_URL
  #       run: ssh server "sudo docker pull ${{ env.DOCKER_USER }}/${{ env.DOCKER_IMAGE }}:latest"
 
       - name: Create docker container
