@@ -60,7 +60,7 @@ jobs:
       - name: Pull latest docker image
         run: | 
           IMAGE_PULL_URL=${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
-          ssh server "sudo docker pull $IMAGE_PULL_URL
+          ssh server "sudo docker pull $IMAGE_PULL_URL"
  #       run: ssh server "sudo docker pull ${{ env.DOCKER_USER }}/${{ env.DOCKER_IMAGE }}:latest"
 
       - name: Create docker container
