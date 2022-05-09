@@ -28,6 +28,20 @@ function parseJwt(token) {
   return JSON.parse(jsonPayload);
 };
 
+function getUserFromJwtToken(token) {
+  const jwtData = parseJwt(token);
+
+  let result = {
+    "id": jwtData.userId,
+    "username": jwtData.username,
+    "firstname": jwtData.firstname,
+    "lastname": jwtData.lastname,
+    "classId": jwtData.classId,
+    "role": jwtData.role
+  };
+
+  return result;
+}
 
 function readFromLocalStorage(keyword) {
   try{
@@ -77,6 +91,7 @@ function getResponse(httpverb, urlext, body){
         credentials: 'same-origin', // include, *same-origin, omit
         headers: {
           //'Content-Type': 'application/json'
+          "Authorization": "Bearer " + USER_JWT_TOKEN
         },
         redirect: 'follow', // manual, *follow, error
         referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
@@ -155,7 +170,7 @@ async function getRegisterResponse(username, firstname, lastname, password, clas
 }
 //function that checks if the given user and password represent an existing user in our system
 async function getLoginResponse(username, password) {
-    const reqUrl = API_URL + "/user/check";
+    const reqUrl = API_URL + "/user/createjwt";
 
     const response = await fetch(reqUrl, {
       method: 'GET', // *GET, POST, PUT, DELETE, etc.
@@ -172,7 +187,8 @@ async function getLoginResponse(username, password) {
       //body: JSON.stringify(reqBody) // body data type must match "Content-Type" header
     });
 
-    USER = await response.json();
+    USER_JWT_TOKEN = await response.text;
+    USER = getUserFromJwtToken(USER_JWT_TOKEN);
     USER_ID = USER.id;
 
     return response;
