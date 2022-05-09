@@ -48,12 +48,12 @@ function writeToLocalStorage(keyword, value) {
 }
 
 function isLoggedIn() {
-  let localUserId = readFromLocalStorage(LOCALSTORAGE_KEY);
+  let localUserToken = readFromLocalStorage(LOCALSTORAGE_KEY);
 
-  if(localUserId == undefined)
+  if(localUserToken == undefined)
     return false;
 
-  USER_ID = localUserId;
+  USER_JWT_TOKEN = localUserToken;
   return true;
 }
 
