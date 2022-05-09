@@ -95,8 +95,16 @@
     const refreshPage = function () {
         window.location.reload();
     };
+
+    const LOGIN_HREF = URL + "/login";
+    const LOGIN_WITH_CALLBACK_HREF = LOGIN_HREF + `?callback=${URL}/presencelist?classId=${getAllUrlParams().classId}`;
 </script>
 <script>
+    if(!isLoggedIn()){
+        //If not logged in, redirect to login page
+        window.location.replace(LOGIN_WITH_CALLBACK_HREF);
+    }
+
     const classId = getAllUrlParams().classId;
 
     if(classId == undefined || classId == null){

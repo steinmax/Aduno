@@ -68,6 +68,9 @@ function isLoggedIn() {
     return false;
 
   USER_JWT_TOKEN = localUserToken;
+  USER = getUserFromJwtToken(USER_JWT_TOKEN);
+  USER_ID = USER.id;
+
   return true;
 }
 
@@ -191,9 +194,6 @@ async function getLoginResponse(username, password) {
     const data = await response.json();
 
     USER_JWT_TOKEN = data.token;
-
-    console.log(USER_JWT_TOKEN);
-
     USER = getUserFromJwtToken(USER_JWT_TOKEN);
     USER_ID = USER.id;
 
@@ -202,8 +202,8 @@ async function getLoginResponse(username, password) {
 
 //Gets the current status of the user, if he is checked in or checked out currently (or undefined if not logged in)
 async function getCurrentStatus() {
-  if(USER_ID == undefined){
-    console.error("USER_ID not specified");
+  if(USER_JWT_TOKEN == undefined){
+    console.error("USER_JWT_TOKEN not specified");
     return undefined;
   }
 

@@ -7,7 +7,7 @@ body,
 
     .bg-image {
       /* The image used */
-      background-image: url("images/background.jpg");
+      background-image: url("../images/background.jpg");
       background-color: rgb(255, 255, 255);
       /* Add the blur effect */
       filter: saturate(2);
