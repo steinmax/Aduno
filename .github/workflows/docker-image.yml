@@ -9,7 +9,7 @@ env:
   DOCKER_USER: nydery
   DOCKER_CONTAINER: aduno-backend
   REGISTRY: ghcr.io
-  IMAGE_NAME: aduno_backend
+  IMAGE_NAME: aduno-backend
 
 jobs:
   build-and-push-docker-image:
