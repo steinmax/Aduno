@@ -57,11 +57,8 @@ jobs:
           ssh server "sudo docker stop ${{ env.DOCKER_CONTAINER }} || echo 'Container doesnt exist!'"
           ssh server "sudo docker rm ${{ env.DOCKER_CONTAINER }} || echo 'No container to remove'"
           
-      - name: Pull latest docker image
+      - name: Pull latest docker image and run container
         run: | 
           IMAGE_PULL_URL=${{ env.REGISTRY }}/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
           ssh server "sudo docker pull $IMAGE_PULL_URL"
- #       run: ssh server "sudo docker pull ${{ env.DOCKER_USER }}/${{ env.DOCKER_IMAGE }}:latest"
-
-      - name: Create docker container
-        run: ssh server "sudo docker run -d --name ${{ env.DOCKER_CONTAINER }} -p 8080:80 -p 8081:443 $IMAGE_PULL_URL"
+          ssh server "sudo docker run -d --name ${{ env.DOCKER_CONTAINER }} -p 8080:80 -p 8081:443 $IMAGE_PULL_URL"
