@@ -129,7 +129,7 @@ namespace Aduno.WebAPI.Controllers
                 expires: DateTime.UtcNow.AddYears(1),
                 signingCredentials: signIn);
 
-            return Ok(new JwtSecurityTokenHandler().WriteToken(token));
+            return Ok(new { Token = new JwtSecurityTokenHandler().WriteToken(token) });
         }
 
         /// <summary>
