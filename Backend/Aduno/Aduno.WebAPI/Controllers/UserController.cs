@@ -1,5 +1,10 @@
 ﻿using Aduno.Common.Logic.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Aduno.WebAPI.Controllers
 {
@@ -8,21 +13,25 @@ namespace Aduno.WebAPI.Controllers
     /// </summary>
     /// <typeparam name="TEntity">The type of entity</typeparam>
     /// <typeparam name="TModel">The type of model</typeparam>
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase, IDisposable
     {
         private bool disposedValue;
 
+        public IConfiguration _configuration;
+
         protected Database.Logic.Controllers.UserController EntityController { get; init; }
 
-        public UserController(Database.Logic.Controllers.UserController controller)
+        public UserController(IConfiguration config, Database.Logic.Controllers.UserController controller)
         {
             if (controller is null)
             {
                 throw new ArgumentNullException(nameof(controller));
             }
             EntityController = controller;
+            _configuration = config;
         }
         /// <summary>
         /// Converts an entity to a model and copies all properties of the same name from the entity to the model.
@@ -84,11 +93,12 @@ namespace Aduno.WebAPI.Controllers
             return entity == null ? NotFound() : Ok(ToModel(entity));
         }
 
-        [Route("check")]
+        [Route("createjwt")]
+        [AllowAnonymous]
         [HttpGet()]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<ActionResult> CredentialCheck([FromHeader] string username, [FromHeader] string password)
+        public async Task<ActionResult> CreateJWT([FromHeader] string username, [FromHeader] string password)
         {
             var user = await EntityController.CheckCredentials(username, password);
 
@@ -97,7 +107,28 @@ namespace Aduno.WebAPI.Controllers
                 return NotFound();
             }
 
-            return Ok(ToModel(user));
+            //create claims details based on the user information
+            var claims = new[] {
+                        new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]),
+                        new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                        new Claim(JwtRegisteredClaimNames.Iat, DateTime.UtcNow.ToString()),
+                        new Claim("UserId", user.Id.ToString()),
+                        new Claim("Username", user.Username),
+                        new Claim("Firstname", user.FirstName),
+                        new Claim("Lastname", user.LastName),
+                        new Claim("ClassId", user.ClassId.ToString())
+                    };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+            var signIn = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            var token = new JwtSecurityToken(
+                _configuration["Jwt:Issuer"],
+                _configuration["Jwt:Audience"],
+                claims,
+                expires: DateTime.UtcNow.AddYears(1),
+                signingCredentials: signIn);
+
+            return Ok(new JwtSecurityTokenHandler().WriteToken(token));
         }
 
         /// <summary>
