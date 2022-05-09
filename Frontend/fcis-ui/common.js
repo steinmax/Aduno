@@ -115,7 +115,7 @@ async function login(username, password) {
   const res = await getLoginResponse(username, password);
 
   if (res.ok){
-    //Save userId to localstorage
+    //Save jwt token to localstorage
     
     writeToLocalStorage(LOCALSTORAGE_KEY, USER_JWT_TOKEN);
     return true;
@@ -168,6 +168,7 @@ async function getRegisterResponse(username, firstname, lastname, password, clas
     user = await response.json();
     return response;
 }
+
 //function that checks if the given user and password represent an existing user in our system
 async function getLoginResponse(username, password) {
     const reqUrl = API_URL + "/user/createjwt";
@@ -187,7 +188,8 @@ async function getLoginResponse(username, password) {
       //body: JSON.stringify(reqBody) // body data type must match "Content-Type" header
     });
 
-    USER_JWT_TOKEN = await response.text;
+    console.log(response);
+    USER_JWT_TOKEN = await response.text();
     USER = getUserFromJwtToken(USER_JWT_TOKEN);
     USER_ID = USER.id;
 
