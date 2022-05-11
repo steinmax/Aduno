@@ -13,6 +13,7 @@ namespace Aduno.WebAPI.Controllers
         [HttpGet("{classId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<IEnumerable<Models.PrecenceModel>>> GetPresenceListByClassId(int classId)
         {
             if(Common.HasRole(User, Role.Admin) == false)
