@@ -17,7 +17,7 @@ namespace Aduno.WebAPI.Controllers
         public async Task<ActionResult<IEnumerable<Models.PrecenceModel>>> GetPresenceListByClassId(int classId)
         {
             if(Common.HasRole(User, Role.Admin) == false)
-                Unauthorized();
+                return Unauthorized();
 
             using var classCtrl = new Database.Logic.Controllers.ClassController();
             var users = await classCtrl.GetUsersOfClassByIdAsync(classId);
