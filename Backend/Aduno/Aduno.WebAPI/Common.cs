@@ -17,5 +17,15 @@ namespace Aduno.WebAPI
 
             return role;
         }
+
+        public static bool HasRole(ClaimsPrincipal user, Role role)
+        {
+            Role? r = GetUserRoleFromUser(user);
+
+            if (r == null)
+                return false;
+
+            return role == r;
+        }
     }
 }

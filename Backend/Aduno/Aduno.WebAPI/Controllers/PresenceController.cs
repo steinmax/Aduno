@@ -15,12 +15,7 @@ namespace Aduno.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IEnumerable<Models.PrecenceModel>>> GetPresenceListByClassId(int classId)
         {
-            Role? role = Common.GetUserRoleFromUser(User);
-
-            if(role == null)
-                return NotFound();
-
-            if(role != Role.Admin)
+            if(Common.HasRole(User, Role.Admin) == false)
                 Unauthorized();
 
             using var classCtrl = new Database.Logic.Controllers.ClassController();
