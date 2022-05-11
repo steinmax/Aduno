@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: aduno-deployment
+  name: aduno-backend
   namespace: student-s-rausch-schott
 spec:
   replicas: 1
@@ -15,16 +15,15 @@ spec:
     spec:
       containers:
         - name: aduno-backend
-          image: registry.cloud.htl-leonding.ac.at/s.rausch-schott/tmp-aduno-leocloud:latest #ghcr.io/steinmax/aduno-backend:latest
+          image: registry.cloud.htl-leonding.ac.at/s.rausch-schott/tmp-aduno-leocloud:latest
           imagePullPolicy: Always
           ports:
             - name: port80
               containerPort: 80
-            - name: port443
-              containerPort: 443
       imagePullSecrets:
         - name: registry-auth-secrets
 ---
+
 apiVersion: v1
 kind: Service
 metadata:
@@ -34,24 +33,27 @@ spec:
   ports:
     - port: 8080
       targetPort: 80
-      protocol: TCP
-      name: http
   selector:
     app: aduno-backend
 ---
+
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: aduno-backend-ingress
   namespace: student-s-rausch-schott
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/client-body-buffer-size: 999m
+    nginx.ingress.kubernetes.io/proxy-body-size: 999m
+    nginx.ingress.kubernetes.io/proxy-buffer-size: 999m
+    nginx.ingress.kubernetes.io/proxy-max-temp-file-size: 999m
 spec:
   rules:
     - host: student.cloud.htl-leonding.ac.at
       http:
         paths:
-          - path: /s.rausch-schott/aduno/api(.*)$
+          - path: /s.rausch-schott/aduno(/|$)(.*)$
             pathType: Prefix
             backend:
               service:
