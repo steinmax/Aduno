@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aduno-deployment
+  namespace: student-s-rausch-schott
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aduno-backend
+  template:
+    metadata:
+      labels:
+        app: aduno-backend
+    spec:
+      containers:
+        - name: aduno-backend
+          image: registry.cloud.htl-leonding.ac.at/s.rausch-schott/tmp-aduno-leocloud:latest #ghcr.io/steinmax/aduno-backend:latest
+          imagePullPolicy: Always
+          ports:
+            - name: port80
+              containerPort: 80
+            - name: port443
+              containerPort: 443
+      imagePullSecrets:
+        - name: registry-auth-secrets
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aduno-backend-service
+  namespace: student-s-rausch-schott
+spec:
+  ports:
+    - port: 8080
+      targetPort: 80
+      protocol: TCP
+      name: http
+  selector:
+    app: aduno-backend
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: aduno-backend-ingress
+  namespace: student-s-rausch-schott
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+    - host: student.cloud.htl-leonding.ac.at
+      http:
+        paths:
+          - path: /s.rausch-schott/aduno/api(.*)$
+            pathType: Prefix
+            backend:
+              service:
+                name: aduno-backend-service
+                port:
+                  number: 8080
