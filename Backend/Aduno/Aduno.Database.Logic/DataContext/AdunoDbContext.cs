@@ -6,7 +6,7 @@ namespace Aduno.Database.Logic.DataContext
     internal class AdunoDbContext : DbContext
     {
         #region Testing purposes only: PostgreSQL
-        private static string ConnectStr => "User ID=resign;Password=@bb$3O1QM?;Host=144.24.177.22;Port=5432;Database=aduno;";
+        private static string ConnectStr => "User ID=aduno;Password=@bb$3O1QM?;Host=144.24.177.22;Port=5432;Database=aduno;";
         //private static string ConnectStr => "User ID=aduno;Password=bb$3O1QM;Host=postgres;Port=5432;Database=aduno;";
 
 
