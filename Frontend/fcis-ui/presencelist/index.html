@@ -74,7 +74,8 @@
             newTime.innerHTML = "Nicht verfügbar";
         }
         else{
-            newTime.innerHTML = user.time;
+            const checkInDate = new Date(user.time);
+            newTime.innerHTML = `${leftPad(checkInDate.getHours(), 2)}:${leftPad(checkInDate.getMinutes(),2 )}`;
         }
         
 
