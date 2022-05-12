@@ -41,6 +41,7 @@ namespace Aduno.WebAPI.Controllers
                 if (lastInteraction != null)
                 {
                     presenceResult.IsPresent = lastInteraction.Type == Database.Logic.Enumerations.InteractionType.CheckIn ? true : false;
+                    presenceResult.Time = lastInteraction.DateTime;
                 }
 
                 return presenceResult;
