@@ -9,6 +9,13 @@ let USER_ID;
 let USER_JWT_TOKEN;
 
 //Functions from here
+function leftPad(number, targetLength) {
+  var output = number + '';
+  while (output.length < targetLength) {
+      output = '0' + output;
+  }
+  return output;
+}
 
 function getAllUrlParams() {
   const params = new Proxy(new URLSearchParams(window.location.search), {
