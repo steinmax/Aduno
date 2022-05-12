@@ -70,7 +70,13 @@
         const newRow = document.createElement("tr");
 
         const newTime = document.createElement("td");
-        newTime.innerHTML = user.time;
+        if(user.time == "0001-01-01T00:00:00"){
+            newTime.innerHTML = "Nicht verfügbar";
+        }
+        else{
+            newTime.innerHTML = user.time;
+        }
+        
 
         const newName = document.createElement("td");
         newName.innerHTML = `${user.firstName} ${user.lastName}`;
