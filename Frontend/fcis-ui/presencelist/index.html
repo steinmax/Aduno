@@ -38,6 +38,7 @@
     <table id="presenceTable">
         <thead>
             <tr>
+                <th>Uhrzeit</th>
                 <th>Name</th>
                 <th>Anwesend</th>
             </tr>
@@ -67,6 +68,10 @@
         const tableBody = document.getElementById("presenceTableBody");
 
         const newRow = document.createElement("tr");
+
+        const newTime = document.createElement("td");
+        newTime.innerHTML = user.Time;
+
         const newName = document.createElement("td");
         newName.innerHTML = `${user.firstName} ${user.lastName}`;
 
