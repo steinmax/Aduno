@@ -39,6 +39,7 @@ kind: Ingress
 metadata:
   name: aduno-reverse-proxy-ingress
   annotations:
+    # maybe missing some annotations see:https://serverfault.com/questions/1068310/how-to-solve-error-503-in-kubernetes-nginx-ingress
     nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   rules:
