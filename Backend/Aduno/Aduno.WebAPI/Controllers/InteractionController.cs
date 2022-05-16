@@ -38,7 +38,7 @@ namespace Aduno.WebAPI.Controllers
                 return user;
             });
 
-            
+
             return Ok(userModels);
         }
 
@@ -76,9 +76,38 @@ namespace Aduno.WebAPI.Controllers
 
             if (toggleResult == null)
                 return NotFound("Something went wrong! Check user- and room-Id specified.");
-            
+
 
             return CreatedAtAction("Get", new { Id = toggleResult.Id }, ToModel(toggleResult));
+        }
+
+        protected override void CheckEntity(Interaction entity, ActionType type)
+        {
+            var claim = User.FindFirst("userId");
+            int userId = -1;
+
+            if (claim == null)
+                throw new Exception();
+
+            userId = Convert.ToInt32(claim.Value);
+
+            var temp = Common.GetUserRoleFromUser(User);
+            Role userRole = (Role)(temp == null ? throw new Exception() : temp);
+
+            //admins are allowed to manipulate every interaction
+            if (userRole.HasFlag(Role.Admin))
+                return;
+
+            if ((type == ActionType.Create || type == ActionType.Read) && userRole == Role.Member)
+            {
+                if (userId != entity.UserId)
+                    throw new Exception("Memebers are not allowed to Change or Read other users interactions");
+
+                //everything is fine
+                return;
+            }
+            else
+                throw new Exception("Members are not allow to update or delete interactions");
         }
     }
 }
