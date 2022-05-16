@@ -18,7 +18,7 @@ namespace Aduno.WebAPI.Controllers
         {
             if(Common.HasRole(User, Role.Admin) == false)
                 return Unauthorized();
-
+            
             using var classCtrl = new Database.Logic.Controllers.ClassController();
             var users = await classCtrl.GetUsersOfClassByIdAsync(classId);
 
