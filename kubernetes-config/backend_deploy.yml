@@ -16,7 +16,7 @@ spec:
       containers:
         - name: aduno-backend
           image: registry.cloud.htl-leonding.ac.at/s.rausch-schott/tmp-aduno-leocloud:latest
-          imagePullPolicy: Always
+          imagePullPolicy: Always       #Should pull if image was updated
           ports:
             - name: port80
               containerPort: 80
@@ -35,28 +35,29 @@ spec:
       targetPort: 80
   selector:
     app: aduno-backend
----
-
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: aduno-backend-ingress
-  namespace: student-s-rausch-schott
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
-    nginx.ingress.kubernetes.io/client-body-buffer-size: 999m
-    nginx.ingress.kubernetes.io/proxy-body-size: 999m
-    nginx.ingress.kubernetes.io/proxy-buffer-size: 999m
-    nginx.ingress.kubernetes.io/proxy-max-temp-file-size: 999m
-spec:
-  rules:
-    - host: student.cloud.htl-leonding.ac.at
-      http:
-        paths:
-          - path: /s.rausch-schott/aduno(/|$)(.*)$
-            pathType: Prefix
-            backend:
-              service:
-                name: aduno-backend-service
-                port:
-                  number: 8080
+    
+#---
+#
+#apiVersion: networking.k8s.io/v1
+#kind: Ingress
+#metadata:
+#  name: aduno-backend-ingress
+#  namespace: student-s-rausch-schott
+#  annotations:
+#    nginx.ingress.kubernetes.io/rewrite-target: /$2
+#    nginx.ingress.kubernetes.io/client-body-buffer-size: 999m
+#    nginx.ingress.kubernetes.io/proxy-body-size: 999m
+#    nginx.ingress.kubernetes.io/proxy-buffer-size: 999m
+#    nginx.ingress.kubernetes.io/proxy-max-temp-file-size: 999m
+#spec:
+#  rules:
+#    - host: student.cloud.htl-leonding.ac.at
+#      http:
+#        paths:
+#          - path: /s.rausch-schott/aduno(/|$)(.*)$
+#            pathType: Prefix
+#            backend:
+#              service:
+#                name: aduno-backend-service
+#                port:
+#                  number: 8080

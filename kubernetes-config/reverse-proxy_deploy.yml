@@ -1,0 +1,54 @@
+# nginx Web Server
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aduno-reverse-proxy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aduno-reverse-proxy
+  template:
+    metadata:
+      labels:
+        app: aduno-reverse-proxy
+    spec:
+      containers:
+        - name: aduno-reverse-proxy
+          image: ghcr.io/steinmax/aduno-reverse-proxy:latest
+          imagePullPolicy: Always
+          ports:
+            - name: port80
+              containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aduno-reverse-proxy-service
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+      name: http
+  selector:
+    app: aduno-reverse-proxy
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: aduno-reverse-proxy-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  rules:
+    - host: student.cloud.htl-leonding.ac.at
+      http:
+        paths:
+          - path: /s.rausch-schott/aduno(/|$)(.*)$
+            pathType: Prefix
+            backend:
+              service:
+                name: nginx
+                port:
+                  number: 80
