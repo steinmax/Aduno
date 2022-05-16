@@ -61,6 +61,14 @@ namespace Aduno.WebAPI.Controllers
         }
 
         /// <summary>
+        /// Checks entity before any CRUD operation; overwrite to use this feature
+        /// Throw an exception when the check failed
+        /// </summary>
+        /// <param name="entity">The entity to be checked</param>
+        /// <param name="type">type of the CRUD operation</param>
+        protected virtual void CheckEntity(TEntity entity, ActionType type){}
+
+        /// <summary>
         /// Gets a list of models
         /// </summary>
         /// <returns>List of models</returns>
@@ -69,6 +77,11 @@ namespace Aduno.WebAPI.Controllers
         public virtual async Task<ActionResult<IEnumerable<TModel>>> GetAsync()
         {
             var entities = await EntityController.GetAllAsync();
+
+            foreach (var item in entities)
+            {
+                CheckEntity(item, ActionType.Read);
+            }
 
             return Ok(ToModel(entities));
         }
@@ -85,6 +98,9 @@ namespace Aduno.WebAPI.Controllers
         public virtual async Task<ActionResult<TModel?>> GetAsync(int id)
         {
             var entity = await EntityController.GetByIdAsync(id);
+
+            if(entity != null)
+                CheckEntity(entity, ActionType.Read);
 
             return entity == null ? NotFound() : Ok(ToModel(entity));
         }
@@ -105,6 +121,9 @@ namespace Aduno.WebAPI.Controllers
             {
                 entity.CopyFrom(model);
             }
+
+            CheckEntity(entity, ActionType.Create);
+
             var insertEntity = await EntityController.InsertAsync(entity);
 
             await EntityController.SaveChangesAsync();
@@ -130,6 +149,9 @@ namespace Aduno.WebAPI.Controllers
             if (entity != null && model != null)
             {
                 entity.CopyFrom(model);
+
+                CheckEntity(entity, ActionType.Update);
+
                 await EntityController.UpdateAsync(entity);
                 await EntityController.SaveChangesAsync();
             }
@@ -151,6 +173,8 @@ namespace Aduno.WebAPI.Controllers
 
             if (entity != null)
             {
+                CheckEntity(entity, ActionType.Delete);
+
                 await EntityController.DeleteAsync(entity.Id);
                 await EntityController.SaveChangesAsync();
             }
