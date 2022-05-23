@@ -1,0 +1,42 @@
+name: Frontend Docker CI
+
+on:
+  push:
+    paths: 'Frontend/fcis-ui/**'
+  workflow_dispatch:
+
+env:
+  DOCKER_USER: nydery
+  DOCKER_CONTAINER: aduno-frontend
+  REGISTRY: ghcr.io
+  IMAGE_NAME: aduno-frontend
+
+jobs:
+  build-and-push-docker-image:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Login to the Container registry (Github container registry)
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    - name: Build API docker image
+      run: |
+        cd Frontend/fcis-ui
+        docker build . --tag ${{ env.IMAGE_NAME }}
+    
+    - name: Push image
+      run: |
+        IMAGE_ID=ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}
+        IMAGE_ID=$(echo $IMAGE_ID | tr '[A-Z]' '[a-z]')
+        VERSION=latest
+        echo IMAGE_ID=$IMAGE_ID
+        echo VERSION=$VERSION
+        docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+        docker push $IMAGE_ID:$VERSION
+        
+       
