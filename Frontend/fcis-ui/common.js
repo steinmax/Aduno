@@ -1,5 +1,5 @@
-const URL = "https://aduno.byiconic.at";
-const API_URL = URL + "/api";
+const URL = "https://student.cloud.htl-leonding.ac.at/s.rausch-schott/aduno";
+const API_URL = URL + "/api"; 
 
 const LOCALSTORAGE_KEY = "userToken";
 const PASSWORDS_NOT_EQUAL = "pass_not_equal";
