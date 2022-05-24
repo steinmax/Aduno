@@ -1,4 +1,6 @@
-[![Docker Image CI](https://github.com/steinmax/reSign/actions/workflows/docker-image.yml/badge.svg)](https://github.com/steinmax/reSign/actions/workflows/docker-image.yml)
+[![Proxy Image CI](https://github.com/steinmax/Aduno/actions/workflows/cloud-proxy-build.yml/badge.svg)](https://github.com/steinmax/Aduno/actions/workflows/cloud-proxy-build.yml)
+[![Frontend Docker CI](https://github.com/steinmax/Aduno/actions/workflows/frontend-docker-ci.yml/badge.svg)](https://github.com/steinmax/Aduno/actions/workflows/frontend-docker-ci.yml)
+[![Backend Docker CI](https://github.com/steinmax/Aduno/actions/workflows/backend-docker-ci.yml/badge.svg)](https://github.com/steinmax/Aduno/actions/workflows/backend-docker-ci.yml)
 
 # aduno 
 
