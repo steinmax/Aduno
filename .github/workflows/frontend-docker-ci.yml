@@ -24,9 +24,9 @@ jobs:
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-    - name: Build API docker image
+    - name: Build docker image
       run: |
-        cd Backend/Aduno
+        cd Frontend/fcis-ui
         docker build . --tag ${{ env.IMAGE_NAME }}
     
     - name: Push image
