@@ -1,4 +1,4 @@
-name: Frontend-UI CD
+name: Frontend-UI CD (OraVM)
 
 on: 
   push:
