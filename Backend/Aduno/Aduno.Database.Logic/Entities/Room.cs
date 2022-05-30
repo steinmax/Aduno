@@ -10,7 +10,6 @@ public class Room : VersionEntity
 {
     [Required]
     public string Designation { get; set; } = string.Empty;
-
     [Required]
     public Floor Floor { get; set; }
     [Required]
