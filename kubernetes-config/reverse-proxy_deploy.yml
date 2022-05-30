@@ -43,7 +43,7 @@ spec:
     - host: student.cloud.htl-leonding.ac.at
       http:
         paths:
-          - path: /s.rausch-schott/aduno(/|$)(.*)$
+          - path: /s.rausch-schott(/|$)(.*)$
             pathType: Prefix
             backend:
               service:
