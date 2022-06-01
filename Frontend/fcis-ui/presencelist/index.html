@@ -98,6 +98,9 @@
         if(response.ok){
             const json = response.json().then(data => {
                 data.forEach(user => {
+                    console.log("Adding row for user: ");
+                    console.log(user);
+                    
                     addTableRow(user);
                 });
             });
@@ -112,7 +115,8 @@
     };
 
     const LOGIN_HREF = "../login/index.html";
-    const LOGIN_WITH_CALLBACK_HREF = LOGIN_HREF + `?callback=${URL}/presencelist/index.html?classId=${getAllUrlParams().classId}`;
+    //const LOGIN_WITH_CALLBACK_HREF = LOGIN_HREF + `?callback=${URL}/presencelist/index.html?classId=${getAllUrlParams().classId}`;
+    const LOGIN_WITH_CALLBACK_HREF = LOGIN_HREF + `?callback=${window.location.href}`;
 </script>
 <script>
     if(!isLoggedIn()){
