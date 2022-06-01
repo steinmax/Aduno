@@ -15,8 +15,8 @@ spec:
     spec:
       containers:
         - name: aduno-backend
-          image: registry.cloud.htl-leonding.ac.at/s.rausch-schott/tmp-aduno-leocloud:latest
-          imagePullPolicy: Always       #Should pull if image was updated
+          image: ghcr.io/steinmax/aduno-backend:latest
+          imagePullPolicy: Always
           ports:
             - name: port80
               containerPort: 80
