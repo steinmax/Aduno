@@ -77,6 +77,8 @@
   <script src="dropdown.js"></script>
   <script>
 	const onClassSelection = function () {
+        console.log("selection changed");
+
 		const selectElement = document.getElementById("classSelect");
 		const selectedValue = selectElement.options[selectElement.selectedIndex].value;
 		
