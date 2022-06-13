@@ -75,10 +75,11 @@ var app = builder.Build();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
+//app.MapControllers();
 
 app.UseEndpoints(endpoints =>
 {
+    endpoints.MapControllers();
     //endpoints.MapHub<ChatHub>("/chathub");
 });
 
