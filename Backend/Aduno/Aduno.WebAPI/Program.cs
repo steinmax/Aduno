@@ -15,6 +15,7 @@ builder.Services.AddTransient<Aduno.Database.Logic.Controllers.InteractionContro
 builder.Services.AddTransient<Aduno.Database.Logic.Controllers.RoomController>();
 builder.Services.AddTransient<Aduno.Database.Logic.Controllers.UserController>();
 builder.Services.AddTransient<Aduno.Database.Logic.Controllers.ClassController>();
+builder.Services.AddSignalR();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
@@ -75,5 +76,10 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseEndpoints(endpoints =>
+{
+    //endpoints.MapHub<ChatHub>("/chathub");
+});
 
 app.Run();
