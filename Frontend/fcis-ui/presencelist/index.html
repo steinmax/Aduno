@@ -76,6 +76,9 @@
         }
         else{
             const checkInDate = new Date(user.time);
+            //correct time offset
+            checkInDate.setHours(checkInDate.getHours() - checkInDate.getTimezoneOffset() / 60);
+            
             newTime.innerHTML = `${leftPad(checkInDate.getHours(), 2)}:${leftPad(checkInDate.getMinutes(),2 )}`;
         }
         
