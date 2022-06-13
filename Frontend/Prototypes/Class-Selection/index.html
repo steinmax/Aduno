@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <base href="/s.rausch-schott/presencelist/">
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aduno</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
-
 </head>
-<body>
-  <!--
-  <header>
-    <h1>Custom dropdown with search</h1>
-  </header>
- -->
-  <div class="container" >
-    <img src="images/aduno_blueOnWhite01.png" width="400" height="400" style = "position:relative;left:200px; top:50px;">
+<body> 
+	<img src="images/aduno_blueOnWhite01.png" style="width: 10vw;">
     <form class="form">
       <div class="form__group">
-        <label for="class">Liste der Klassen</label>
-        <select id="class" name="class" data-dropdown>
-          <option value=""> -- Bitte wählen Sie eine Klasse aus -- </option>
+        <label for="classSelect">Klassenauswahl:</label>
+        <select id="classSelect" name="class" data-dropdown onselect="onClassSelection()">
+          
+		  <option value=""> -- Bitte wählen Sie eine Klasse aus -- </option>
+		  <!--
           <option value="1AHBG">1AHBG</option>
           <option value="2AHBG">2AHBG</option>
           <option value="3AHBG">3AHBG</option>
@@ -72,12 +69,20 @@
           <option value="3AHEL">3AHEL</option>
           <option value="4AHEL">4AHEL</option>
           <option value="5AHEL">5AHEL</option>
+		  -->
        </select>
       </div>
-
     </form>
-  </div>
   
   <script src="dropdown.js"></script>
+  <script>
+	const onClassSelection = function () {
+		const selectElement = document.getElementById('classSelect');
+		const selectElement.options[selectElement.selectedIndex].value;
+		
+		//Redirect to presencelist
+		
+	}
+  </script>
 </body>
 </html>
