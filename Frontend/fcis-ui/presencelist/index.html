@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <base href="aduno/presencelist/">
+    <base href="/s.rausch-schott/presencelist/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aduno - Presencelist</title>
@@ -76,6 +76,9 @@
         }
         else{
             const checkInDate = new Date(user.time);
+            //correct time offset
+            checkInDate.setHours(checkInDate.getHours() - checkInDate.getTimezoneOffset() / 60);
+            
             newTime.innerHTML = `${leftPad(checkInDate.getHours(), 2)}:${leftPad(checkInDate.getMinutes(),2 )}`;
         }
         
@@ -98,6 +101,9 @@
         if(response.ok){
             const json = response.json().then(data => {
                 data.forEach(user => {
+                    console.log("Adding row for user: ");
+                    console.log(user);
+                    
                     addTableRow(user);
                 });
             });
@@ -111,8 +117,9 @@
         window.location.reload();
     };
 
-    const LOGIN_HREF = URL + "/login";
-    const LOGIN_WITH_CALLBACK_HREF = LOGIN_HREF + `?callback=${URL}/presencelist?classId=${getAllUrlParams().classId}`;
+    const LOGIN_HREF = "../login/index.html";
+    //const LOGIN_WITH_CALLBACK_HREF = LOGIN_HREF + `?callback=${URL}/presencelist/index.html?classId=${getAllUrlParams().classId}`;
+    const LOGIN_WITH_CALLBACK_HREF = LOGIN_HREF + `?callback=${window.location.href}`;
 </script>
 <script>
     if(!isLoggedIn()){

@@ -32,7 +32,7 @@ Das Fast-Check-In-System kurz FCIS ermöglicht das leichte und schnelle An/Abmel
 
 **Funktionalität**
 
-![Alt-Text](https://github.com/steinmax/reSign/blob/main/Resources/FCIS.png)
+![Alt-Text](https://github.com/steinmax/Aduno/blob/main/Resources/Bilder/FCIS.png)
 
 Das Backend und der REST Service wir in C# verfasst und die Datenbank(PostgreSQL).
 Das alles läuft auf der Oracle VM. Die Schnittstellen kommunizieren mit dem REST Service und die Endpoints werden so angesteuert.

@@ -1,0 +1,31 @@
+Tracking der Schule welches Display: 
+
+Die App: 
+
+	*Jeder Schüler hat AFID TOCKEN(TOCKEN)CHIP, SCANNER dann wird ein Code,
+
+	*URL SHORTER WIE BITLY
+	*MUSS GANZ FLOTT GEHEN DEVICE.INFO
+	*Eine Sekunde(),
+
+
+Präsentation
+
+schnelles Skannen leichtes Datenmodel,
+
+Zutrittsystem: reSign(Zutrittsystem)
+
+Handybasiertes Fast-Check-In-System
+
+TouchScreen teuer: 
+
+	* 
+
+
+
+
+also in der datenbank is rechnungskopf mit positionen und die geschäftslogik is bsp,dass
+es immer ein Rechnungskopf eine position haben
+
+
+  

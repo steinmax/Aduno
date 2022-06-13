@@ -6,9 +6,9 @@ namespace Aduno.Database.Logic.DataContext
     internal class AdunoDbContext : DbContext
     {
         #region Testing purposes only: PostgreSQL
-        private static string ConnectStr => "User ID=aduno;Password=@bb$3O1QM?;Host=student.cloud.htl-leonding.ac.at/s.rausch-schott/aduno/postgres;Port=5432;Database=aduno;";
-        //private static string ConnectStr => "User ID=aduno;Password=bb$3O1QM;Host=postgres;Port=5432;Database=aduno;";
-
+        //private static string ConnectStr => "User ID=aduno;Password=bb$3O1QM;Host=localhost;Port=5432;Database=aduno;";
+        //private static string ConnectStr => "User ID=aduno;Password=bb$3O1QM;Host=student.cloud.htl-leonding.ac.at/s.rausch-schott/postgres;Port=5432;Database=aduno;";
+        private static string ConnectStr => "User ID=aduno;Password=bb$3O1QM;Host=postgres-service;Port=5432;Database=aduno;";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

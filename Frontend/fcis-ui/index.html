@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <base href="aduno/">
+  <base href="/s.rausch-schott/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="./css/checkinout.css">
@@ -106,8 +106,9 @@
 
 
     //Constants
-    const LOGIN_HREF = URL + "/login";
-    const LOGIN_WITH_CALLBACK_HREF = LOGIN_HREF + `?callback=${URL}/index.html?roomId=${getRoomIdFromURL()}`;
+    const LOGIN_HREF = "./login/index.html";
+    //const LOGIN_WITH_CALLBACK_HREF = LOGIN_HREF + `?callback=${URL}/index.html?roomId=${getRoomIdFromURL()}`;
+    const LOGIN_WITH_CALLBACK_HREF = LOGIN_HREF + `?callback=${window.location.href}`;
 
 </script>
 

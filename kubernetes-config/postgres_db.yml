@@ -72,12 +72,29 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres
+  name: postgres-service
 spec:
   ports:
     - port: 5432
       targetPort: 5432
-      protocol: TCP
-      name: postgres
   selector:
     component: postgres
+    
+#---
+#
+#apiVersion: networking.k8s.io/v1
+#kind: Ingress
+#metadata:
+#  name: postgres-ingress
+#spec:
+# rules:
+#    - host: student.cloud.htl-leonding.ac.at
+#      http:
+#        paths:
+#          - path: /s.rausch-schott/postgres(/|$)(.*)$
+#            pathType: Prefix
+#            backend:
+#              service:
+#                name: postgres-service
+#                port:
+#                  number: 5432

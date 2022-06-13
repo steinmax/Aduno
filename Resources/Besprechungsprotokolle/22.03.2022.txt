@@ -1,0 +1,29 @@
+
+Admin: vergibt einen account und ein password.
+
+Danach logged man sich ein.
+
+der account bekommt dann eine UserId und wird im Localstorage gespeichert
+
+Danach
+
+QR-Code -> Hauptseite -> auto. eingeloggt
+
+
+Schlossidee: Handy als Key
+
+Handy noch dazu verschlüsselt
+
+nvm ich hab die story aufgeschnappt von ihm und jetzt is sie scheiße lol.
+
+
+Der Key ist ein Handy. Man braucht keine zusätzliche app.
+
+
+Einen neuen Namen fürs Projekt finden. 
+
+
+Registrigung überarbeiten.
+
+
+

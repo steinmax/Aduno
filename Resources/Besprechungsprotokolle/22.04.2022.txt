@@ -1,0 +1,16 @@
+Grafiken sind gut. Design von Kernprojekt zuerst. 
+
+Position statt Raum.
+
+Anwendungsfall: (Anwesenheitsliste für Klassenbuch)
+
+Eindenken der Kunden. 
+
+Sprintplaningmeeting. 
+
+Was machen wir: Definition PROJEKT,ERD mit Plant ULM direkt ins Git Hub, USP FEATER(Anwesenheitsliste). Refresh und dann WebSocket.
+
+POC.
+
+
+
