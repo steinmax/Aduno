@@ -1,3 +1,4 @@
+using Aduno.WebAPI.Hubs;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -80,7 +81,7 @@ app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
-    //endpoints.MapHub<ChatHub>("/chathub");
+    endpoints.MapHub<PresenceListHub>("/presencelisthub");
 });
 
 app.Run();
