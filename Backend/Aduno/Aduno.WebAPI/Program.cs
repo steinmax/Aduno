@@ -76,12 +76,14 @@ var app = builder.Build();
 app.UseAuthentication();
 app.UseAuthorization();
 
-//app.MapControllers();
+app.MapControllers();
 
+/* For later with SignalR, but doesn't compile like this..
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
     endpoints.MapHub<PresenceListHub>("/presencelisthub");
 });
+*/
 
 app.Run();
