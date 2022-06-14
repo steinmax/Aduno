@@ -138,6 +138,10 @@
                         .then(handleSetClassHeadingText);
 
     reqUrlExt = "/presence/" + classId; 
+
+    //Sort by lastname
+    reqUrlExt += "?sortByName=true";
+    
     const presenceList = getResponse("GET", reqUrlExt, undefined)
                         .then(handlePresenceListResponse);
 
