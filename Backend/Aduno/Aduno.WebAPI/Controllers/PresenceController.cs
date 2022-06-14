@@ -1,6 +1,7 @@
 ﻿using Aduno.Database.Logic.Enumerations;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 
 namespace Aduno.WebAPI.Controllers
@@ -14,7 +15,7 @@ namespace Aduno.WebAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<IEnumerable<Models.PrecenceModel>>> GetPresenceListByClassId(int classId)
+        public async Task<ActionResult<IEnumerable<Models.PrecenceModel>>> GetPresenceListByClassId(int classId, [FromQuery]bool sortByName = false)
         {
             if(Common.HasRole(User, Role.Admin) == false)
                 return Unauthorized();
@@ -48,6 +49,9 @@ namespace Aduno.WebAPI.Controllers
             })
             .Select(t => t.Result)
             .ToList();
+
+            if (sortByName)
+                presenceListResult.OrderBy(p => p.LastName).ToArray();
             
             return Ok(presenceListResult);
         }
