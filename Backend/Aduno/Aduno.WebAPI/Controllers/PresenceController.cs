@@ -51,7 +51,7 @@ namespace Aduno.WebAPI.Controllers
             .ToList();
 
             if (sortByName.HasValue && sortByName.Value == true)
-                presenceListResult.OrderBy(p => p.LastName).ToArray();
+                presenceListResult = presenceListResult.OrderBy(p => p.LastName).ToList();
             
             return Ok(presenceListResult);
         }
