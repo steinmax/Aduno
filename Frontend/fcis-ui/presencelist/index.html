@@ -42,8 +42,8 @@
       if(!response.ok){
         showError();
       }
-      
-      console.log(response.body);
+      const classes = response.json();
+      console.log(classes);
 
       /*
       classes.forEach(element => {
