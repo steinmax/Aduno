@@ -1,17 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <base href="/s.rausch-schott/presencelist/">
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aduno</title>
+  <!--
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="style.css">
+  -->
 </head>
 <body> 
 	<img src="images/aduno_blueOnWhite01.png" style="width: 10vw;">
+    <!--
     <form class="form">
       <div class="form__group">
         <label for="classSelect">Klassenauswahl:</label>
@@ -23,6 +26,15 @@
     </form>
   
   <script src="dropdown.js"></script>
+  -->
+
+  <label for="classSelect">Klassenauswahl:</label>
+  <select id="classSelect" onchange="onClassSelection()">
+    <option>--- Klasse auswählen ---</option>
+    <option value="1">4CHIF</option>
+    <option value="2">5CHIF</option>
+  </select>
+
   <script>
     function onClassSelection() {
           console.log("selection changed");
