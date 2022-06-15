@@ -42,7 +42,7 @@
       const selectElement = document.getElementById("classSelect");
       const selectedValue = selectElement.options[selectElement.selectedIndex].value;
       
-      if(selectedValue != undefined && selectValue !== 'undefined') {
+      if(selectedValue != undefined && selectedValue !== 'undefined') {
         //Redirect to presencelist
         window.location.href = `./list/index.html?classId=${selectedValue}`;
       }
