@@ -42,19 +42,19 @@
       if(!response.ok){
         showError();
       }
-      const classes = response.json();
-      console.log(classes);
+      
+      response.json().then(classes => {
+        console.log(classes);
+        
+        classes.forEach(element => {
+          const newOption = document.createElement('option');
+          newOption.value = element.id;
+          newOption.innerHTML = element.name;
 
-      /*
-      classes.forEach(element => {
-        const newOption = document.createElement('option');
-        newOption.value = element.id;
-        newOption.innerHTML = element.name;
-
-        //Append element to select element
-        document.getElementById('classSelect').appendChild(newOption);
+          //Append element to select element
+          document.getElementById('classSelect').appendChild(newOption);
+        });
       });
-      */
     };
 
     const LOGIN_HREF = "../login/index.html";
