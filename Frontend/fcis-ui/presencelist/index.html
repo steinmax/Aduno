@@ -6,28 +6,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Aduno</title>
-  <!--
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="style.css">
-  -->
 </head>
 <body> 
 	<img src="images/aduno_blueOnWhite01.png" style="width: 10vw;">
-    <!--
-    <form class="form">
-      <div class="form__group">
-        <label for="classSelect">Klassenauswahl:</label>
-        <select id="classSelect" name="class" data-dropdown onchange="() => onClassSelection()">
-		      <option> -- Bitte wählen Sie eine Klasse aus -- </option>
-          <option value="1">1TEST</option>
-       </select>
-      </div>
-    </form>
-  
-  <script src="dropdown.js"></script>
-  -->
-
+   
   <label for="classSelect">Klassenauswahl:</label>
   <select id="classSelect" onchange="onClassSelection()">
     <option value="undefined" id="placeholderOption">--- Klasse auswählen ---</option>
@@ -38,11 +20,11 @@
   </select>
 
 
-  <script src="../common.js" />
+  <script src="../common.js"></script>
   <script>
-    function onClassSelection() {
-          console.log("selection changed");
-
+    const onClassSelection = function () {
+      console.log("selection changed");
+      
       const selectElement = document.getElementById("classSelect");
       const selectedValue = selectElement.options[selectElement.selectedIndex].value;
       
@@ -61,7 +43,7 @@
         //Append element to select element
         document.getElementById('classSelect').appendChild(newOption);
       });
-    }
+    };
   </script>
 
   <script>
