@@ -35,7 +35,9 @@
     }
 
     const handleClassesCreateDOMElements = function (classes) {
-      classes.forEach(element => {
+      console.log(classes);
+      
+      /*classes.forEach(element => {
         const newOption = document.createElement('option');
         newOption.value = element.id;
         newOption.innerHTML = element.name;
@@ -43,6 +45,7 @@
         //Append element to select element
         document.getElementById('classSelect').appendChild(newOption);
       });
+      */
     };
 
     const LOGIN_HREF = "../login/index.html";
