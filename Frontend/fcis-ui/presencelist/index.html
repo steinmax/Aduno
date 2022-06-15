@@ -22,6 +22,10 @@
 
   <script src="../common.js"></script>
   <script>
+    const showError = function () {
+      document.getElementById('errorDiv').hidden = false;
+    }
+
     const onClassSelection = function () {
       console.log("selection changed");
       
@@ -34,10 +38,15 @@
       }
     }
 
-    const handleClassesCreateDOMElements = function (classes) {
-      console.log(classes);
+    const handleClassesCreateDOMElements = function (response) {
+      if(!response.ok){
+        showError();
+      }
       
-      /*classes.forEach(element => {
+      console.log(response.body);
+
+      /*
+      classes.forEach(element => {
         const newOption = document.createElement('option');
         newOption.value = element.id;
         newOption.innerHTML = element.name;
