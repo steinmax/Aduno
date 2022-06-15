@@ -44,9 +44,17 @@
         document.getElementById('classSelect').appendChild(newOption);
       });
     };
+
+    const LOGIN_HREF = "../login/index.html";
+    const LOGIN_WITH_CALLBACK_HREF = LOGIN_HREF + `?callback=${window.location.href}`;
   </script>
 
   <script>
+    if(!isLoggedIn()){
+        //If not logged in, redirect to login page
+        window.location.replace(LOGIN_WITH_CALLBACK_HREF);
+    }
+    
     //Load classes from API
     const reqUrlExt = "/class";
     const classes = getResponse("GET", reqUrlExt, undefined)
