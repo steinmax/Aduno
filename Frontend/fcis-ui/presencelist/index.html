@@ -30,7 +30,7 @@
 
   <label for="classSelect">Klassenauswahl:</label>
   <select id="classSelect" onchange="onClassSelection()">
-    <option>--- Klasse auswählen ---</option>
+    <option value="undefined">--- Klasse auswählen ---</option>
     <option value="1">4CHIF</option>
     <option value="2">5CHIF</option>
   </select>
@@ -42,7 +42,7 @@
       const selectElement = document.getElementById("classSelect");
       const selectedValue = selectElement.options[selectElement.selectedIndex].value;
       
-      if(selectedValue != undefined) {
+      if(selectedValue != undefined && selectValue !== 'undefined') {
         //Redirect to presencelist
         window.location.href = `./list/index.html?classId=${selectedValue}`;
       }
