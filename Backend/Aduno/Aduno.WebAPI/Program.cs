@@ -62,16 +62,16 @@ builder.Services.AddSwaggerGen(c => {
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-//Enable swagger also for production
-//if (app.Environment.IsDevelopment())
-//{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-//}
-
-//Enable once we know how to run it in parallel to nginx (port 80)
-//app.UseHttpsRedirection();
+var basePath = "/s.rausch-schott";
+app.UseSwagger(c =>
+{
+    c.RouteTemplate = "swagger/{documentName}/swagger.json";
+    c.PreSerializeFilters.Add((swaggerDoc, httpReq) =>
+    {
+        swaggerDoc.Servers = new List<OpenApiServer> { new OpenApiServer { Url = $"https://{httpReq.Host.Value}{basePath}" } };
+    });
+});
+app.UseSwaggerUI();
 
 app.UseAuthentication();
 app.UseAuthorization();
