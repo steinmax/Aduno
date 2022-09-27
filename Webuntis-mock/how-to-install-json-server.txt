@@ -1,2 +1,0 @@
-install npm
-npm install -g json-server
