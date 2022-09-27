@@ -2,6 +2,7 @@
 [![Frontend Docker CI](https://github.com/steinmax/Aduno/actions/workflows/frontend-docker-ci.yml/badge.svg)](https://github.com/steinmax/Aduno/actions/workflows/frontend-docker-ci.yml)
 [![Backend Docker CI](https://github.com/steinmax/Aduno/actions/workflows/backend-docker-ci.yml/badge.svg)](https://github.com/steinmax/Aduno/actions/workflows/backend-docker-ci.yml)
 
+[Go to diagrams](/5chif.md)
 # Aduno 
 
 ## Unsere Idee
