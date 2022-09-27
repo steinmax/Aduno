@@ -1,0 +1,22 @@
+@startuml
+component "Backend" as backend
+interface "REST-API" as rest
+
+backend - rest
+
+folder Frontend {
+    component "Login" as login
+    component "Smartphone- \nregistrierung" as phoneRegister
+    component "CheckIn & \nCheckOut" as checkInOut
+
+    folder "Zugriff benötigt Adminrechte" {
+        component "Admin Panel" as adminPanel
+    }
+}
+
+login --( rest
+phoneRegister --( rest
+checkInOut --( rest
+adminPanel --( rest
+
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+
+actor "Schüler" as pupil order 10
+actor "Lehrer" as teacher order 100
+
+entity QRCode as qr order 20
+participant "Frontend - \nCheckIn" as checkin order 30
+participant "Backend" as backend order 40
+participant "Frontend - \nPräsenzliste" as presencelist order 50
+
+== CheckIn ==
+pupil --> qr : QRCode am Display \nder Klassentür scannen
+note right: QRCodes beinhalten die URL des Frontend inkl. \neinmalig verwendbarem Token
+
+qr --> checkin : QRCode leitet ans Frontend weiter
+checkin --> backend : CheckIn- und Identifikations-Token validieren
+note right: Der Identifikations-Token befindet \nsich im Speicher des Handys
+
+backend --> checkin : Erfolgs- oder Fehlermeldung des CheckIn-Vorgangs
+
+== Anwesenheitskontrolle ==
+teacher --> presencelist : Präsenzlisten Website aufrufen
+note left: **Umsetzung der Anmeldung noch unklar.** \nQRCode wird zB am Laptop angezeigt und mit \ndem Handy gescannt und der User mit dem \nToken aus dem Localstorage identifiziert. \n**Wie erhält der Laptop/Website die Erlaubnis und Userdaten?**
+
+presencelist --> backend : Anwesenheitsdaten spezifizierter Klasse anfragen
+backend --> presencelist : Anwesende und Abwesende Schüler der Klasse schicken
+@enduml

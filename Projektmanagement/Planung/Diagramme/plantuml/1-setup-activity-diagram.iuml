@@ -1,0 +1,14 @@
+@startuml
+partition "Aduno System Admin" {
+    start
+    :Server, VM oder Cloud aufsetzen;
+    :Backend docker image deployen;
+    :Frontend docker image deployen;
+    :Displays an Türen anbringen;
+    :Displays zum Backend verbinden
+    (**Konfigdatei beim Client/Display** mit 
+    IP-Adresse & Port des Backend und Klasse definieren);
+
+    stop
+}
+@enduml

@@ -1,0 +1,25 @@
+@startuml
+
+actor "Aduno System Admin" as admin order 10
+
+participant "Frontend - \nAdmin Panel" as frontendAdmin order 30
+participant "Frontend - \nCheck In / Login" as frontendCheckin order 40
+
+actor "Schüler" as pupil order 100
+
+== Aduno System Admin ==
+
+admin -> admin : Schülerlisten aller Klassen erstellen/exportieren
+admin --> frontendAdmin : Schülerlisten in Aduno importieren
+note right: Erstellt für jeden Schüler einen QRCode \nzum registrieren des Smartphones, \nwelcher genau 1x verwendet werden kann.
+
+frontendAdmin --> admin : Liefert die Schülerliste mit erstellten QRCodes
+admin --> pupil : Austeilen der Schülerlisten und QRCodes an die Schüler
+
+== Schüler ==
+
+pupil --> frontendCheckin : Persönlichen QRCode scannen: redirect zum Frontend
+note left: Das Smartphone wird durch den einzigartigen \nund persönlichen Token im QRCode dem Schüler \nzugewiesen und ein Token zur Identifizierung \nim Speicher des Handys gespeichert.
+
+frontendCheckin --> pupil : Erfolgs- oder Fehlermeldung anzeigen
+@enduml
