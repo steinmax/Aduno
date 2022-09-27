@@ -1,0 +1,7 @@
+20.06.2022 - Abschlusssprint-review
+
+Zukünftige Tasks:
+balog proof: token -> qr refreshing (nur in der schule quasi möglich)
+PresenceList: Simplification (Grün=anwesend, Rot=abwesend, symbole, Uhrzeit)
+PresenceList: Statt refreshing, API call und nur Änderungen in Tabelle updaten
+Lehrer anmeldung: Ablösung von Klassenauswahl (durch roomId??)
