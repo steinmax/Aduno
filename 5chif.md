@@ -8,3 +8,6 @@
 
 ## CheckIn Vorgang
 ![Check-in Sequenzdiagramm](http://plantuml.unterrainer.info/plantuml/proxy?cache=no&src=https://raw.githubusercontent.com/steinmax/Aduno/main/Projektmanagement/Planung/Diagramme/plantuml/3-login-sequence-diagram.iuml?)
+
+## Datenbank Model
+![ERD Diagram](/Projektmanagement/Planung/Diagramme/dbdiagramio/ERD_27.09.22.png)
